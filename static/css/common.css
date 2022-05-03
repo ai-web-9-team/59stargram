@@ -120,7 +120,9 @@
     cursor: pointer;
 }
 
-
+body {
+    background-color: rgb(20, 20, 20);
+}
 
 .img_circle {
     border-radius: 50%;
@@ -129,13 +131,11 @@
 .main_body{
     width: 935px;
     height: 2000px;
-
     margin: 90px auto 0 auto;
     display: flex;
     flex-direction: row;
     align-items: normal;
     justify-content: space-between;
-
     position: relative;
 }
 
@@ -143,8 +143,7 @@
     width: 293px;
     height: 500px;
     background-color: white;
-
-    top: 100px;
+    top: 91px;
     position: fixed;
     z-index: 9999;
 }
@@ -153,7 +152,6 @@
     width: 100%;
     height: 56px;
     margin: 18px 0px 10px 0px;
-
     display: flex;
     flex-direction: row;
     align-items: normal;
