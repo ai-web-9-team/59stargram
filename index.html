@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!-- icon import -->
+    <script src="https://kit.fontawesome.com/989420847f.js" crossorigin="anonymous"></script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,10 +25,21 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 
 
+
+
     <!--    google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 
     <!--css 파일 불러오기!-->
     <link href="/static/css/common.css" rel="stylesheet" type="text/css"/>
@@ -36,16 +50,14 @@
     <!--파비콘 적용-->
     <link rel="shortcut icon" href="/static/images/favicon_instagram.ico">
 
-    <title>Instgram clone</title>
+    <title>59 Stagram</title>
 </head>
 <body>
     <!--헤더 부분-->
     <div class="main_header" id="main_header">
         <div class="header_body">
             <div class="logo_box">
-                <a href="https://velog.io/@kimphysicsman" style="float:left;">
-                    <img style="margin-top: 10px" src="/static/images/logo_instagram.png">
-                </a>
+                <button class="logo" onClick="window.location.reload()">59 Stagram</button>
             </div>
             <div class="search_box">
                 <button class="search_active_button" id="search_active_button"
@@ -56,20 +68,20 @@
                        placeholder="검색" type="text" value="">
             </div>
             <div class="header_icon_box">
-                <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px"
-                                                               src="/static/images/icon_home.png"></a>
-                <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px"
-                                                               src="/static/images/icon_share.png"></a>
-                <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px" src="/static/images/icon_add.png"></a>
-                <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px"
-                                                               src="/static/images/icon_find.png"></a>
-                <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px"
-                                                               src="/static/images/icon_heart_empty.png"></a>
-                <a href="https://velog.io/@kimphysicsman"><img class="img_circle" width="24px" height="24px"
-                                                               src="/static/images/img_profile.jpg"></a>
+                <ul>
+                    <button class="home" onClick="window.location.reload()"><i class="fas fa-house"></i>
+                    </button>
+                    <button class="dm" id="dm_button"><i class="fa-regular fa-paper-plane"></i>
+                    </button>
+                    <button class="add_feed" id="add_feed_button"><i class="fa-regular fa-square-plus"></i>
+                    </button>
+                    <button class="explore" id="explore_button"><i class="fa-regular fa-compass"></i>
+                    </button>
+                    <button class="notice" id="notice_button"><i class="fa-regular fa-heart"></i>
+                    </button>
+                </ul>
             </div>
         </div>
-
     </div>
 
     <!--본문 부분-->

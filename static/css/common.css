@@ -1,7 +1,7 @@
 .main_header {
-    background-color: white;
+    background-color: rgb(20, 20, 20);
     width: 100%;
-    height: 60px;
+    height: 80px;
 
     position: fixed;
     top: 0px;
@@ -20,7 +20,6 @@
     height: 100%;
     margin: auto;
     padding: 0 20px 0 20px;
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,16 +29,44 @@
 .logo_box {
     width: 30%;
     height: 36px;
-    float: left;
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+            0 0 4px #0fa,
+            0 0 11px #0fa,
+            0 0 19px #0fa,
+            0 0 40px #0fa,
+            0 0 80px #fff,
+            0 0 90px #0fa,
+            0 0 100px #fff,
+            0 0 150px #0fa;
+    }
+    20%, 24%, 55%, 78% {
+        text-shadow: none;
+    }
+}
+
+
+.logo {
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: 'Cookie', cursive;
+    font-size: 50px;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 90%;
+    animation: flicker 1.1s infinite alternate;
+    color: #fff;
 }
 
 .search_box{
     width: 270px;
     height: 36px;
-
     background-color: #f0f0f0;
     border-radius: 10px;
-
     position: relative;
 }
 
@@ -67,23 +94,30 @@
     opacity: 0.5;
     margin-top: 10px;
     margin-left: 12px;
-
     width: 16px;
     height: 16px;
-
     position: absolute;
 }
 
 
 .header_icon_box{
-    width: 270px;
+    width: 300px;
     height: 100%;
-    padding-left: 20px;
-
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding-top: 8px;
     justify-content: space-between;
+}
+
+.home, .dm, .add_feed, .explore, .notice{
+    color: white;
+    width: 23px;
+    font-size: 20px;
+    margin: 5px;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 
