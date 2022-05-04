@@ -10,8 +10,9 @@
 }
 
 .profile_box{
-    width: 293px;
-    height: 500px;
+    border-radius: 5%;
+    width: 280px;
+    height: 450px;
     background-color: white;
     top: 91px;
     position: fixed;
@@ -29,28 +30,71 @@
 }
 
 .my_profile {
-    width: 56px;
+    width: 54px;
     height: 100%;
     cursor:pointer;
 }
 
-.my_id {
+.my_info {
     width: 187px;
+    margin-left: 10px;
     height: 100%;
-    font-size: 15px;
-    padding-top: 12px;
-    cursor:pointer;
 }
 
-.my_trans_button {
-    width: 24px;
-    height: 100%;
+.my_info .my_id {
+    border-color: transparent;
+    background-color: transparent;
+    font-size: 17px;
+}
 
+.my_info .my_name {
+    font-size: 13px;
+}
+
+.logout_button {
+    width: 60px;
+    height: 100%;
+    margin-right: 15px;
     font-weight: bolder;
     font-size: 12px;
     padding-top: 20px;
 }
 
+.list-group-item {
+    align-items: center;
+    display: flex;
+}
+
+.user_info {
+    margin-left: 5px;
+}
+
+.user_info .user_id {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.user_info .user_name {
+    font-size: 13px;
+    color: #909090;
+}
+
+.recommend_profile_img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.recommend_follow {
+    border-radius: 10%;
+    font-size: 14px;
+    font-weight: bold;
+    width: 80px;
+    height: 30px;
+    margin-left: 50px;
+    cursor: pointer;
+}
 .other_accounts {
     width: 100%;
     height: 291px;
@@ -220,12 +264,181 @@
     display: block;
 }
 
+
+
+
+.feed_border {
+    width: 100%;
+    height: 70%;
+    border: 3px solid white;
+    border-radius: 3%;
+    align-items: center;
+    background-color: black
+}
+
+.feed_border .feed {
+    width: 98%;
+    height: 98%;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: 1px solid white;
+    border-radius: 3%;
+    background-color: rgb(230, 230, 230);
+    align-items: center;
+}
+
+.feed .feed_header {
+    height: 9%;
+    align-items: center;
+}
+
+.feed_header_container {
+    display: flex;
+}
+
+.user_photo {
+    margin-left: 20px;
+    height: 100px;
+}
+
+.profile_img {
+    align-items: center;
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.profile_img >img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.user_profile {
+    float: left;
+    margin-left: 20px;
+    width: 300px;
+    color:#262626;
+}
+
+.user_profile .user_id {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+.ellipsis_nav {
+    display: flex;
+}
+
+.ellipsis_nav .ellipsis{
+    font-size: 30px;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 200px;
+}
+
+.photos {
+    margin: 15px;
+    margin-top: 20px;
+    height: 500px;
+    align-items: center;
+}
+
+.photos .photo {
+    width: 100%;
+    height: 100%;
+}
+
+.photo, .d-block w-100 {
+    position: relative;
+    z-index: 2;
+}
+
+.behind_photo {
+    color: red;
+    font-size: 200px;
+    text-align: center;
+    position: relative;
+    top: -400px;
+    z-index: 1;
+}
+
+.reaction {
+    margin: 10px;
+    margin-top: 20px;
+    height: 35px;
+    align-items: center;
+    display: flex;
+}
+
+.reaction .like, .like_color, .comment, .share {
+    font-size: 35px;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.like_color {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.comment, .share {
+    margin-left: 15px;
+}
+
+.reaction .reaction_button {
+    width: 50%;
+}
+
+.reaction .like_count {
+    width: 50%;
+    font-size: 22px;
+    font-family: 'Poor Story', cursive;
+    text-align: right;
+}
+
+.like_people {
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 22px;
+    font-family: 'Poor Story', cursive;
+    font-weight: bold;
+}
+
+.post {
+    margin: 10px 15px 0px 20px;
+    height: 40px;
+    overflow: hidden
+}
+
+.post .about_post {
+    font-size: 17px;
+    font-family: 'Poor Story', cursive;
+    font-weight: bold;
+}
+
+.comments {
+    margin: 0px 15px 0px 15px;
+    font-family: 'Poor Story', cursive;
+}
+
+
+
+
 .posts {
     width: 100%;
     height: auto;
-
     margin-bottom: 24px;
 }
+
 
 .post {
     width: 100%;
@@ -415,7 +628,7 @@
 
 
 
-@media (max-width: 935px){
+@media (max-width: 1125px){
     .header_body {
         width: 100%
     }
@@ -431,18 +644,62 @@
     .post_box {
         margin-right: 0;
     }
-
 }
-@media (max-width: 640px){
+
+
+@media (max-width: 805px){
+    .logo {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 906px) {
     .search_box {
         display: none;
     }
+}
 
+@media (max-width: 691px){
+    .logo {
+        font-size: 30px;
+    }
+
+    .header_icon_box .home, .header_icon_box .dm, .header_icon_box .add_feed, .header_icon_box .explore, .header_icon_box .notice{
+        width: 15px;
+        font-size: 17px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 525px){
+    .header_icon_box {
+        display: none;
+    }
+}
+
+@media (max-width: 290px){
+    .logo {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 640px){
     #main_body {
         width: 100%;
     }
 
     .post_box {
         width: 100%;
+    }
+
+    .post_comment_input_box, .post_comment_input {
+        width: 100%
+    }
+
+}
+
+@media (max-width: 365px){
+    .home, .dm, .add_feed, .explore, .notice {
+        display: none;
     }
 }
