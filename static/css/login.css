@@ -79,19 +79,19 @@ div {
     background: rgb(230, 230, 230);
 }
 
-.fb_login {
+.fb-login {
     display: flex;
     justify-content: center;
     align-items: center;
     background: rgb(230, 230, 230);
 }
 
-.fb_login img {
+.fb-login img {
     width: 16px;
     height: 16px;
 }
 
-.fb_login a {
+.fb-login a {
     color: #003569;
 }
 
