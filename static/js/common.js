@@ -101,3 +101,21 @@ $(function () {
     })
 });
 
+function fadeOut(id) {
+                    var like_button_id="like_button"+id.substring(5, );
+                    document.getElementById(like_button_id).style.color='red';
+                    document.getElementById(id).style.opacity=0.3;
+                    document.getElementById("carouselExampleControls").style.opacity=0.3;
+                    setTimeout(function() { document.getElementById(id).style.opacity=1;
+                    document.getElementById("carouselExampleControls").style.opacity=1;}, 400);
+                }
+
+function clickLike(id) {
+                            if (document.getElementById(id).style.color != 'red') {
+                                document.getElementById(id).style.color='red';
+                            }
+                            else {
+                                document.getElementById(id).style.color='black';
+                            }
+                        }
+
