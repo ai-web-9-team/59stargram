@@ -1,11 +1,11 @@
-.main_body{
+.user_main_body{
     width: 975px;
     height: 2000px;
     margin: 90px auto 0 auto;
     padding: 30px 20px 0px;
 }
 
-.user_profile {
+.user_profile_box {
     width: 100%;
     height: 150px;
     margin-bottom: 44px;
@@ -44,6 +44,7 @@
     flex-direction: row;
     align-items: normal;
 }
+
 .user_info_box > .user_name  > .user_setting_box {
     width: 24px;
     margin-left: 15%;
@@ -78,6 +79,42 @@
     font-size: 16px;
     font-weight: 500;
 }
+
+.user_post_box {
+    width:100%;
+}
+.user_post_box
+    > .user_posts_menu_box {
+    width: 100%;
+    height: 53px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 300;
+
+    border-top: 1px solid #dedede;
+}
+
+.user_post_box
+    > .user_posts_menu_box
+        > .user_posts_menu {
+    width: 60px;
+    margin-right: 50px;
+    padding-top: 15px;
+
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+
+
+
+
+
 
 
 

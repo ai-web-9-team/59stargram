@@ -37,10 +37,11 @@
 
     <!--css 파일 불러오기!-->
     <link href="/static/css/common.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/user-page.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/user.css" rel="stylesheet" type="text/css"/>
 
     <!--js 파일 불러오기-->
     <script defer src="/static/js/common.js"></script>
+    <script defer src="/static/js/user.js"></script>
 
     <!--파비콘 적용-->
     <link rel="shortcut icon" href="/static/images/favicon_instagram.ico">
@@ -78,8 +79,8 @@
             </div>
         </div>
     </div>
-    <div class="main_body">
-        <div class="user_profile">
+    <div class="user_main_body">
+        <div class="user_profile_box">
             <div class="user_img_box">
                 <img class="img_circle user_img" name="프로필 사진 바꾸기"
                      src="/static/images/img_profile.jpg"/>
@@ -101,7 +102,18 @@
                 </div>
             </div>
         </div>
-        <div class="user_posts">
+        <div class="user_post_box">
+            <div class="user_posts_menu_box">
+                <div class="user_posts_menu" onclick="user_menu_on('posts')" name="posts">
+                    <img style="margin-right: 5px" width="12px" src="/static/images/icon_posts.png"/>
+                    게시물</div>
+                <div class="user_posts_menu" onclick="user_menu_on('bookmarks')" name="bookmarks">
+                    <img style="margin-right: 5px" width="12px" src="/static/images/icon_bookmark.png"/>
+                    저장됨</div>
+            </div>
+            <div>
+
+            </div>
 
         </div>
     </div>
