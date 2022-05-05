@@ -1,7 +1,6 @@
 
 .main_body{
     width: 935px;
-    height: 2000px;
     margin: 90px auto 0 auto;
     display: flex;
     flex-direction: row;
@@ -279,8 +278,8 @@
     border: 3px solid white;
     border-radius: 3%;
     align-items: center;
-    background-color: black
-    margin-bottom: 300px;
+    background-color: black;
+    margin-bottom: 6%;
 }
 
 .feed_border .feed {
@@ -305,8 +304,8 @@
 }
 
 .user_photo {
-    margin-left: 20px;
-    height: 100px;
+    padding-left: 3%;
+    width: 10%;
 }
 
 .profile_img {
@@ -323,10 +322,11 @@
     width: 100%;
     cursor: pointer;
 }
+
 .user_profile {
     float: left;
-    margin-left: 20px;
-    width: 300px;
+    padding-left: 4%;
+    width: 60%;
     color:#262626;
 }
 
@@ -337,17 +337,19 @@
     line-height: 40px;
 }
 
-
 .ellipsis_nav {
     display: flex;
+    width: 30%;
 }
 
 .ellipsis_nav .ellipsis{
+    width: 100%;
+    margin-right: 7%;
     font-size: 30px;
     border-color: transparent;
     background-color: transparent;
     cursor: pointer;
-    margin-left: 200px;
+    text-align: right;
 }
 
 .photos {
@@ -363,17 +365,24 @@
     height: 100%;
 }
 
-.photo, .d-block w-100 {
+.photo {
     position: relative;
     z-index: 2;
 }
 
-.carousel-inner {
-    z-index: 4;
+
+.carousels {
+    align-items: center;
+    height: 500px;
+    margin-bottom: 15px;
 }
 
 .carousel-control-prev, .carousel-control-next {
-    z-index: 5;
+    z-index: 4;
+}
+
+.carousel-inner {
+    z-index: 3;
 }
 
 .carousel slide .d-block w-100 {
@@ -386,37 +395,28 @@
     font-size: 200px;
     text-align: center;
     position: relative;
-    top: -400px;
+    top: -90%;
     z-index: 1;
 }
 
 .reaction {
-    margin: 10px;
-    margin-top: 20px;
-    height: 35px;
     align-items: center;
     display: flex;
 }
 
-.reaction .like_button, .reaction .comment_button, .reaction .share_button {
-    font-size: 35px;
+.reaction .like_button, .reaction .comment_button, .reaction .share_button, .reaction .bookmark_button {
+    font-size: 27px;
     border: none;
     outline: none;
     border-color: transparent;
     background-color: transparent;
     cursor: pointer;
-}
-
-.comment_button, .share_button {
-    margin-left: 15px;
-}
-
-.reaction .reaction_button {
-    width: 50%;
+    width: 10%;
 }
 
 .reaction .like_count {
-    width: 50%;
+    width: 60%;
+    padding-right: 3%;
     font-size: 22px;
     font-family: 'Poor Story', cursive;
     text-align: right;
@@ -445,10 +445,10 @@
 
 .comments {
     margin: 0px 15px 0px 15px;
-    font-family: 'Poor Story', cursive;
 }
 
 .one_comment {
+    font-family: 'Poor Story', cursive;
     font-size: 15px;
     display: flex;
 }
@@ -462,22 +462,24 @@
 }
 
 .comment_content {
+    font-family: 'Poor Story', cursive;
     font-size: 15px;
     line-height: 30px;
 }
 
 .my_comment {
-    margin-left: 15px;
     display: flex;
 }
 
-.leave_comment {
-    width: 80%;
-    height: 30px;
+.feed .leave_comment {
+    width: 77%;
+    margin-left: 3%;
 }
 
-.comment_post {
-    margin-left: 15px;
+.feed .comment_post {
+    text-align: right;
+    width: 20%;
+    padding-right: 3%;
     border-radius: 15%;
     font-weight: bold;
 }
