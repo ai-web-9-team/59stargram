@@ -35,8 +35,8 @@ div {
 
 .logo {
     width: 100%;
-    margin: auto;
-    margin-top: 47px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     border-color: transparent;
     background-color: transparent;
     cursor: pointer;
@@ -49,53 +49,55 @@ div {
 .btn {
     width: 268px;
     height: 35px;
-    margin: 20px;
-    margin-left: 40px;
+    margin: 20px 40px 20px 20px;
 }
 
-.or {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 15px;
-    margin: 0 0 20px;
-    background-color: rgb(230, 230, 230);
-}
+/*.or {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    height: 15px;*/
+/*    margin: 0 0 20px;*/
+/*    background-color: rgb(230, 230, 230);*/
+/*}*/
 
-.or .line {
-    width: 105px;
-    height: 2px;
-    margin: auto;
-    background: #999;
-}
+/*.or .line {*/
+/*    width: 105px;*/
+/*    height: 2px;*/
+/*    margin: auto;*/
+/*    background: #999;*/
+/*}*/
 
-.or p {
-    margin: auto;
-    color: #999;
-    font-size: 12px;
-}
+/*.or p {*/
+/*    margin: auto;*/
+/*    color: #999;*/
+/*    font-size: 12px;*/
+/*}*/
 
-.fb {
-    background: rgb(230, 230, 230);
-}
+/*.fb {*/
+/*    background: rgb(230, 230, 230);*/
+/*}*/
 
-.fb-login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgb(230, 230, 230);
-}
+/*.fb-login {*/
 
-.fb-login img {
-
-    width: 16px;
-    height: 16px;
-}
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    background: rgb(230, 230, 230);*/
+/*}*/
 
 
-.fb-login a {
-    color: #003569;
-}
+/*.fb-login img {*/
+
+/*    width: 16px;*/
+/*    height: 16px;*/
+/*}*/
+
+
+/*.fb-login a {*/
+
+/*    color: #003569;*/
+/*}*/
 
 .forgot {
     font-size: 12px;
