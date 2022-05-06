@@ -26,17 +26,25 @@ div {
 .box1 {
 
     width: 350px;
-    height: 437px;
+    height: 550px;
     margin: auto;
-    margin-top: 130px;
+    margin-top: 60px;
     background: rgb(230, 230, 230);
     border-radius: 1px;
+}
+
+.text {
+    color: #8e8e8e;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 40px 10px;
+    text-align: center;
 }
 
 .logo {
     width: 100%;
     margin: auto;
-    margin-top: 47px;
     border-color: transparent;
     background-color: transparent;
     cursor: pointer;
@@ -49,7 +57,7 @@ div {
 .btn {
     width: 268px;
     height: 35px;
-    margin: 20px;
+    margin: 10px;
     margin-left: 40px;
 }
 
@@ -75,40 +83,10 @@ div {
     font-size: 12px;
 }
 
-.fb {
-    background: rgb(230, 230, 230);
-}
-
-.fb-login {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgb(230, 230, 230);
-}
-
-
-.fb-login img {
-
-    width: 16px;
-    height: 16px;
-}
-
-
-.fb-login a {
-
-    color: #003569;
-}
-
-.forgot {
-    font-size: 12px;
-    text-align: center;
-    margin-top: 20px;
-    background: rgb(230, 230, 230);
-}
-
-.forgot a {
-    color: #003569;
+.form-floating {
+    width: 266px;
+    font-size: 11px;
+    margin-left: 40px;
 }
 
 .box2 {
