@@ -482,6 +482,45 @@
     font-weight: bold;
 }
 
+#more_button_me, #more_button_follow, #more_button_not_follow {
+    display: none;
+
+}
+
+#search_recommend {
+	margin-top: 1px;
+	position: absolute;
+	background: white;
+	padding: 0 10px;
+	width: 100%;
+	border: 1px solid black;
+}
+
+.search_recommend_user_img {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.item {
+    line-height: 40px;
+    align-items: center;
+	height: 40px;
+	width: 100%;
+}
+
+.item:hover {
+	color: #9baec8;
+}
+
+.invisible {
+	display: none;
+}
+
+.text {
+	font-weight: bold;
+}
 
 @media (max-width: 1125px){
     .header_body {
@@ -499,7 +538,10 @@
     .post_box {
         margin-right: 0;
     }
+
+
 }
+
 
 
 @media (max-width: 805px){
