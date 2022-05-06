@@ -1,6 +1,6 @@
 .user_main_body{
     width: 975px;
-    height: 2000px;
+    height: 1000px;
     margin: 90px auto 0 auto;
     padding: 30px 20px 0px;
 }
@@ -37,7 +37,7 @@
     height: 40px;
     margin-bottom: 20px;
 
-    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
     font-size: 28px;
 
     display: flex;
@@ -110,6 +110,115 @@
     opacity: 0.5;
 }
 
+.user_post_row {
+    width: 100%;
+
+    margin-bottom: 28px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+
+    position: relative;
+
+}
+.user_post_row
+    > .user_post_img_box {
+    width: 31%;
+    padding-top: 31%;
+
+    position: relative;
+}
+
+.user_post_row
+    > .user_post_img_box
+        > img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+}
+
+.user_post_row
+    > .user_post_img_box:hover{
+    filter: brightness(80%);
+}
+
+.user_post_info_box {
+    width: 40%;
+    height: 100%;
+
+    top: 0;
+    left: 30%;
+
+    margin: auto;
+    padding-top: 40%;
+
+    position: absolute;
+}
+
+.user_post_info_box
+    > .user_post_like_box {
+    width: 50%;
+    height: 30px;
+
+    float: left;
+}
+
+.user_post_info_box
+    > .user_post_comment_box {
+    width: 50%;
+    height: 30px;
+
+    float: left;
+
+}
+
+.user_follower_box {
+    width: 400px;
+    height: 400px;
+
+    background-color: #00ffaa;
+}
+
+.user_follower_box_title {
+    width: 400px;
+    height: 42px;
+
+    background-color: red;
+}
+
+.user_follower {
+    width: 400px;
+    height: 54px;
+
+    padding: 8px 16px;
+
+    background-color: blue;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: left;
+}
+
+.user_follower_img {
+    width: 40px;
+    height: 40px;
+
+    background-color: yellow;
+}
+
+.user_follower_name_box {
+    width: 150px;
+    height: 40px;
+
+    background-color: purple;
+}
+
 
 
 
@@ -145,7 +254,6 @@
     }
 
 }
-
 
 @media (max-width: 614px){
 
