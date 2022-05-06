@@ -1,0 +1,715 @@
+
+.main_body{
+    width: 935px;
+    height: 2000px;
+    margin: 90px auto 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+    position: relative;
+}
+
+.profile_box{
+    border-radius: 5%;
+    width: 280px;
+    height: 450px;
+    background-color: white;
+    top: 91px;
+    position: fixed;
+    z-index: 9999;
+}
+
+.my_account {
+    width: 100%;
+    height: 56px;
+    margin: 18px 0px 10px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+}
+
+.my_profile {
+    width: 54px;
+    height: 100%;
+    cursor:pointer;
+}
+
+.my_info {
+    width: 187px;
+    margin-left: 10px;
+    height: 100%;
+}
+
+.my_info .my_id {
+    border-color: transparent;
+    background-color: transparent;
+    font-size: 17px;
+}
+
+.my_info .my_name {
+    font-size: 13px;
+}
+
+.logout_button {
+    width: 60px;
+    height: 100%;
+    margin-right: 15px;
+    font-weight: bolder;
+    font-size: 12px;
+    padding-top: 20px;
+}
+
+.list-group-item {
+    align-items: center;
+    display: flex;
+}
+
+.user_info {
+    margin-left: 5px;
+}
+
+.user_info .user_id {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.user_info .user_name {
+    font-size: 13px;
+    color: #909090;
+}
+
+.recommend_profile_img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.recommend_follow {
+    border-radius: 10%;
+    font-size: 14px;
+    font-weight: bold;
+    width: 80px;
+    height: 30px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.other_accounts {
+    width: 100%;
+    height: 291px;
+    margin-top: 18px;
+}
+
+
+.other_accounts_title {
+    width: 100%;
+    height: 19px;
+    margin-top: 18px;
+
+    font-size: 14px;
+    font-weight: bolder;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.other_accounts_body {
+    width: 100%;
+    height: 256px;
+    padding-top: 8px;
+}
+
+
+.other_account {
+    width: 100%;
+    height: 48px;
+    padding: 8px 0px 0px 8px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+}
+
+.other_profile {
+    width: 48px;
+    height: 100%;
+    cursor:pointer;
+}
+
+.other_id {
+    width: 201px;
+    height: 100%;
+    font-size: 14px;
+    padding-top: 8px;
+    cursor:pointer;
+}
+
+.other_follow_button {
+    width: 40px;
+    height: 100%;
+
+    font-weight: bolder;
+    font-size: 12px;
+
+    padding-top: 12px;
+}
+
+.post_box{
+    width: 614px;
+    height: 1000px;
+
+    margin: 0px 28px 0px 0px;
+}
+
+.story_box {
+    width: 100%;
+    height: 120px;
+
+    margin: 0px 0px 24px 0px;
+}
+
+#bg_slide_button_left {
+    left: 10px;
+    display: none;
+}
+
+#bg_slide_button_right {
+    right: 10px;
+}
+
+.bg_slide_button {
+    width: 24px;
+    height: 24px;
+    top:35%;
+
+    position: absolute;
+    background-color: white;
+
+    border-radius: 50%;
+    z-index: 100;
+
+    padding-top: -10px;
+    padding-left: 5px;
+
+    outline: none;
+    border: none;
+
+    box-shadow: 1px 1px 10px grey;
+    opacity: 0.8;
+
+    cursor:pointer;
+    transition: opacity 1s, transform 1s;
+}
+
+#card {
+    overflow-x: hidden;
+
+    width: 100%;
+    height: 100%;
+}
+
+#card-body {
+
+}
+
+#stories {
+    padding: 16px 0px 16px 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: left;
+
+    width: 800px;
+    height: 100%;
+    margin-left: 0px;
+
+    transition: margin-left 0.5s, transform 0.5s;
+}
+
+.story {
+    width: 80px;
+    height: 84px;
+    padding: 0px 4px 0px 4px;
+}
+
+.story_id {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.story_img_box {
+    width: 66px;
+    height: 66px;
+
+    border: 3px solid transparent;
+    border-radius: 50%;
+    background-image: linear-gradient(45deg, #ffffff, #ff9933, #ff0000, #ff0099, #990099);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+
+}
+
+.story_img_outline {
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-color: white;
+
+    margin: 2px auto;
+    display: block;
+}
+
+
+.post_box{
+    width: 614px;
+    height: 1000px;
+    margin: 0px 28px 0px 0px;
+}
+
+.feed_border {
+    width: 100%;
+    height: 70%;
+    border: 3px solid white;
+    border-radius: 3%;
+    align-items: center;
+    background-color: black
+}
+
+.feed_border .feed {
+    width: 98%;
+    height: 98%;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: 1px solid white;
+    border-radius: 3%;
+    background-color: rgb(230, 230, 230);
+    align-items: center;
+}
+
+.feed .feed_header {
+    height: 9%;
+    align-items: center;
+}
+
+.feed_header_container {
+    display: flex;
+}
+
+.user_photo {
+    margin-left: 20px;
+    height: 100px;
+}
+
+.profile_img {
+    align-items: center;
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.profile_img >img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+.user_profile {
+    float: left;
+    margin-left: 20px;
+    width: 300px;
+    color:#262626;
+}
+
+.user_profile .user_id {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+
+.ellipsis_nav {
+    display: flex;
+}
+
+.ellipsis_nav .ellipsis{
+    font-size: 30px;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 200px;
+}
+
+.photos {
+    margin: 15px;
+    margin-top: 20px;
+    height: 500px;
+    align-items: center;
+}
+
+.photos .photo {
+    width: 100%;
+    height: 100%;
+}
+
+.photo, .d-block w-100 {
+    position: relative;
+    z-index: 2;
+}
+
+.behind_photo {
+    color: red;
+    font-size: 200px;
+    text-align: center;
+    position: relative;
+    top: -400px;
+    z-index: 1;
+}
+
+.reaction {
+    margin: 10px;
+    margin-top: 20px;
+    height: 35px;
+    align-items: center;
+    display: flex;
+}
+
+.reaction .like, .like_color, .comment, .share {
+    font-size: 35px;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.like_color {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.comment, .share {
+    margin-left: 15px;
+}
+
+.reaction .reaction_button {
+    width: 50%;
+}
+
+.reaction .like_count {
+    width: 50%;
+    font-size: 22px;
+    font-family: 'Poor Story', cursive;
+    text-align: right;
+}
+
+.like_people {
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 22px;
+    font-family: 'Poor Story', cursive;
+    font-weight: bold;
+}
+
+.post {
+    margin: 10px 15px 0px 20px;
+    height: 40px;
+    overflow: hidden
+}
+
+.post .about_post {
+    font-size: 17px;
+    font-family: 'Poor Story', cursive;
+    font-weight: bold;
+}
+
+.comments {
+    margin: 0px 15px 0px 15px;
+    font-family: 'Poor Story', cursive;
+}
+
+
+
+
+.posts {
+    width: 100%;
+    height: auto;
+    margin-bottom: 24px;
+}
+
+
+.post {
+    width: 100%;
+    padding: 0px;
+}
+
+
+.post_header{
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: left;
+}
+
+.post_header_main {
+    width: 554px;
+    height: 100%;
+
+    padding: 14px 4px 14px 16px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: left;
+}
+
+.post_header_main_id {
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-left: 14px;
+    margin-top: 5px;
+
+    text-decoration: none;
+    color: black;
+}
+
+.post_header_more {
+    width: 60px;
+    height: 100%;
+}
+
+.post_header_more_btn_box{
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    margin: 10px auto auto auto;
+}
+
+.post_icon_box {
+    width: 100%;
+    height: 54px;
+
+    margin: -34px 0px 0px 0px;
+    padding: 6px 12px 8px 15px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+}
+
+.post_icons {
+    width: 110px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+
+    padding-top: 8px;
+
+}
+
+.post_icon_box_slide {
+    width: 100%;
+    height: 34px;
+
+    padding-top: 10px;
+}
+
+.post_dots {
+    margin: auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: center;
+}
+
+.post_icon_box_bookmark {
+    width: 30px;
+    height: 100%;
+
+    padding-top: 10px;
+}
+
+.post_like_box {
+    width: 100%;
+    height: 24px;
+    padding: 0px 16px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    margin-bottom: 8px;
+}
+
+.post_text_box {
+    width: 100%;
+    height: auto;
+
+    padding: 0px 16px;
+
+    font-size: 14px;
+}
+
+
+.post_text_id {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.post_text_btn {
+    color: #8e8e8e;
+    cursor: pointer;
+}
+
+.post_text_more {
+    display: none;
+}
+
+.post_d-day {
+    width: 100%;
+    height: 18px;
+
+    font-size: 10px;
+    color: #8e8e8e;
+
+    padding: 0px 16px;
+
+    margin: 5px 0px 18px 0px;
+}
+
+.post_comment_input_box {
+    width: 100%;
+    height: 53px;
+
+    padding: 6px 16px;
+
+    border-top: 1px solid #f0f0f0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: left;
+}
+
+.post_comment_imoge_box {
+    width: 40px;
+    height: 40px;
+
+    padding-top: 8px;
+}
+
+
+
+.post_comment_input {
+    flex-grow: 1;
+    border-width: 0;
+    outline: none;
+}
+
+.post_comment_input_btn {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: dodgerblue;
+
+    opacity: 0.5;
+}
+
+
+
+
+
+@media (max-width: 1125px){
+    .header_body {
+        width: 100%
+    }
+
+    #profile_box {
+        display: none;
+    }
+
+    #main_body {
+        width: 614px;
+    }
+
+    .post_box {
+        margin-right: 0;
+    }
+}
+
+
+@media (max-width: 805px){
+    .logo {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 906px) {
+    .search_box {
+        display: none;
+    }
+}
+
+@media (max-width: 691px){
+    .logo {
+        font-size: 30px;
+    }
+
+    .header_icon_box .home, .header_icon_box .dm, .header_icon_box .add_feed, .header_icon_box .explore, .header_icon_box .notice{
+        width: 15px;
+        font-size: 17px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 525px){
+    .header_icon_box {
+        display: none;
+    }
+}
+
+@media (max-width: 290px){
+    .logo {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 640px){
+    #main_body {
+        width: 100%;
+    }
+
+    .post_box {
+        width: 100%;
+    }
+
+    .post_comment_input_box, .post_comment_input {
+        width: 100%
+    }
+
+}
+
+@media (max-width: 365px){
+    .home, .dm, .add_feed, .explore, .notice {
+        display: none;
+    }
+}

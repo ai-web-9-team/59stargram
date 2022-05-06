@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- icon import -->
+    <script src="https://kit.fontawesome.com/989420847f.js" crossorigin="anonymous"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+    <!--    google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <!--css 파일 불러오기!-->
+    <link href="/static/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
+
+    <!--js 파일 불러오기-->
+    <script defer src="/static/js/common.js"></script>
+
+    <!--파비콘 적용-->
+    <link rel="shortcut icon" href="/static/images/favicon_instagram.ico">
+
+    <title>59 Stagram</title>
+</head>
+<body>
+<!--헤더 부분-->
+<div class="main_header" id="main_header">
+    <div class="header_body">
+        <div class="logo_box">
+            <button class="logo" onClick="window.location.reload()">59 Stagram</button>
+        </div>
+        <div class="search_box">
+            <button class="search_active_button" id="search_active_button"
+                    onclick="active_search_input_box()"></button>
+            <img class="search_icon" id="search_icon"
+                 src="/static/images/icon_search.png">
+            <input id="search_input_box" aria-label="입력 검색" class="search_input_box" autocapitalize="none"
+                   placeholder="검색" type="text" value="">
+        </div>
+        <div class="header_icon_box">
+            <ul>
+                <button class="home" onClick="window.location.reload()"><i class="fas fa-house"></i>
+                </button>
+                <button class="dm" id="dm_button"><i class="fa-regular fa-paper-plane"></i>
+                </button>
+                <button class="add_feed" id="add_feed_button"><i class="fa-regular fa-square-plus"></i>
+                </button>
+                <button class="explore" id="explore_button"><i class="fa-regular fa-compass"></i>
+                </button>
+                <button class="notice" id="notice_button"><i class="fa-regular fa-heart"></i>
+                </button>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--본문 부분-->
+<div class="main_body" id="main_body">
+    <div class="post_box" id-="post_box">
+        <div class="story_box">
+            <div class="card" id="card">
+                <button type="button" class="bg_slide_button" id="bg_slide_button_left"
+                        onclick="move_story_slide(0)">
+                    <img width="12px" height="12px"
+                         style="margin: -5px 0px 0px -2px"
+                         src="/static/images/button_story_slide_left.png">
+                </button>
+                <button type="button" class="bg_slide_button" id="bg_slide_button_right"
+                        onclick="move_story_slide(1)">
+                    <img width="12px" height="12px"
+                         style="margin: -5px 0px 0px -2px"
+                         src="/static/images/button_story_slide_right.png">
+                </button>
+                <div class="card-body" id="stories">
+                    <div style="width: 10px;"></div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">0 kimphysicsman</p>
+                    </div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">1 kimphysicsman</p>
+                    </div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">2 kimphysicsman</p>
+                    </div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">3 kimphysicsman</p>
+                    </div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">4 kimphysicsman</p>
+                    </div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">5 kimphysicsman</p>
+                    </div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">6 kimphysicsman</p>
+                    </div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">7 kimphysicsman</p>
+                    </div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">8 kimphysicsman</p>
+                    </div>
+                    <div class="story">
+                        <div class="story_img_box">
+                            <img class="img_circle story_img_outline" width="56px" height="56px"
+                                 src="/static/images/img_profile.jpg">
+                        </div>
+                        <p class="story_id">9 kimphysicsman</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <article class="feed_border" id="feed1">
+            <div class="feed">
+                <header class="feed_header">
+                    <div class="feed_header_container">
+                        <div class="user_photo">
+                            <a href="">
+                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
+                                     alt="Profile Image">
+                            </a>
+                        </div>
+                        <div class="user_profile">
+                            <div class="user_id">songheew</div>
+                            <div class="user_location">Seoul, South Korea</div>
+                        </div>
+                        <div class="ellipsis_nav">
+                            <button type="button" class="ellipsis" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop1">
+                                <i class="fa-solid fa-ellipsis"></i></button>
+                            </button>
+                            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static"
+                                 data-bs-keyboard="false"
+                                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            1번째 피드의 더 보기를 누르셨습니다!
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            무슨일이시죵?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                닫기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="photos">
+                    <div class="photo"><img class="photo" id="photo1" src="/static/images/img_samgyeopsal.png"
+                                            alt="게시물"
+                                            ondblclick="fadeOut(id)"></div>
+                    <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="reaction">
+                    <div class="reaction_button">
+                        <button class="like" id="like_button1" onclick="clickLike(id)"><i
+                                class="fa-regular fa-heart"></i>
+                        </button>
+
+
+                        <button class="comment"><i class="fa-regular fa-message"></i>
+                        </button>
+                        <button class="share"><i class="fa-solid fa-share-nodes"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="like_count">
+                        <button type="button" class="like_people" data-toggle="popover"
+                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
+                        </button>
+                        이 좋아요를 눌렀습니다.
+                    </div>
+
+                </div>
+                <div class="post">
+                    <div class="about_post">
+                        냠냠굿~😋
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="one_comment">
+                        <button class="comment_user_id">아무개씨</button>
+                        <div class="comment_content">맛있겠당</div>
+                    </div>
+                    <div class="one_comment">
+                        <button class="comment_user_id">땡땡땡씨</button>
+                        <div class="comment_content">여기 어디에용?</div>
+                    </div>
+                </div>
+                <div class="my_comment">
+                    <input type="text" class="leave_comment" placeholder="댓글 남기기">
+                    <button class="comment_post">남기기</button>
+                </div>
+            </div>
+        </article>
+
+        <div class="profile_box" id="profile_box">
+            <div class="my_account">
+                <div>
+                    <a href="">
+                        <img class="my_profile_img" href="" src="/static/images/img_songhee_profile.png"
+                             alt="Profile Image">
+                    </a>
+                </div>
+                <div class="my_info">
+                    <div class="my_id" style="font-weight: bold">songheew</div>
+                    <div class="my_name" style="color: #909090;">원송희</div>
+                </div>
+                <div class="logout_button">
+                    <a href="">로그아웃</a>
+                </div>
+            </div>
+            <div class="recommend_and_footer">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="recommend_user_photo">
+                            <a href="">
+                                <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                     alt="Profile Image">
+                            </a>
+                        </div>
+                        <div class="user_info">
+                            <div class="user_id">someone1</div>
+                            <div class="user_name">누구지</div>
+                        </div>
+                        <button class="recommend_follow">팔로우</button>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="recommend_user_photo">
+                            <a href="">
+                                <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                     alt="Profile Image">
+                            </a>
+                        </div>
+                        <div class="user_info">
+                            <div class="user_id">someone2</div>
+                            <div class="user_name">누구게</div>
+                        </div>
+                        <button class="recommend_follow">팔로우</button>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="recommend_user_photo">
+                            <a href="">
+                                <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                     alt="Profile Image">
+                            </a>
+                        </div>
+                        <div class="user_info">
+                            <div class="user_id">someone3</div>
+                            <div class="user_name">누구게용</div>
+                        </div>
+                        <button class="recommend_follow">팔로우</button>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="recommend_user_photo">
+                            <a href="">
+                                <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                     alt="Profile Image">
+                            </a>
+                        </div>
+                        <div class="user_info">
+                            <div class="user_id">someone4</div>
+                            <div class="user_name">누구일까</div>
+                        </div>
+                        <button class="recommend_follow">팔로우</button>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="recommend_user_photo">
+                            <a href="">
+                                <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                     alt="Profile Image">
+                            </a>
+                        </div>
+                        <div class="user_info">
+                            <div class="user_id">someone5</div>
+                            <div class="user_name">누구냐진짜</div>
+                        </div>
+                        <button class="recommend_follow">팔로우</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer" id="footer">
+                <a href="">소개</a> ·
+                <a href="">도움말</a> ·
+                <a href="">홍보 센터</a> ·
+                <a href="">API</a> ·
+                <a href="">채용 정보</a>
+                <br>
+                <a href="">개인정보처리방침</a> ·
+                <a href="">약관</a> ·
+                <a href="">위치</a> ·
+                <a href="">인기 계정</a> ·
+                <a href="">해시태그</a>
+                <br>
+                <a href="">언어</a>
+                <br>
+                <br>
+                <p>© 2022 59 STAGRAM FROM OGUOGU TEAM</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
