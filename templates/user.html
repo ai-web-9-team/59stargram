@@ -79,7 +79,10 @@
             </div>
         </div>
     </div>
+
+    <!--바디 부분-->
     <div class="user_main_body">
+        <!--프로필 부분-->
         <div class="user_profile_box">
             <div class="user_img_box">
                 <img class="img_circle user_img" name="프로필 사진 바꾸기"
@@ -102,17 +105,28 @@
                 </div>
             </div>
         </div>
+
+        <!--포스트 부분 -->
         <div class="user_post_box">
-            <div class="user_posts_menu_box">
-                <div class="user_posts_menu" onclick="user_menu_on('posts')" name="posts">
+            <!--메뉴 부분 (web)-->
+<!--            <div class="user_post_menu_box" name="web">-->
+<!--                <div class="user_post_menu" onclick="user_menu_on('posts')" name="posts">-->
+<!--                    <img style="margin-right: 5px" width="12px" src="/static/images/icon_posts.png"/>-->
+<!--                    게시물</div>-->
+<!--                <div class="user_post_menu" onclick="user_menu_on('bookmarks')" name="bookmarks">-->
+<!--                    <img style="margin-right: 5px" width="12px" src="/static/images/icon_bookmark.png"/>-->
+<!--                    저장됨</div>-->
+<!--            </div>-->
+            <!--메뉴 부분 (mobile)-->
+            <div class="user_post_menu_box" name="mobile">
+                <div class="user_post_menu" onclick="user_menu_on('posts')" name="posts">
                     <img style="margin-right: 5px" width="12px" src="/static/images/icon_posts.png"/>
                     게시물</div>
-                <div class="user_posts_menu" onclick="user_menu_on('bookmarks')" name="bookmarks">
+                <div class="user_post_menu" onclick="user_menu_on('bookmarks')" name="bookmarks">
                     <img style="margin-right: 5px" width="12px" src="/static/images/icon_bookmark.png"/>
                     저장됨</div>
             </div>
-            <div>
-
+            <div class="user_posts_main_box">
             </div>
 
         </div>
