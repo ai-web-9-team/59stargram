@@ -87,7 +87,6 @@
 }
 
 .recommend_follow {
-    border-radius: 10%;
     font-size: 14px;
     font-weight: bold;
     width: 80px;
@@ -480,7 +479,6 @@
     text-align: right;
     width: 20%;
     padding-right: 3%;
-    border-radius: 15%;
     font-weight: bold;
 }
 

@@ -320,7 +320,9 @@
                     </div>
                 </header>
                 <div class="carousels" style="width: 95%; height: 60%; margin: auto;">
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false"
+                    <!-- data-bs-interval="false" : 자동으로 슬라이드 넘어가는 것 방지 -->
+                    <!-- data-bs-wrap="false" : 처음/마지막 슬라이드에서 이전/다음 슬라이드로 넘어가는 것 방지 -->
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-bs-wrap="false"
                          style="width: 100%; height: 100%; overflow: hidden; margin: auto; margin-top: 20px; align-items: center;">
                         <div class="carousel-inner" id="photo2" ondblclick="fadeOut(id)"
                              style="width: 100%; height: 100%;">
