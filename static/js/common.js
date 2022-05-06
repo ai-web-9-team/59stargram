@@ -109,7 +109,18 @@ function fadeOut(id) {
                     document.getElementById("carouselExampleControls").style.opacity=1;}, 400);
                 }
 
+//하트 이모티콘을 누르면 호출되는 함수
 function clickLike(id) {
+                            if (document.getElementById(id).style.color != 'red') { // 빨간색이 아니면 (눌린 상태가 아니면)
+                                document.getElementById(id).style.color='red'; // 좋아요 표시
+                            }
+                            else { // 빨간색이면
+                                document.getElementById(id).style.color='black'; //좋아요 취소
+                            }
+                        }
+
+// 책갈피 이모티콘을 누르면 호출되는 함수
+function clickBookmark(id) {
                             if (document.getElementById(id).style.color != 'red') {
                                 document.getElementById(id).style.color='red';
                             }
@@ -118,3 +129,94 @@ function clickLike(id) {
                             }
                         }
 
+
+// 모달 창을 띄우는 함수 (뒷 배경을 흐릿흐릿하게 하는 것도 이곳에서 처리)
+function openModal(id) {
+    var zIndex=9999;
+    var modal=document.getElementById(id);
+    var bg = document.createElement('div');
+
+
+    bg.setStyle({
+        position: 'fixed',
+        zIndex: zIndex,
+        left: '0px',
+        top: '0px',
+        width: '100%',
+        height: '100%',
+        overflow: 'auto',
+        backgroundColor: 'rgba(0,0,0,0.5)'
+    });
+
+    document.body.append(bg);
+    modal.querySelector('.modal_close_btn').addEventListener('click', function() {
+        bg.remove();
+        modal.style.display = 'none';
+    });
+
+    //var top_offset=document.querySelector('#feed1').offsetTop;
+    //console.log(top_offset);
+    // var left_offset=document.querySelector('#feed1').offsetTop;
+    modal.setStyle({
+        position: 'fixed',
+        display: 'block',
+        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+
+        // 시꺼먼 레이어 보다 한칸 위에 보이기
+        zIndex: zIndex + 1,
+
+        // div center 정렬
+        top: '50%',
+        left: '43%',
+        transform: 'translate(-50%, -50%)',
+        msTransform: 'translate(-50%, -50%)',
+        webkitTransform: 'translate(-50%, -50%)'
+    });
+}
+
+Element.prototype.setStyle = function(styles) {
+    for (var k in styles) this.style[k] = styles[k];
+    return this;
+};
+
+// 자신의 게시글의 더보기 버튼을 누르면 호출되는 함수
+function moreMyPost() {
+    // 모달창 띄우기
+    openModal("more_button_me");
+}
+
+// 팔로우 중인 사람의 게시글의 더보기 버튼을 누르면 호출되는 함수
+function moreFollowPost() {
+    // 모달창 띄우기
+    openModal("more_button_follow");
+}
+
+// 팔로우 중이 아닌 사람의 게시글의 더보기 버튼을 누르면 호출되는 함수
+function moreNotFollowPost() {
+    // 모달창 띄우기
+    openModal("more_button_not_follow");
+}
+
+// 스토리 클릭 시 해당 게시글 offset으로 스크롤 이동하는 함수
+function clickStory(id) {
+    var story_id = "#"+id;
+    var feed_id = "#feed"+id.substring(5, );
+    var offset = $(feed_id).offset();
+    $('html').animate({scrollTop : offset.top-90}, 800);
+}
+
+
+const inputBox = document.getElementById("search_input_box");
+const recommendBox = document.querySelector("#search_recommend");
+const texts = document.querySelectorAll(".text");
+
+inputBox.addEventListener("keyup", (e) => {
+	if (e.target.value.length > 0) {
+		recommendBox.classList.remove('invisible');
+		texts.forEach((textEl) => {
+			textEl.textContent = e.target.value;
+		})
+	} else {
+		recommendBox.classList.add('invisible');
+	}
+})
