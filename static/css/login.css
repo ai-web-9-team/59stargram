@@ -80,18 +80,34 @@ div {
 }
 
 .fb-login {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 39b9a9b97c2f03a9b199104caa2b874a6f118692
     display: flex;
     justify-content: center;
     align-items: center;
     background: rgb(230, 230, 230);
 }
 
+<<<<<<< HEAD
 .fb-login img {
+=======
+
+.fb-login img {
+
+>>>>>>> 39b9a9b97c2f03a9b199104caa2b874a6f118692
     width: 16px;
     height: 16px;
 }
 
+<<<<<<< HEAD
 .fb-login a {
+=======
+
+.fb-login a {
+
+>>>>>>> 39b9a9b97c2f03a9b199104caa2b874a6f118692
     color: #003569;
 }
 
@@ -124,4 +140,3 @@ div {
     line-height: 16px;
     text-align: center;
 }
-
