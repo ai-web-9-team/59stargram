@@ -159,3 +159,9 @@ body {
     text-decoration: none;
     color: #c7c7c7;
 }
+
+.img_circle {
+    border-radius: 50%;
+}
+
+
