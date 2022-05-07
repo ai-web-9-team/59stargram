@@ -1,6 +1,16 @@
 // 사용자 페이지 로딩시 posts 탭을 보여줌
 $(document).ready(function () {
     user_menu_on('posts')
+
+    // 유저 요약 모달창 이벤트
+    $(`.user_follower_username`).hover(function () {
+        let name = $(this).attr('name')
+        let top = $(this).offset().top;
+        let left = $(this).offset().left;
+        user_summary_modal_on(name, top, left)
+    }, function () {
+        user_modal_quit(1);
+    });
 })
 
 // 메뉴 클릭시 클릭한 메뉴 활성화
@@ -16,15 +26,12 @@ function user_menu_on(name){
 }
 
 const body = document.querySelector('body');
-const modal_outside = document.querySelector('.user_follower_box');
-
+const modal_follow_outside = document.querySelector('.user_follower_box');
+const modal_summary_outside = document.querySelector('.user_summary_body');
 
 // 팔로우 모달 API 전달하기
 // type - 0:팔로워, 1:팔로잉
-function user_modal_on(type) {
-
-    console.log(type);
-
+function user_follow_modal_on(type) {
     let title_text;
     if (type == 0) {
         title_text = '팔로워';
@@ -36,26 +43,48 @@ function user_modal_on(type) {
 
     $('.user_follower_title_text').text(title_text);
 
-    modal_outside.classList.toggle('show');
-    if (modal_outside.classList.contains('show')) {
+    modal_follow_outside.classList.toggle('show');
+    if (modal_follow_outside.classList.contains('show')) {
         body.style.overflow = 'hidden';
     }
 }
 
+// 유저 요약 모달 API 전달하기
+function user_summary_modal_on(name, top, left) {
+    let offset_top = $('.user_follower_body').offset().top + top + 50
+    let offset_left = $('.user_follower_body').offset().left + left + 50
 
+    offset_top = parseInt(offset_top).toString()+'px'
+    offset_left = parseInt(offset_left).toString()+'px'
 
-// 모달 밖을 클릭하면 모달창 사라지기
-function user_modal_quit() {
-    modal_outside.classList.toggle('show');
+    modal_summary_outside.style.top = offset_top
+    modal_summary_outside.style.left = offset_left
 
-  if (!modal_outside.classList.contains('show')) {
-    body.style.overflow = 'auto';
-  }
+    modal_summary_outside.classList.toggle('show');
 }
 
 
-modal_outside.addEventListener('click', (event) => {
-if (event.target === modal_outside) {
-    user_modal_quit()
+// 모달창 사라지기
+// type - 0:팔로우 모달창, 1:유저요약 모달창
+function user_modal_quit(type) {
+    if (type == 0) {
+        modal_follow_outside.classList.toggle('show');
+
+        if (!modal_follow_outside.classList.contains('show')) {
+            body.style.overflow = 'auto';
+        }
+    } else if (type == 1) {
+        modal_summary_outside.classList.toggle('show');
+    } else {
+        return;
+    }
+
+
 }
+
+// 모달 밖을 클릭하면 모달창 닫기
+modal_follow_outside.addEventListener('click', (event) => {
+    if (event.target === modal_follow_outside) {
+        user_modal_quit(0)
+    }
 });

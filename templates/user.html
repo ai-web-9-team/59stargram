@@ -101,8 +101,8 @@
                 </div>
                 <div class="item_cnt">
                     <div class="item">게시물 <span style="font-weight: 500;">65</span></div>
-                    <div class="item btn_pointer" onclick="user_modal_on(0)">팔로워 <span style="font-weight: 500;">65</span></div>
-                    <div class="item btn_pointer" onclick="user_modal_on(1)">팔로잉 <span style="font-weight: 500;">65</span></div>
+                    <div class="item btn_pointer" onclick="user_follow_modal_on(0)">팔로워 <span style="font-weight: 500;">65</span></div>
+                    <div class="item btn_pointer" onclick="user_follow_modal_on(1)">팔로잉 <span style="font-weight: 500;">65</span></div>
                 </div>
                 <div class="user_nickname">
                     Dongwoo Kim
@@ -165,10 +165,11 @@
             </div>
         </div>
 
+    <!--팔로우 모달창 -->
     <div class="user_follower_box">
         <div class="user_follower_body">
             <div class="user_follower_title">
-                <div class="user_follower_quit_box" onclick="user_modal_quit()">
+                <div class="user_follower_quit_box" onclick="user_modal_quit(0)">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
                 <div class="user_follower_title_box">
@@ -177,6 +178,42 @@
 
             </div>
             <div class="user_follower_list">
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username" name="kimphysicsman">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username" name="123">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
                 <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
@@ -195,7 +232,7 @@
                         </div>
                     </div>
                 </div>
-                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -213,7 +250,7 @@
                         </div>
                     </div>
                 </div>
-                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -231,7 +268,7 @@
                         </div>
                     </div>
                 </div>
-                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -249,7 +286,7 @@
                         </div>
                     </div>
                 </div>
-                                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -267,7 +304,7 @@
                         </div>
                     </div>
                 </div>
-                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -285,7 +322,7 @@
                         </div>
                     </div>
                 </div>
-                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -303,7 +340,7 @@
                         </div>
                     </div>
                 </div>
-                                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -321,7 +358,7 @@
                         </div>
                     </div>
                 </div>
-                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -339,7 +376,7 @@
                         </div>
                     </div>
                 </div>
-                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -357,43 +394,7 @@
                         </div>
                     </div>
                 </div>
-                                                <div class="user_follower">
-                    <div class="user_follower_img">
-                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
-                    </div>
-                    <div class="user_follower_name_box">
-                        <div class="user_follower_username">
-                            kimphysicsman
-                        </div>
-                        <div class="user_follower_name">
-                            Dongwoo Kim
-                        </div>
-                    </div>
-                    <div class="user_follower_delete_box">
-                        <div class="user_follower_delete_btn">
-                            삭제
-                        </div>
-                    </div>
-                </div>
-                                <div class="user_follower">
-                    <div class="user_follower_img">
-                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
-                    </div>
-                    <div class="user_follower_name_box">
-                        <div class="user_follower_username">
-                            kimphysicsman
-                        </div>
-                        <div class="user_follower_name">
-                            Dongwoo Kim
-                        </div>
-                    </div>
-                    <div class="user_follower_delete_box">
-                        <div class="user_follower_delete_btn">
-                            삭제
-                        </div>
-                    </div>
-                </div>
-                                <div class="user_follower">
+                <div class="user_follower">
                     <div class="user_follower_img">
                         <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
                     </div>
@@ -413,7 +414,52 @@
                 </div>
             </div>
         </div>
+
+            <!--유저 요악보기 모달창 -->
+
+        <div class="user_summary_body">
+            <div class="user_summary_title">
+                <div class="user_summary_img">
+                    <img class="img_circle" width="100%" src="/static/images/img_profile.jpg"/>
+                </div>
+                <div class="user_summary_name_box">
+                    <div class="user_summary_username" onclick="">
+                        kimphysicsman
+                    </div>
+                    <div class="user_summary_name">
+                        Dongwoo Kim
+                    </div>
+                </div>
+
+            </div>
+            <div class="user_summary_info">
+                <div class="user_summary_info_item">
+                    <p style="color: #8e8e8e">게시글</p>
+                    <p style="font-weight: 500">65</p>
+                </div>
+                <div class="user_summary_info_item">
+                    <p style="color: #8e8e8e">팔로워</p>
+                    <p style="font-weight: 500">136</p>
+                </div>
+                <div class="user_summary_info_item">
+                    <p style="color: #8e8e8e">팔로우</p>
+                    <p style="font-weight: 500">145</p>
+                </div>
+            </div>
+            <div class="user_summary_posts">
+                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_2.jpg">
+                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_3.jpg">
+                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_1.jpg">
+            </div>
+            <div class="user_summary_btns">
+                <div class="user_summary_like" onclick="">
+                    좋아요
+                </div>
+            </div>
+        </div>
     </div>
+
+
 
 </body>
 </html>

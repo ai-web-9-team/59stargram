@@ -184,6 +184,8 @@
 }
 
 .user_follower_box {
+    z-index: 999;
+
     position: absolute;
     top: 0;
     left: 0;
@@ -316,7 +318,135 @@
     font-weight: bold;
 }
 
+.user_summary_body {
 
+    width: 390px;
+    height: 350px;
+
+    border-radius: 10px;
+    border: 1px solid #9baec8;
+
+    display: none;
+
+    position: absolute;
+    top: 70%;
+    left: 50%;
+
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.user_summary_body.show {
+    display: block;
+}
+
+.user_summary_title {
+    width: 100%;
+    height: 90px;
+
+    padding: 16px;
+
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.user_summary_img {
+    width: 56px;
+    height: 56px;
+
+    float: left;
+}
+.user_summary_name_box {
+    height: 56px;
+
+    font-size: 14px;
+
+    float: left;
+
+    padding: 10px;
+}
+
+.user_summary_username {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.user_summary_username:hover{
+    text-decoration: underline;
+}
+
+.user_summary_name {
+    color: #8e8e8e;
+}
+
+.user_summary_info {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: center;
+
+    padding-top: 5px;
+
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.user_summary_info_item {
+    width: 33%;
+
+    line-height: 50%;
+    text-align: center;
+
+    font-size: 14px;
+
+    margin-top: 17px;
+}
+
+.user_summary_posts {
+    width: 100%;
+    height: 130px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: center;
+}
+
+.user_summary_post_img {
+    width: 130px;
+    height: 130px;
+
+    object-fit: cover;
+}
+
+.user_summary_btns {
+    width: 100%;
+    height: 70px;
+
+    padding: 16px;
+}
+
+.user_summary_like {
+    width: 200px;
+    height: 30px;
+
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+
+    padding: 5px 9px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    text-align: center;
+
+    margin: auto;
+
+    cursor: pointer;
+}
 
 
 @media (max-width: 935px){
