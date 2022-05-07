@@ -1,3 +1,7 @@
+. *{
+    font-family: 'Roboto', sans-serif;
+}
+
 .user_main_body{
     width: 975px;
     height: 1000px;
@@ -37,8 +41,8 @@
     height: 40px;
     margin-bottom: 20px;
 
-    font-family: 'Roboto', sans-serif;
     font-size: 28px;
+    font-weight: 300;
 
     display: flex;
     flex-direction: row;
@@ -71,6 +75,8 @@
     font-size: 16px;
     margin-right: 40px;
 }
+
+
 
 .user_info_box > .user_nickname {
     width: 100%;
@@ -178,26 +184,77 @@
 }
 
 .user_follower_box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.user_follower_box.show {
+    display: block;
+}
+
+.user_follower_body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 400px;
     height: 400px;
-
-    background-color: #00ffaa;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
 }
 
-.user_follower_box_title {
-    width: 400px;
+
+.user_follower_title {
+    width: 100%;
     height: 42px;
 
-    background-color: red;
+    border-bottom: 1px solid #e8e8e8;
 }
 
+.user_follower_title_box {
+    width: 75%;
+    height: 100%;
+
+    float: right;
+}
+
+.user_follower_title_text {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.user_follower_quit_box {
+    width: 12.5%;
+    height: 100%;
+
+    padding: 8px;
+
+    float: right;
+
+    font-size: 20px;
+}
+
+.user_follower_list {
+    width: 100%;
+    height: 358px;
+
+    overflow-y: scroll;
+}
+
+
 .user_follower {
-    width: 400px;
+    width: 100%;
     height: 54px;
 
     padding: 8px 16px;
-
-    background-color: blue;
 
     display: flex;
     flex-direction: row;
@@ -209,21 +266,55 @@
     width: 40px;
     height: 40px;
 
-    background-color: yellow;
+    padding: 5px;
 }
 
 .user_follower_name_box {
-    width: 150px;
+    flex-grow: 1;
     height: 40px;
 
-    background-color: purple;
+    font-size: 14px;
+    text-align: left;
+
+    padding-left: 5px;
 }
 
+.user_follower_username {
+    font-weight: 500;
+    cursor: pointer;
+}
+.user_follower_username:hover {
+    text-decoration: underline;
+}
 
+.user_follower_name {
+    font-weight: 300;
+    color: #8e8e8e;
+}
 
+.user_follower_delete_box {
+    width: 48px;
+    height: 100%;
 
+    padding-top: 5px;
 
+    cursor: pointer;
+}
 
+.user_follower_delete_btn {
+    width: 100%;
+    height: 30px;
+
+    padding: 3px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+
+    text-align: center;
+
+    font-size: 14px;
+    font-weight: bold;
+}
 
 
 
