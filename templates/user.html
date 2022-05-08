@@ -95,7 +95,7 @@
             <div class="user_info_box">
                 <div class="user_name">
                     <p>kimphysicman</p>
-                    <div class="user_setting_box">
+                    <div class="user_setting_box" onclick="user_setting_modal_on()">
                         <img width="100%" src="/static/images/icon_setting.png" />
                     </div>
                 </div>
@@ -415,8 +415,7 @@
             </div>
         </div>
 
-            <!--유저 요악보기 모달창 -->
-
+        <!--유저 요악보기 모달창 -->
         <div class="user_summary_body">
             <div class="user_summary_title">
                 <div class="user_summary_img">
@@ -457,8 +456,86 @@
                 </div>
             </div>
         </div>
+
+
+
     </div>
 
+    <!--사용자 정보 수정 모달창 -->
+    <div class="user_setting_modal_box">
+        <div class="user_setting_modal_body">
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0 user_setting_content">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                비밀번호 변경
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">이전 비밀번호</div>
+                                <input class="user_setting_pw" type="password">
+                            </div>
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">새 비밀번호</div>
+                                <input class="user_setting_pw" type="password">
+                            </div>
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">새 비밀번호 확인</div>
+                                <input class="user_setting_pw" type="password">
+                            </div>
+
+                            <div class="user_summary_like" onclick="">
+                                변경
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0 user_setting_content">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                이름 변경
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">현재 비밀번호</div>
+                                <input class="user_setting_pw" type="password">
+                            </div>
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">새로운 이름</div>
+                                <input class="user_setting_pw" type="text">
+                            </div>
+
+                            <div class="user_summary_like" onclick="">
+                                변경
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0 user_setting_content">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                    aria-expanded="false" aria-controls="collapseThree" onclick="user_modal_quit(2)">
+                                취소
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 
 </body>
