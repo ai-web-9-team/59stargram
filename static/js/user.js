@@ -11,6 +11,12 @@ $(document).ready(function () {
     }, function () {
         user_modal_quit(1);
     });
+
+    $('.user_post_img_box').hover(function () {
+        $(this).children('.user_post_info_box').css('display', 'block')
+    }, function () {
+            $(this).children('.user_post_info_box').css('display', 'none')
+    })
 })
 
 // 메뉴 클릭시 클릭한 메뉴 활성화
