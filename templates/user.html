@@ -79,6 +79,11 @@
                 </button>
                 <button class="notice" id="notice_button"><i class="fa-regular fa-heart"></i>
                 </button>
+                <div>
+                    <a href="{{url_for('user', user_name='kimphysicsman')}}">
+                    <img class="img_circle" width="24px" src="/static/images/img_profile.jpg" />
+                    </a>
+                </div>
             </ul>
         </div>
     </div>
@@ -94,18 +99,18 @@
             </div>
             <div class="user_info_box">
                 <div class="user_name">
-                    <p>kimphysicman</p>
+                    <p>{{user_info['UserName']}}</p>
                     <div class="user_setting_box" onclick="user_setting_modal_on()">
                         <img width="100%" src="/static/images/icon_setting.png" />
                     </div>
                 </div>
                 <div class="item_cnt">
-                    <div class="item">게시물 <span style="font-weight: 500;">65</span></div>
-                    <div class="item btn_pointer" onclick="user_follow_modal_on(0)">팔로워 <span style="font-weight: 500;">65</span></div>
-                    <div class="item btn_pointer" onclick="user_follow_modal_on(1)">팔로잉 <span style="font-weight: 500;">65</span></div>
+                    <div class="item">게시물 <span style="font-weight: 500;">{{user_info['PostCnt']}}</span></div>
+                    <div class="item btn_pointer" onclick="user_follow_modal_on(0)">팔로워 <span style="font-weight: 500;">{{user_info['FollowerCnt']}}</span></div>
+                    <div class="item btn_pointer" onclick="user_follow_modal_on(1)">팔로잉 <span style="font-weight: 500;">{{user_info['FollowingCnt']}}</span></div>
                 </div>
                 <div class="user_nickname">
-                    Dongwoo Kim
+                    {{user_info['Name']}}
                 </div>
             </div>
         </div>

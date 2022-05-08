@@ -15,9 +15,9 @@ users = [
         'Email': 'kimphysicsman@gmail.com',
         'Name': 'Dongwoo Kim',
         'RecentEvents': [],
-        'PostCnt': 0,
-        'FollowerCnt': 0,
-        'FollowingCnt': 0
+        'PostCnt': 4,
+        'FollowerCnt': 1,
+        'FollowingCnt': 3
     }, {
         'UserName': 'hee123',
         'Password': '1234567890',
@@ -25,8 +25,8 @@ users = [
         'Name': 'Heejoeng Kim',
         'RecentEvents': [],
         'PostCnt': 0,
-        'FollowerCnt': 0,
-        'FollowingCnt': 0
+        'FollowerCnt': 1,
+        'FollowingCnt': 1
     }, {
         'UserName': 'Joen123',
         'Password': '1234567890',
@@ -34,7 +34,7 @@ users = [
         'Name': 'Jinyoung Joen',
         'RecentEvents': [],
         'PostCnt': 0,
-        'FollowerCnt': 0,
+        'FollowerCnt': 1,
         'FollowingCnt': 0
     }, {
         'UserName': 'song123',
@@ -43,7 +43,7 @@ users = [
         'Name': 'Songhee Won',
         'RecentEvents': [],
         'PostCnt': 0,
-        'FollowerCnt': 0,
+        'FollowerCnt': 1,
         'FollowingCnt': 0,
     }
 ]
