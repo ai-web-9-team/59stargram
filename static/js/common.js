@@ -130,12 +130,11 @@ function clickBookmark(id) {
                         }
 
 
-// 모달 창을 띄우는 함수 (뒷 배경을 흐릿흐릿하게 하는 것도 이곳에서 처리)
+// 더보기 모달 창을 띄우는 함수 (뒷 배경을 흐릿흐릿하게 하는 것도 이곳에서 처리)
 function openModal(id) {
     var zIndex=9999;
     var modal=document.getElementById(id);
     var bg = document.createElement('div');
-
 
     bg.setStyle({
         position: 'fixed',
@@ -164,10 +163,13 @@ function openModal(id) {
 
         // 시꺼먼 레이어 보다 한칸 위에 보이기
         zIndex: zIndex + 1,
-
+        width: '100%',
+        marginBottom: '5%',
         // div center 정렬
         top: '50%',
-        left: '43%',
+        left: '50%',
+        textAlign: 'Center',
+        alignItems: 'Center',
         transform: 'translate(-50%, -50%)',
         msTransform: 'translate(-50%, -50%)',
         webkitTransform: 'translate(-50%, -50%)'
@@ -197,6 +199,10 @@ function moreNotFollowPost() {
     openModal("more_button_not_follow");
 }
 
+function addFeed() {
+    openModal("add_feed");
+}
+
 // 스토리 클릭 시 해당 게시글 offset으로 스크롤 이동하는 함수
 function clickStory(id) {
     var story_id = "#"+id;
@@ -205,7 +211,7 @@ function clickStory(id) {
     $('html').animate({scrollTop : offset.top-90}, 800);
 }
 
-
+// 검색창에 추천 검색어 띄우는 모달창
 const inputBox = document.getElementById("search_input_box");
 const recommendBox = document.querySelector("#search_recommend");
 const texts = document.querySelectorAll(".text");
@@ -219,4 +225,102 @@ inputBox.addEventListener("keyup", (e) => {
 	} else {
 		recommendBox.classList.add('invisible');
 	}
-})
+});
+
+
+
+const body = document.querySelector('body');
+const more_outside = document.querySelector('.more_button_box');
+const alert_outside = document.querySelector('.alert_button_box');
+const add_feed_outside = document.querySelector('.add_feed_box');
+
+// type 0: 내 게시물 더보기 창, 1: 팔로우 중인 사람의 게시물 더보기 창, 2: 팔로우 중이 아닌 사람의 게시물 더보기 창
+function more_button_on(type) {
+    if (type==0) {
+        $('.card-header1').text("게시물 수정");
+        $('.card-header2').text("게시물 삭제");
+        $('.card-header3').text("게시물 공유");
+        $('.card-header4').text("게시물 저장");
+    }
+   else if (type==1) {
+        $('.card-header1').text("해당 유저 페이지로 이동");
+        $('.card-header2').text("해당 유저 팔로우 취소");
+        $('.card-header3').text("게시물 공유");
+        $('.card-header4').text("게시물 저장");
+    }
+    else if (type==2) {
+        $('.card-header1').text("해당 유저 페이지로 이동");
+        $('.card-header2').text("해당 유저 팔로우");
+        $('.card-header3').text("게시물 공유");
+        $('.card-header4').text("게시물 저장");
+    }
+    more_outside.classList.toggle('show');
+    if (more_outside.classList.contains('show')) {
+        body.style.overflow = 'hidden';
+    }
+}
+
+function alert_button_on() {
+    $('.card-header1').text("ㅇㅇㅇ이 게시물에 좋아요를 눌렀습니다.");
+    $('.card-header2').text("ㅇㅇㅇ이 게시물에 댓글을 달았습니다.");
+    $('.card-header3').text("ㅇㅇㅇ이 게시물에 댓글을 달았습니다.");
+    $('.card-header4').text("ㅇㅇㅇ이 게시물에 댓글을 달았습니다.");
+    $('.card-header5').text("ㅇㅇㅇ이 게시물에 댓글을 달았습니다.");
+    alert_outside.classList.toggle('show');
+    if (alert_outside.classList.contains('show')) {
+        body.style.overflow = 'hidden';
+    }
+}
+
+function add_feed_on() {
+    add_feed_outside.classList.toggle('show');
+    if (add_feed_outside.classList.contains('show')) {
+        body.style.overflow = 'hidden';
+    }
+}
+
+
+// 모달창 사라지기
+function more_button_quit() {
+    more_outside.classList.toggle('show');
+
+    if (!more_outside.classList.contains('show')) {
+        body.style.overflow = 'auto';
+    }
+}
+
+function alert_button_quit() {
+    alert_outside.classList.toggle('show');
+
+    if (!alert_outside.classList.contains('show')) {
+        body.style.overflow = 'auto';
+    }
+}
+
+function add_feed_quit() {
+    add_feed_outside.classList.toggle('show');
+
+    if (!add_feed_outside.classList.contains('show')) {
+        body.style.overflow = 'auto';
+    }
+}
+
+
+// 모달 밖을 클릭하면 모달창 닫기
+more_outside.addEventListener('click', (event) => {
+    if (event.target === more_outside) {
+        more_button_quit();
+    }
+});
+
+alert_outside.addEventListener('click', (event) => {
+    if (event.target === alert_outside) {
+        alert_button_quit();
+    }
+});
+
+add_feed_outside.addEventListener('click', (event) => {
+    if (event.target === add_feed_outside) {
+        add_feed_quit();
+    }
+});
