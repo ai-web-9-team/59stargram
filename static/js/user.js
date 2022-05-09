@@ -1,6 +1,8 @@
 // 사용자 페이지 로딩시 posts 탭을 보여줌
 $(document).ready(function () {
-    user_menu_on('posts')
+    $(`.user_post_menu[name='posts']`).css('border-top', '2px solid black');
+    $(`.user_post_menu[name='posts']`).css('font-weight', 'bold');
+    $(`.user_post_menu[name='posts']`).css('opacity', '1');
 
     // 유저 요약 모달창 이벤트
     $(`.user_follower_username`).hover(function () {
@@ -29,6 +31,9 @@ function user_menu_on(name){
     $(`.user_post_menu[name=${name}]`).css('border-top', '2px solid black');
     $(`.user_post_menu[name=${name}]`).css('font-weight', 'bold');
     $(`.user_post_menu[name=${name}]`).css('opacity', '1');
+
+    $('.user_post_users').toggle('show')
+    $('.user_post_bookmarks').toggle('show')
 }
 
 const body = document.querySelector('body');
@@ -97,7 +102,6 @@ function user_modal_quit(type) {
         if (!modal_setting_outside.classList.contains('show')) {
             body.style.overflow = 'auto';
         }
-
     } else {
         return;
     }
