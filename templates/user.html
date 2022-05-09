@@ -79,6 +79,11 @@
                 </button>
                 <button class="notice" id="notice_button"><i class="fa-regular fa-heart"></i>
                 </button>
+                <div>
+                    <a href="{{url_for('user', user_name='kimphysicsman')}}">
+                    <img class="img_circle" width="24px" src="/static/images/img_profile.jpg" />
+                    </a>
+                </div>
             </ul>
         </div>
     </div>
@@ -94,18 +99,18 @@
             </div>
             <div class="user_info_box">
                 <div class="user_name">
-                    <p>kimphysicman</p>
-                    <div class="user_setting_box">
+                    <p>{{user_info['UserName']}}</p>
+                    <div class="user_setting_box" onclick="user_setting_modal_on()">
                         <img width="100%" src="/static/images/icon_setting.png" />
                     </div>
                 </div>
                 <div class="item_cnt">
-                    <div class="item">게시물 <span style="font-weight: 500;">65</span></div>
-                    <div class="item">팔로워 <span style="font-weight: 500;">65</span></div>
-                    <div class="item">팔로잉 <span style="font-weight: 500;">65</span></div>
+                    <div class="item">게시물 <span style="font-weight: 500;">{{user_info['PostCnt']}}</span></div>
+                    <div class="item btn_pointer" onclick="user_follow_modal_on(0)">팔로워 <span style="font-weight: 500;">{{user_info['FollowerCnt']}}</span></div>
+                    <div class="item btn_pointer" onclick="user_follow_modal_on(1)">팔로잉 <span style="font-weight: 500;">{{user_info['FollowingCnt']}}</span></div>
                 </div>
                 <div class="user_nickname">
-                    Dongwoo Kim
+                    {{user_info['Name']}}
                 </div>
             </div>
         </div>
@@ -113,15 +118,6 @@
         <!--포스트 부분 -->
         <div class="user_post_box">
             <!--메뉴 부분 (web)-->
-<!--            <div class="user_post_menu_box" name="web">-->
-<!--                <div class="user_post_menu" onclick="user_menu_on('posts')" name="posts">-->
-<!--                    <img style="margin-right: 5px" width="12px" src="/static/images/icon_posts.png"/>-->
-<!--                    게시물</div>-->
-<!--                <div class="user_post_menu" onclick="user_menu_on('bookmarks')" name="bookmarks">-->
-<!--                    <img style="margin-right: 5px" width="12px" src="/static/images/icon_bookmark.png"/>-->
-<!--                    저장됨</div>-->
-<!--            </div>-->
-            <!--메뉴 부분 (mobile)-->
             <div class="user_post_menu_box" name="mobile">
                 <div class="user_post_menu" onclick="user_menu_on('posts')" name="posts">
                     <img style="margin-right: 5px" width="12px" src="/static/images/icon_posts.png"/>
@@ -131,64 +127,444 @@
                     저장됨</div>
             </div>
             <div class="user_post_main_box">
+                {% for i in range(posts|length) %}
+                    {% if i % 3 == 0 %}
                 <div class="user_post_row">
+                    {% endif %}
                     <div class="user_post_img_box">
-                        <img width="100%" src="/static/images/img_dongwoo_post_3.jpg"/>
+                       <img width="100%" src="data:image/jpg;Base64, {{ images[i] }}"/>
+<!--                        <img width="100%" src="/static/images/img_dongwoo_post_3.jpg"/>-->
                         <div class="user_post_info_box">
                             <div class="user_post_like_box">
-                                <img width="19px" height="19px" src="/static/images/icon_heart_fill.png"/>
-                                25
+                                <i class="fa-solid fa-heart"></i>
+                                {{ posts[i]['LikeCnt'] }}
                             </div>
                             <div class="user_post_comment_box">
-                                <i class="fi fi-rs-Comment"></i>
-                                2
+                                <i class="fa-solid fa-comment"></i>
+                                {{ posts[i]['CommentCnt'] }}
                             </div>
                         </div>
                     </div>
-                    <div class="user_post_img_box">
-                        <img width="100%" src="/static/images/img_dongwoo_post_1.jpg"/>
-                    </div>
-                    <div class="user_post_img_box">
-                        <img width="100%" src="/static/images/img_dongwoo_post_2.jpg"/>
-                    </div>
-                </div>
-            </div>
-                <div class="user_post_row">
-                    <div class="user_post_img_box">
-                        <img width="100%" src="/static/images/img_post.jpg"/>
-                    </div>
-                    <div class="user_post_img_box">
-                    </div>
-                    <div class="user_post_img_box">
-                    </div>
-                </div>
+                    {% if i % 3 == 2 %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+<!--                    <div class="user_post_img_box">-->
+<!--                        <img width="100%" src="/static/images/img_dongwoo_post_1.jpg"/>-->
+<!--                        <div class="user_post_info_box">-->
+<!--                            <div class="user_post_like_box">-->
+<!--                                <i class="fa-solid fa-heart"></i>-->
+<!--                                25-->
+<!--                            </div>-->
+<!--                            <div class="user_post_comment_box">-->
+<!--                                <i class="fa-solid fa-comment"></i>-->
+<!--                                2-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="user_post_img_box">-->
+<!--                        <img width="100%" src="/static/images/img_dongwoo_post_2.jpg"/>-->
+<!--                        <div class="user_post_info_box">-->
+<!--                            <div class="user_post_like_box">-->
+<!--                                <i class="fa-solid fa-heart"></i>-->
+<!--                                25-->
+<!--                            </div>-->
+<!--                            <div class="user_post_comment_box">-->
+<!--                                <i class="fa-solid fa-comment"></i>-->
+<!--                                2-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="user_post_row">-->
+<!--                    <div class="user_post_img_box">-->
+<!--                        <img width="100%" src="/static/images/img_post.jpg"/>-->
+<!--                        <div class="user_post_info_box">-->
+<!--                            <div class="user_post_like_box">-->
+<!--                                <i class="fa-solid fa-heart"></i>-->
+<!--                                25-->
+<!--                            </div>-->
+<!--                            <div class="user_post_comment_box">-->
+<!--                                <i class="fa-solid fa-comment"></i>-->
+<!--                                2-->
+<!--                            </div>-->
+<!--        </div>-->
+<!--                    </div>-->
+<!--                    <div class="user_post_img_box">-->
+<!--                    </div>-->
+<!--                    <div class="user_post_img_box">-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
 
+    <!--팔로우 모달창 -->
     <div class="user_follower_box">
-        <div class="user_follower_box_title">
-            팔로워 타이틀
+        <div class="user_follower_body">
+            <div class="user_follower_title">
+                <div class="user_follower_quit_box" onclick="user_modal_quit(0)">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="user_follower_title_box">
+                    <div class="user_follower_title_text"></div>
+                </div>
+
+            </div>
+            <div class="user_follower_list">
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username" name="kimphysicsman">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username" name="123">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+                <div class="user_follower">
+                    <div class="user_follower_img">
+                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                    </div>
+                    <div class="user_follower_name_box">
+                        <div class="user_follower_username">
+                            kimphysicsman
+                        </div>
+                        <div class="user_follower_name">
+                            Dongwoo Kim
+                        </div>
+                    </div>
+                    <div class="user_follower_delete_box">
+                        <div class="user_follower_delete_btn">
+                            삭제
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="user_follower_list">
-            <div class="user_follower">
-                <div class="user_follower_img">
 
+        <!--유저 요악보기 모달창 -->
+        <div class="user_summary_body">
+            <div class="user_summary_title">
+                <div class="user_summary_img">
+                    <img class="img_circle" width="100%" src="/static/images/img_profile.jpg"/>
                 </div>
-                <div class="user_follower_name_box">
-                    <div class="user_follower_username">
-
+                <div class="user_summary_name_box">
+                    <div class="user_summary_username" onclick="">
+                        kimphysicsman
                     </div>
-                    <div class="user_follower_name">
-
+                    <div class="user_summary_name">
+                        Dongwoo Kim
                     </div>
                 </div>
-                <div class="user_follower_delete_btn">
 
+            </div>
+            <div class="user_summary_info">
+                <div class="user_summary_info_item">
+                    <p style="color: #8e8e8e">게시글</p>
+                    <p style="font-weight: 500">65</p>
+                </div>
+                <div class="user_summary_info_item">
+                    <p style="color: #8e8e8e">팔로워</p>
+                    <p style="font-weight: 500">136</p>
+                </div>
+                <div class="user_summary_info_item">
+                    <p style="color: #8e8e8e">팔로우</p>
+                    <p style="font-weight: 500">145</p>
+                </div>
+            </div>
+            <div class="user_summary_posts">
+                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_2.jpg">
+                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_3.jpg">
+                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_1.jpg">
+            </div>
+            <div class="user_summary_btns">
+                <div class="user_summary_like" onclick="">
+                    좋아요
                 </div>
             </div>
         </div>
     </div>
 
+    <!--사용자 정보 수정 모달창 -->
+    <div class="user_setting_modal_box">
+        <div class="user_setting_modal_body">
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0 user_setting_content">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                비밀번호 변경
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">이전 비밀번호</div>
+                                <input class="user_setting_pw" type="password">
+                            </div>
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">새 비밀번호</div>
+                                <input class="user_setting_pw" type="password">
+                            </div>
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">새 비밀번호 확인</div>
+                                <input class="user_setting_pw" type="password">
+                            </div>
+
+                            <div class="user_summary_like" onclick="">
+                                변경
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0 user_setting_content">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                이름 변경
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">현재 비밀번호</div>
+                                <input class="user_setting_pw" type="password">
+                            </div>
+                            <div class="user_setting_pw_box">
+                                <div class="user_setting_pw_text">새로운 이름</div>
+                                <input class="user_setting_pw" type="text">
+                            </div>
+
+                            <div class="user_summary_like" onclick="">
+                                변경
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0 user_setting_content">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                    aria-expanded="false" aria-controls="collapseThree" onclick="user_modal_quit(2)">
+                                취소
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 

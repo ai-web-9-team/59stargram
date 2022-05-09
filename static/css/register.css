@@ -57,36 +57,37 @@ div {
 .btn {
     width: 268px;
     height: 35px;
-    margin: 10px;
+    margin: 20px;
     margin-left: 40px;
 }
 
-.or {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 15px;
-    margin: 0 0 20px;
-    background-color: rgb(230, 230, 230);
-}
+/*.or {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    height: 15px;*/
+/*    margin: 0 0 20px;*/
+/*    background-color: rgb(230, 230, 230);*/
+/*}*/
 
-.or .line {
-    width: 105px;
-    height: 2px;
-    margin: auto;
-    background: #999;
-}
+/*.or .line {*/
+/*    width: 105px;*/
+/*    height: 2px;*/
+/*    margin: auto;*/
+/*    background: #999;*/
+/*}*/
 
-.or p {
-    margin: auto;
-    color: #999;
-    font-size: 12px;
-}
+/*.or p {*/
+/*    margin: auto;*/
+/*    color: #999;*/
+/*    font-size: 12px;*/
+/*}*/
 
 .form-floating {
     width: 266px;
     font-size: 11px;
     margin-left: 40px;
+    background-color: rgb(230, 230, 230);
 }
 
 .box2 {
@@ -106,4 +107,11 @@ div {
     font-weight: 400;
     line-height: 16px;
     text-align: center;
+}
+.error{
+    font-size: 1px;
+    height: 20px;
+    color:red;
+    font-weight: 700;
+    background-color: rgb(230, 230, 230);
 }
