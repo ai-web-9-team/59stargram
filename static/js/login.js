@@ -1,16 +1,14 @@
 function login() {
-    if (!checkNotEmpty(1)) {
-        alert('없는 이메일 입니다.')
-        return;
-    }
-    if (!checkNotEmpty(2)) {
-        alert('비밀번호가 일치하지 않습니다.')
-        return;
-    }
+
+
     $.ajax({
         type: "POST",
         url: "/api/login",
-        data: {id_give: $('#Email').val(), pw_give: $('#Password').val()},
+        data: {
+            id_give: $('#Email').val(),
+            pw_give: $('#Password').val(),
+
+        },
         success: function (response) {
             if (response['result'] === 'success') {
                 alert(response['msg']),
@@ -23,12 +21,30 @@ function login() {
     })
 }
 
-function checkNotEmpty(target) {
+function emailform(obj) {
+    if (emailformCheck(obj) == false) {
+        alert('올바른 이메일 주소를 입력해주세요.')
+        obj.value = '';
+        obj.focus();
+        return false;
+    }
+}
 
-    if (target == 1) {
-        return $('#Email').val().length > 10;
+function emailformCheck(obj) {
+    var pattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    return (obj.value.match(pattern) != null)
+}
+
+function passwordform(obj) {
+    if (passwordformCheck(obj) == false) {
+        alert('비밀번호는 8글자 이상의 영문, 숫자로 작성해주세요.')
+        obj.value = '';
+        obj.focus();
+        return false;
     }
-    if (target == 2) {
-        return $('#Password').val().length >= 8;
-    }
+}
+
+function passwordformCheck(obj) {
+    var pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i;
+    return (obj.value.match(pattern) != null)
 }

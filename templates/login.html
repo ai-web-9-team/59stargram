@@ -26,11 +26,13 @@
     <div class="box1">
         <button class="logo" onClick="window.location.reload()">59 Stagram</button>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" onchange="" id="Email" placeholder="name@example.com">
+            <input type="email" class="form-control" onchange="" id="Email" onchange="emailform(this)"
+                   placeholder="name@example.com">
             <label for="Email">이메일 주소</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="Password" placeholder="Password">
+            <input type="password" class="form-control" id="Password" onchange="passwordform(this)"
+                   placeholder="Password">
             <label for="Password">비밀번호</label>
 
         </div>

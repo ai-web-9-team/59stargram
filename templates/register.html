@@ -28,24 +28,32 @@
         <button class="logo" onClick="window.location.reload()">59 Stagram</button>
         <h2 class="text">친구들의 사진과 동영상을 보려면 가입하세요.</h2>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" style="height: 50px" id="Email" onchange="emailform(this)" placeholder="name@example.com">
+            <input type="email" class="form-control" style="height: 50px" id="Email" onchange="emailform(this)"
+                   placeholder="name@example.com">
             <label for="Email">이메일 주소</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="name" class="form-control" style="height: 50px" id="Name" placeholder="name">
+            <input type="text" maxlength="14" class="form-control" style="height: 50px" id="Name" placeholder="name">
             <label for="Name">성명</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="UserName" class="form-control" style="height: 50px" id="UserName" placeholder="UserName">
+            <input type="text" maxlength="14" class="form-control" style="height: 50px" id="UserName"
+                   placeholder="UserName">
             <label for="UserName">사용자 이름</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" style="height: 50px" id="Password" placeholder="Password">
+            <input type="password" class="form-control pw" style="height: 50px" id="Password"
+                   onchange="passwordform(this)"
+                   placeholder="Password">
             <label for="Password">비밀번호</label>
         </div>
         <div class="form-floating" style="margin-top: 16px">
-            <input type="password" class="form-control" style="height: 50px" id="PasswordCheck" placeholder="Password">
+            <input type="password" class="form-control pw" style="height: 50px" id="PasswordCheck"
+                   placeholder="Password">
             <label for="PasswordCheck">비밀번호 확인</label>
+            <span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
+            <span id="alert-danger"
+                  style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다. 재확인해주세요.</span>
         </div>
         <button class="btn btn-primary" onclick="register()" type="submit" style="font-size: 14px">가입</button>
     </div>
