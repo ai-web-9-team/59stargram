@@ -27,17 +27,9 @@
     <div class="box1">
         <button class="logo" onClick="window.location.reload()">59 Stagram</button>
         <h2 class="text">친구들의 사진과 동영상을 보려면 가입하세요.</h2>
-<!--        <button class="btn btn-primary" type="submit" style="font-size: 14px"><img src="/static/images/facebook2.png" height="16" width="16"/>&nbsp;&nbsp;Facebook으로 로그인-->
-<!--        </button>-->
-<!--        <div class="or">-->
-<!--            <div class="line"></div>-->
-<!--            <p>또는</p>-->
-<!--            <div class="line"></div>-->
-<!--        </div>-->
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" style="height: 50px" id="Email" placeholder="name@example.com">
+            <input type="email" class="form-control" style="height: 50px" id="Email" onchange="emailform(this)" placeholder="name@example.com">
             <label for="Email">이메일 주소</label>
-            <button  onclick="id_overlap_check()">중복확인</button>
         </div>
         <div class="form-floating mb-3">
             <input type="name" class="form-control" style="height: 50px" id="Name" placeholder="name">
