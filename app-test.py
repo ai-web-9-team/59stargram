@@ -29,9 +29,8 @@ import hashlib
 def home():
     token_receive = request.cookies.get('mytoken')
     try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.user.find_one({"id": payload['id']})
-        return render_template('index.html', user_id=user["user_id"])
+        jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        return render_template('index.html')
     except jwt.ExpiredSignatureError:
         return redirect(url_for('login'))
     except jwt.exceptions.DecodeError:
@@ -69,7 +68,7 @@ def api_register():
 
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    db.user.insert_one({'Email': id_receive, 'Password': pw_hash, 'UserName': nickname_receive, 'Name': name_receive})
+    db.Users.insert_one({'Email': id_receive, 'Password': pw_hash, 'UserName': nickname_receive, 'Name': name_receive})
 
     return jsonify({'result': 'success'})
 
@@ -85,7 +84,7 @@ def api_login():
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
     # id, 암호화된pw을 가지고 해당 유저를 찾습니다.
-    result = db.user.find_one({'Email': id_receive, 'Password': pw_hash})
+    result = db.Users.find_one({'Email': id_receive, 'Password': pw_hash})
 
     # 찾으면 JWT 토큰을 만들어 발급합니다.
     if result is not None:
@@ -98,7 +97,7 @@ def api_login():
             'token': jwt.encode(payload, SECRET_KEY, algorithm='HS256')
         })
     else:
-        return jsonify({'result': 'fail', 'msg': '비밀번호가 일치하지 않습니다.'})
+        return jsonify({'result': 'fail', 'msg': '비밀번호틀렸다잉'})
 
 
 if __name__ == '__main__':

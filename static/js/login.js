@@ -32,7 +32,3 @@ function checkNotEmpty(target) {
         return $('#Password').val().length >= 8;
     }
 }
-
-// function checkNotEmpty() {
-//     return $('#Password').val().length >= 8 && $('#Email').val().length > 0;
-// }
