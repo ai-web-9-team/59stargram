@@ -1,3 +1,7 @@
+. *{
+    font-family: 'Roboto', sans-serif;
+}
+
 .user_main_body{
     width: 975px;
     height: 1000px;
@@ -37,8 +41,8 @@
     height: 40px;
     margin-bottom: 20px;
 
-    font-family: 'Roboto', sans-serif;
     font-size: 28px;
+    font-weight: 300;
 
     display: flex;
     flex-direction: row;
@@ -71,6 +75,8 @@
     font-size: 16px;
     margin-right: 40px;
 }
+
+
 
 .user_info_box > .user_nickname {
     width: 100%;
@@ -148,24 +154,28 @@
 }
 
 .user_post_info_box {
-    width: 40%;
+    width: 60%;
     height: 100%;
 
     top: 0;
     left: 30%;
 
     margin: auto;
-    padding-top: 40%;
+    padding-top: 45%;
 
     position: absolute;
+
+    display: none;
 }
 
 .user_post_info_box
     > .user_post_like_box {
-    width: 50%;
+    width: 40%;
     height: 30px;
 
     float: left;
+    font-size: 20px;
+    color: white;
 }
 
 .user_post_info_box
@@ -175,29 +185,85 @@
 
     float: left;
 
+    font-size: 20px;
+    color: white;
+
 }
+
 
 .user_follower_box {
+    z-index: 999;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.user_follower_box.show {
+    display: block;
+}
+
+.user_follower_body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 400px;
     height: 400px;
-
-    background-color: #00ffaa;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
 }
 
-.user_follower_box_title {
-    width: 400px;
+.user_follower_title {
+    width: 100%;
     height: 42px;
 
-    background-color: red;
+    border-bottom: 1px solid #e8e8e8;
 }
 
+.user_follower_title_box {
+    width: 75%;
+    height: 100%;
+
+    float: right;
+}
+
+.user_follower_title_text {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.user_follower_quit_box {
+    width: 12.5%;
+    height: 100%;
+
+    padding: 8px;
+
+    float: right;
+
+    font-size: 20px;
+}
+
+.user_follower_list {
+    width: 100%;
+    height: 358px;
+
+    overflow-y: scroll;
+}
+
+
 .user_follower {
-    width: 400px;
+    width: 100%;
     height: 54px;
 
     padding: 8px 16px;
-
-    background-color: blue;
 
     display: flex;
     flex-direction: row;
@@ -209,14 +275,236 @@
     width: 40px;
     height: 40px;
 
-    background-color: yellow;
+    padding: 5px;
 }
 
 .user_follower_name_box {
-    width: 150px;
+    flex-grow: 1;
     height: 40px;
 
-    background-color: purple;
+    font-size: 14px;
+    text-align: left;
+
+    padding-left: 5px;
+}
+
+.user_follower_username {
+    font-weight: 500;
+    cursor: pointer;
+}
+.user_follower_username:hover {
+    text-decoration: underline;
+}
+
+.user_follower_name {
+    font-weight: 300;
+    color: #8e8e8e;
+}
+
+.user_follower_delete_box {
+    width: 48px;
+    height: 100%;
+
+    padding-top: 5px;
+
+    cursor: pointer;
+}
+
+.user_follower_delete_btn {
+    width: 100%;
+    height: 30px;
+
+    padding: 3px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+
+    text-align: center;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.user_summary_body {
+
+    width: 390px;
+    height: 350px;
+
+    border-radius: 10px;
+    border: 1px solid #9baec8;
+
+    display: none;
+
+    position: absolute;
+    top: 70%;
+    left: 50%;
+
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.user_summary_body.show {
+    display: block;
+}
+
+.user_summary_title {
+    width: 100%;
+    height: 90px;
+
+    padding: 16px;
+
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.user_summary_img {
+    width: 56px;
+    height: 56px;
+
+    float: left;
+}
+.user_summary_name_box {
+    height: 56px;
+
+    font-size: 14px;
+
+    float: left;
+
+    padding: 10px;
+}
+
+.user_summary_username {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.user_summary_username:hover{
+    text-decoration: underline;
+}
+
+.user_summary_name {
+    color: #8e8e8e;
+}
+
+.user_summary_info {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: center;
+
+    padding-top: 5px;
+
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.user_summary_info_item {
+    width: 33%;
+
+    line-height: 50%;
+    text-align: center;
+
+    font-size: 14px;
+
+    margin-top: 17px;
+}
+
+.user_summary_posts {
+    width: 100%;
+    height: 130px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: center;
+}
+
+.user_summary_post_img {
+    width: 130px;
+    height: 130px;
+
+    object-fit: cover;
+}
+
+.user_summary_btns {
+    width: 100%;
+    height: 70px;
+
+    padding: 16px;
+}
+
+.user_summary_like {
+    width: 200px;
+    height: 30px;
+
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+
+    padding: 5px 9px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    text-align: center;
+
+    margin: auto;
+
+    cursor: pointer;
+}
+
+.user_setting_modal_box {
+    z-index: 999;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.user_setting_modal_box.show {
+    display: block;
+}
+
+.user_setting_content {
+    color: black;
+    text-align: center;
+}
+
+.user_setting_modal_body {
+    width: 400px;
+
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.user_setting_pw_box {
+    width: 100%;
+    height: 40px;
+    margin: 5px 0px 5px 0px;
+}
+
+.user_setting_pw_text {
+    width: 150px;
+    text-align: right;
+    float: left;
+    padding-right: 10px;
+}
+
+.user_setting_pw {
+    float: left;
 }
 
 
