@@ -7,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- icon import -->
+    <script src="https://kit.fontawesome.com/989420847f.js" crossorigin="anonymous"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -24,9 +28,7 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
     <!--    google font-->
@@ -34,128 +36,63 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
     <!--css 파일 불러오기!-->
     <link href="/static/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/detail.css" rel="stylesheet" type="text/css"/>
 
     <!--js 파일 불러오기-->
     <script defer src="/static/js/common.js"></script>
+    <script defer src="/static/js/detail.js"></script>
 
     <!--파비콘 적용-->
     <link rel="shortcut icon" href="/static/images/favicon_instagram.ico">
 
-    <style>
-        .modal_overlay {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(1.5px);
-            z-index: 999999;
+    <title>59 Stagram</title>
 
-            -webkit-backdrop-filter: blur(1.5px);
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-
-        }
-
-        .modal_window {
-            background: white;
-            backdrop-filter: blur(13.5px);
-            -webkit-backdrop-filter: blur(13.5px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            width: 900px;
-            height: 700px;
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        .post_comment_input_box {
-            width: 100%;
-            height: 53px;
-
-            padding: 6px 16px;
-
-            border-top: 1px solid #f0f0f0;
-
-            display: flex;
-            flex-direction: row;
-            align-items: normal;
-            justify-content: left;
-        }
-
-        .post_comment_imoge_box {
-            width: 40px;
-            height: 40px;
-
-            padding-top: 8px;
-        }
-
-        .post_comment_input {
-            flex-grow: 1;
-            border-width: 0;
-            outline: none;
-        }
-
-        .post_comment_input_btn {
-            background-color: rgba(0, 0, 0, 0);
-            border: none;
-
-            font-size: 14px;
-            font-weight: 600;
-            color: dodgerblue;
-
-            opacity: 0.5;
-        }
-    </style>
-
-
-
-
-
-
-    <title>Instgram clone</title>
 </head>
+
 <body>
+
 <!--헤더 부분-->
 <div class="main_header" id="main_header">
     <div class="header_body">
         <div class="logo_box">
-            <a href="https://velog.io/@kimphysicsman" style="float:left;">
-                <img style="margin-top: 10px" src="/static/images/logo_instagram.png">
-            </a>
+            <button class="logo" onClick="window.location.reload()">59 Stagram</button>
         </div>
         <div class="search_box">
             <button class="search_active_button" id="search_active_button"
-                    onclick="active_search_input_box()"></button>
+                    onclick="active_search_input_box()" style="cursor: text;"></button>
             <img class="search_icon" id="search_icon"
                  src="/static/images/icon_search.png">
             <input id="search_input_box" aria-label="입력 검색" class="search_input_box" autocapitalize="none"
                    placeholder="검색" type="text" value="">
         </div>
         <div class="header_icon_box">
-            <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px"
-                                                           src="/static/images/icon_home.png"></a>
-            <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px"
-                                                           src="/static/images/icon_share.png"></a>
-            <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px" src="/static/images/icon_add.png"></a>
-            <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px"
-                                                           src="/static/images/icon_find.png"></a>
-            <a href="https://velog.io/@kimphysicsman"><img width="20px" height="20px"
-                                                           src="/static/images/icon_heart_empty.png"></a>
-            <a href="https://velog.io/@kimphysicsman"><img class="img_circle" width="24px" height="24px"
-                                                           src="/static/images/img_profile.jpg"></a>
+            <ul>
+                <button class="home" onClick="window.location.reload()"><i class="fas fa-house"></i>
+                </button>
+                <button class="dm" id="dm_button"><i class="fa-regular fa-paper-plane"></i>
+                </button>
+                <button class="add_feed" id="add_feed_button"><i class="fa-regular fa-square-plus"></i>
+                </button>
+                <button class="explore" id="explore_button"><i class="fa-regular fa-compass"></i>
+                </button>
+                <button class="notice" id="notice_button"><i class="fa-regular fa-heart"></i>
+                </button>
+            </ul>
         </div>
     </div>
-
 </div>
 
 <!--본문 부분-->
@@ -252,231 +189,408 @@
 
             </div>
         </div>
-        <div class="card posts">
-            <div class="card-body post">
-                <div class="post_header">
-                    <div class="post_header_main">
-                        <img class="img_circle" width="32px" height="32px" src="/static/images/img_profile.jpg">
-                        <a class="post_header_main_id" href="https://velog.io/@kimphysicsman">
-                            kimphysicsman
-                        </a>
-                    </div>
-                    <div class="post_header_more">
-                        <div class="post_header_more_btn_box">
-                            <a href="https://velog.io/@kimphysicsman">
-                                <img width="20px" height="20px" src="/static/images/icon_menu_dots.png">
+
+        <article class="feed_border" id="feed1">
+            <div class="feed">
+                <header class="feed_header">
+                    <div class="feed_header_container">
+                        <div class="user_photo">
+                            <a href="">
+                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
+                                     alt="Profile Image">
                             </a>
                         </div>
-                    </div>
-                </div>
-                <div class="post_img">
-                    <img width="100%" src="/static/images/img_post.jpg">
-                    <div class="post_icon_box_slide">
-                        <div class="post_dots">
-                            <img width="7px" height="7px" style="display: none;"
-                                 src="/static/images/post_slide_dot_fill.png">
-                            <div style="width: 7px"></div>
-                            <img width="7px" height="7px" style="display: none;"
-                                 src="/static/images/post_slide_dot_empty.png">
+                        <div class="user_profile">
+                            <div class="user_id">songheew</div>
+                            <div class="user_location">Seoul, South Korea</div>
+                        </div>
+                        <div class="ellipsis_nav">
+                            <button type="button" class="ellipsis" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop1">
+                                <i class="fa-solid fa-ellipsis"></i></button>
+                            </button>
+                            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static"
+                                 data-bs-keyboard="false"
+                                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            1번째 피드의 더 보기를 누르셨습니다!
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            무슨일이시죵?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </header>
+                <div class="photos">
+                    <div class="photo"><img class="photo" id="photo1" src="/static/images/img_samgyeopsal.png" alt="게시물"
+                                            ondblclick="fadeOut(id)"></div>
+                    <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
                 </div>
-                <div class="post_icon_box">
-                    <div class="post_icons">
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" src="/static/images/icon_heart_empty.png"></a>
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" src="/static/images/icon_comment.png"></a>
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" src="/static/images/icon_share.png"></a>
-                    </div>
-                    <div class="post_icon_box_bookmark">
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" style="margin: auto; display: block;"
-                                 src="/static/images/icon_bookmark.png"></a>
-                    </div>
-                </div>
-                <div class="post_like_box">
-                    <img class="img_circle" width="20px" height="20px" src="/static/images/img_profile.jpg">
-                    <a class="post_text_id" href="https://velog.io/@kimphysicsman">
-                        bongsem</a>님
-                    <a class="post_text_id" href="https://velog.io/@kimphysicsman">
-                        여러명</a>이 좋아합니다
-                </div>
-                <div class="post_text_box">
-                    <a class="post_text_id" href="https://velog.io/@kimphysicsman">
-                        kimphysicsman</a> 여기는 한강!
-                    <span class="post_text_btn" name="1" onclick="view_post_text_more('1')">
-                            ... 더보기
-                        </span>
-                    <div class="post_text_more" name="1">
-                        <br><br>
-                        <br><br>
-                        하지만 너무가 더워 ㅠ
-                    </div>
-                    <div id="post_text_btn"  class="post_text_btn">댓글 2개 모두 보기</div>
-                </div>
-                <div class="post_d-day">
-                    1일전
-                </div>
-                <div class="post_comment_input_box">
-                    <div class="post_comment_imoge_box">
-                        <img width="24px" height="24px" src="/static/images/icon_imoge.png">
-                    </div>
-                    <input name="1" aria-label="입력 검색" class="post_comment_input" autocapitalize="none"
-                           placeholder="댓글 달기..." type="text" value="">
-                    <button class="post_comment_input_btn" name="1" style="opacity: 0.5;">
-                        게시
+                <div class="reaction">
+                    <button class="like_button" id="like_button1" onclick="clickLike(id)"><i
+                            class="fa-regular fa-heart"></i>
                     </button>
+                    <button class="comment_button"><i class="fa-regular fa-message"></i>
+                    </button>
+                    <button class="share_button"><i class="fa-solid fa-share-nodes"></i>
+                    </button>
+                    <button class="bookmark_button">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="like_count">
+                        <button type="button" class="like_people" data-toggle="popover"
+                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
+                        </button>
+                        이 좋아요를 눌렀습니다.
+                    </div>
+                </div>
+                <div class="post">
+                    <div id="about_post" class="about_post">
+                        냠냠굿~😋
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="one_comment">
+                        <button class="comment_user_id">아무개씨</button>
+                        <div class="comment_content">맛있겠당</div>
+                    </div>
+                    <div class="one_comment">
+                        <button class="comment_user_id">땡땡땡씨</button>
+                        <div class="comment_content">여기 어디에용?</div>
+                    </div>
+                </div>
+                <div class="my_comment" style="width: 100%;">
+                    <input type="text" class="leave_comment" placeholder="댓글 남기기">
+                    <div class="comment_post">
+                        <button>남기기</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card posts">
-            <div class="card-body post">
-                <div class="post_header">
-                    <div class="post_header_main">
-                        <img class="img_circle" width="32px" height="32px" src="/static/images/img_profile.jpg">
-                        <a class="post_header_main_id" href="https://velog.io/@kimphysicsman">
-                            kimphysicsman
-                        </a>
-                    </div>
-                    <div class="post_header_more">
-                        <div class="post_header_more_btn_box">
-                            <a href="https://velog.io/@kimphysicsman">
-                                <img width="20px" height="20px" src="/static/images/icon_menu_dots.png">
+        </article>
+        <article class="feed_border" id="feed2">
+            <div class="feed">
+                <header class="feed_header">
+                    <div class="feed_header_container">
+                        <div class="user_photo">
+                            <a href="">
+                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
+                                     alt="Profile Image">
                             </a>
                         </div>
+                        <div class="user_profile">
+                            <div class="user_id">songheew</div>
+                            <div class="user_location">Seoul, South Korea</div>
+                        </div>
+                        <div class="ellipsis_nav">
+                            <button type="button" class="ellipsis" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop2">
+                                <i class="fa-solid fa-ellipsis"></i></button>
+                            </button>
+                            <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
+                                 data-bs-keyboard="false"
+                                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            2번째 피드의 더 보기를 누르셨습니다!
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            또 무슨일이시죵?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="carousels" style="width: 95%; height: 60%; margin: auto;">
+                    <!-- data-bs-interval="false" : 자동으로 슬라이드 넘어가는 것 방지 -->
+                    <!-- data-bs-wrap="false" : 처음/마지막 슬라이드에서 이전/다음 슬라이드로 넘어가는 것 방지 -->
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-bs-wrap="false"
+                         style="width: 100%; height: 100%; overflow: hidden; margin: auto; margin-top: 20px; align-items: center;">
+                        <div class="carousel-inner" id="photo2" ondblclick="fadeOut(id)"
+                             style="width: 100%; height: 100%;">
+                            <div class="carousel-item active" style="width: 100%; height: 100%;">
+                                <img src="/static/images/img_plz_finish1.png" class="d-block w-100" alt="..."
+                                     style="max-width: 100%; max-height: 100%;">
+                            </div>
+                            <div class="carousel-item" style="width: 100%; height: 100%;">
+                                <img src="/static/images/img_plz_finish2.png" class="d-block w-100" alt="..."
+                                     style="max-width: 100%; max-height: 100%;">
+                            </div>
+                            <div class="carousel-item" style="width: 100%; height: 100%;">
+                                <img src="/static/images/img_plz_finish3.png" class="d-block w-100" alt="..."
+                                     style="max-width: 100%; max-height: 100%;">
+                            </div>
+                            <div class="carousel-item" style="width: 100%; height: 100%;">
+                                <img src="/static/images/img_plz_finish4.png" class="d-block w-100" alt="..."
+                                     style="max-width: 100%; max-height: 100%;">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
                     </div>
                 </div>
-                <div class="post_img">
-                    <img width="100%" src="/static/images/img_post.jpg">
-                    <div class="post_icon_box_slide">
-                        <img width="7px" height="7px" style="display: none;"
-                             src="/static/images/post_slide_dot_fill.png">
-                    </div>
-                </div>
-                <div class="post_icon_box">
-                    <div class="post_icons">
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" src="/static/images/icon_heart_empty.png"></a>
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" src="/static/images/icon_comment.png"></a>
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" src="/static/images/icon_share.png"></a>
-                    </div>
-                    <div class="post_icon_box_bookmark">
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" style="margin: auto; display: block;"
-                                 src="/static/images/icon_bookmark.png"></a>
-                    </div>
-                </div>
-                <div class="post_like_box">
-                    <img class="img_circle" width="20px" height="20px" src="/static/images/img_profile.jpg">
-                    <a class="post_text_id" href="https://velog.io/@kimphysicsman">
-                        bongsem</a>님
-                    <a class="post_text_id" href="https://velog.io/@kimphysicsman">
-                        여러명</a>이 좋아합니다
-                </div>
-                <div class="post_text_box">
-                    <a class="post_text_id" href="https://velog.io/@kimphysicsman">
-                        kimphysicsman</a> 여기는 한강!
-                    <span class="post_text_btn" name="2" onclick="view_post_text_more('2')">
-                            ... 더보기
-                        </span>
-                    <div class="post_text_more" name="2">
-                        <br><br>
-                        <br><br>
-                        하지만 너무가 더워 ㅠ
-                    </div>
-                    <div class="post_text_btn">댓글 2개 모두 보기</div>
-                </div>
-                <div class="post_d-day">
-                    1일전
-                </div>
-                <div class="post_comment_input_box">
-                    <div class="post_comment_imoge_box">
-                        <img width="24px" height="24px" src="/static/images/icon_imoge.png">
-                    </div>
-                    <input name="2" aria-label="입력 검색" class="post_comment_input" autocapitalize="none"
-                           placeholder="댓글 달기..." type="text" value="">
-                    <button class="post_comment_input_btn" name="2" style="opacity: 0.5;">
-                        게시
+
+                <div class="reaction">
+                    <button class="like_button" id="like_button2" onclick="clickLike(id)"><i
+                            class="fa-regular fa-heart"></i>
                     </button>
+                    <button class="comment_button"><i class="fa-regular fa-message"></i>
+                    </button>
+                    <button class="share_button"><i class="fa-solid fa-share-nodes"></i>
+                    </button>
+                    <button class="bookmark_button">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="like_count">
+                        <button type="button" class="like_people" data-toggle="popover"
+                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
+                        </button>
+                        이 좋아요를 눌렀습니다.
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="about_post">
+                        교수님 끝내주세용;;;;;
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="one_comment">
+                        <button class="comment_user_id">아무개씨</button>
+                        <div class="comment_content">튜터님 끝내주세요!!!</div>
+                    </div>
+                    <div class="one_comment">
+                        <button class="comment_user_id">땡땡땡씨</button>
+                        <div class="comment_content">허허 그 정도는 아닌데 고마워요!!</div>
+                    </div>
+                </div>
+                <div class="my_comment" style="width: 100%;">
+                    <input type="text" class="leave_comment" placeholder="댓글 남기기">
+                    <div class="comment_post">
+                        <button>남기기</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card posts">
-            <div class="card-body post">
-                <div class="post_header">
-                    <div class="post_header_main">
-                        <img class="img_circle" width="32px" height="32px" src="/static/images/img_profile.jpg">
-                        <a class="post_header_main_id" href="https://velog.io/@kimphysicsman">
-                            kimphysicsman
-                        </a>
-                    </div>
-                    <div class="post_header_more">
-                        <div class="post_header_more_btn_box">
-                            <a href="https://velog.io/@kimphysicsman">
-                                <img width="20px" height="20px" src="/static/images/icon_menu_dots.png">
+        </article>
+        <article class="feed_border" id="feed3">
+            <div class="feed">
+                <header class="feed_header">
+                    <div class="feed_header_container">
+                        <div class="user_photo">
+                            <a href="">
+                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
+                                     alt="Profile Image">
                             </a>
                         </div>
+                        <div class="user_profile">
+                            <div class="user_id">songheew</div>
+                            <div class="user_location">Seoul, South Korea</div>
+                        </div>
+                        <div class="ellipsis_nav">
+                            <button type="button" class="ellipsis" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop3">
+                                <i class="fa-solid fa-ellipsis"></i></button>
+                            </button>
+                            <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static"
+                                 data-bs-keyboard="false"
+                                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            3번째 피드의 더 보기를 누르셨습니다!
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            또~~~~ 무슨일이시죵?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </header>
+                <div class="photos">
+                    <div class="photo"><img class="photo" id="photo3" src="/static/images/video_boomerang.gif" alt="게시물"
+                                            ondblclick="fadeOut(id)"></div>
+                    <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
                 </div>
-                <div class="post_img">
-                    <img width="100%" src="/static/images/img_post.jpg">
-                    <div class="post_icon_box_slide">
-                        <img width="7px" height="7px" style="display: none;"
-                             src="/static/images/post_slide_dot_fill.png">
-                    </div>
-                </div>
-                <div class="post_icon_box">
-                    <div class="post_icons">
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" src="/static/images/icon_heart_empty.png"></a>
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" src="/static/images/icon_comment.png"></a>
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" src="/static/images/icon_share.png"></a>
-                    </div>
-                    <div class="post_icon_box_bookmark">
-                        <a href="https://velog.io/@kimphysicsman">
-                            <img width="22px" height="22px" style="margin: auto; display: block;"
-                                 src="/static/images/icon_bookmark.png"></a>
-                    </div>
-                </div>
-                <div class="post_like_box">
-                    <img class="img_circle" width="20px" height="20px" src="/static/images/img_profile.jpg">
-                    <a class="post_text_id" href="https://velog.io/@kimphysicsman">
-                        bongsem</a>님
-                    <a class="post_text_id" href="https://velog.io/@kimphysicsman">
-                        여러명</a>이 좋아합니다
-                </div>
-                <div class="post_text_box">
-                    <a class="post_text_id" href="https://velog.io/@kimphysicsman">
-                        kimphysicsman</a> 여기는 한강!
-                    <span class="post_text_btn" name="3" onclick="view_post_text_more('3')">
-                            ... 더보기
-                        </span>
-                    <div class="post_text_more" name="3">
-                        <br><br>
-                        <br><br>
-                        하지만 너무가 더워 ㅠ
-                    </div>
-                    <div class="post_text_btn">댓글 2개 모두 보기</div>
-                </div>
-                <div class="post_d-day">
-                    1일전
-                </div>
-                <div class="post_comment_input_box">
-                    <div class="post_comment_imoge_box">
-                        <img width="24px" height="24px" src="/static/images/icon_imoge.png">
-                    </div>
-                    <input name="3" aria-label="입력 검색" class="post_comment_input" autocapitalize="none"
-                           placeholder="댓글 달기..." type="text" value="">
-                    <button class="post_comment_input_btn" name="3" style="opacity: 0.5;">
-                        게시
+                <div class="reaction">
+                    <button class="like_button" id="like_button4" onclick="clickLike(id)"><i
+                            class="fa-regular fa-heart"></i>
                     </button>
+                    <button class="comment_button"><i class="fa-regular fa-message"></i>
+                    </button>
+                    <button class="share_button"><i class="fa-solid fa-share-nodes"></i>
+                    </button>
+                    <button class="bookmark_button">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="like_count">
+                        <button type="button" class="like_people" data-toggle="popover"
+                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
+                        </button>
+                        이 좋아요를 눌렀습니다.
+                    </div>
                 </div>
+                <div class="post">
+                    <div class="about_post">
+                        부부부부메랑
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="one_comment">
+                        <button class="comment_user_id">아무개씨</button>
+                        <div class="comment_content">짠짠짠~</div>
+                    </div>
+                    <div class="one_comment">
+                        <button class="comment_user_id">땡땡땡씨</button>
+                        <div class="comment_content">술냄새나여;;;</div>
+                    </div>
+                </div>
+                <div class="my_comment" style="width: 100%;">
+                    <input type="text" class="leave_comment" placeholder="댓글 남기기">
+                    <div class="comment_post">
+                        <button>남기기</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+    <div class="profile_box" id="profile_box">
+        <div class="my_account">
+            <div>
+                <a href="">
+                    <img class="my_profile_img" href="" src="/static/images/img_songhee_profile.png"
+                         alt="Profile Image">
+                </a>
+            </div>
+            <div class="my_info">
+                <div class="my_id" style="font-weight: bold">songheew</div>
+                <div class="my_name" style="color: #909090;">원송희</div>
+            </div>
+            <div class="logout_button">
+                <a href="">로그아웃</a>
+            </div>
+        </div>
+        <div class="recommend_and_footer">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="recommend_user_photo">
+                        <a href="">
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                 alt="Profile Image">
+                        </a>
+                    </div>
+                    <div class="user_info">
+                        <div class="user_id">someone1</div>
+                        <div class="user_name">누구지</div>
+                    </div>
+                    <button class="recommend_follow">팔로우</button>
+                </li>
+                <li class="list-group-item">
+                    <div class="recommend_user_photo">
+                        <a href="">
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                 alt="Profile Image">
+                        </a>
+                    </div>
+                    <div class="user_info">
+                        <div class="user_id">someone2</div>
+                        <div class="user_name">누구게</div>
+                    </div>
+                    <button class="recommend_follow">팔로우</button>
+                </li>
+                <li class="list-group-item">
+                    <div class="recommend_user_photo">
+                        <a href="">
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                 alt="Profile Image">
+                        </a>
+                    </div>
+                    <div class="user_info">
+                        <div class="user_id">someone3</div>
+                        <div class="user_name">누구게용</div>
+                    </div>
+                    <button class="recommend_follow">팔로우</button>
+                </li>
+                <li class="list-group-item">
+                    <div class="recommend_user_photo">
+                        <a href="">
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                 alt="Profile Image">
+                        </a>
+                    </div>
+                    <div class="user_info">
+                        <div class="user_id">someone4</div>
+                        <div class="user_name">누구일까</div>
+                    </div>
+                    <button class="recommend_follow">팔로우</button>
+                </li>
+                <li class="list-group-item">
+                    <div class="recommend_user_photo">
+                        <a href="">
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                                 alt="Profile Image">
+                        </a>
+                    </div>
+                    <div class="user_info">
+                        <div class="user_id">someone5</div>
+                        <div class="user_name">누구냐진짜</div>
+                    </div>
+                    <button class="recommend_follow">팔로우</button>
+                </li>
+            </ul>
+
+            <div class="footer" id="footer">
+                <a href="">소개</a> ·
+                <a href="">도움말</a> ·
+                <a href="">홍보 센터</a> ·
+                <a href="">API</a> ·
+                <a href="">채용 정보</a>
+                <br>
+                <a href="">개인정보처리방침</a> ·
+                <a href="">약관</a> ·
+                <a href="">위치</a> ·
+                <a href="">인기 계정</a> ·
+                <a href="">해시태그</a>
+                <br>
+                <a href="">언어</a>
+                <br>
+                <br>
+                <p>© 2022 59 STAGRAM FROM OGUOGU TEAM</p>
             </div>
         </div>
     </div>
@@ -485,89 +599,85 @@
 
 
 <!-- 상세페이지 모달-->
-<div id="open_modal1" class="modal_overlay">
-    <div class="close">
-        <span id="close_modal1" class="material-icons-outlined" style="font-size: 30px; color:white; margin-left:1300px; cursor: pointer">X</span>
+<div id="modal_overlay" class="modal_overlay">
+    <div id="close_btn" class="close_btn">
+        X
     </div>
-    <div class="modal_window" style="display: flex;">
-        <div style="width: 550px; height:650px;">
-            <div id="carouselExampleControlsNoTouching4" class="carousel slide" data-bs-touch="false"
-                 data-bs-interval="false">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/static/images/img_profile.jpg" class="d-block w-100" alt="..." >
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/static/images/img_post.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/static/images/img_profile.jpg" class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button"
-                        data-bs-target="#carouselExampleControlsNoTouching4" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button"
-                        data-bs-target="#carouselExampleControlsNoTouching4" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+    <div class="modal">
+        <div class="modal_left">
+            <img src="/static/images/img_songhee_profile.png" class="modal_img">
         </div>
-        <div style="width: 350px; height:650px;">
-            <div style="border: solid 1px lightgray;">
-                <div style="display: flex; flex-direction: row; align-items: center; margin: 10px 20px">
-                    <div class="box" style="width:35px; height: 35px; margin-right: 10px">
-                        <img class="profile" src="/static/images/hhhjjj.jpg">
-                    </div>
-                    <div>아ㅏㅏ내용이 들어갈 곳인데어에랴러댜ㅣ러ㅑㄷ댜거ㅕㅑ 정렬부터...다시...할게여.ㅜㅜㅠ</div>
+
+        <div class="modal_right">
+
+            <div class="modal_header">
+                <div class="modal_profile_img">
+                    <img class="modal_profile_img_round" src="/static/images/img_profile.jpg" alt="Profile Image">
                 </div>
+                <div class="modal_user">
+                    <div class="modal_user_name">유저 아이디</div>
+                    <div class="modal_place">부안 변산마실길</div>
+                </div>
+                    <button class="following">팔로잉</button>
+
+                <div class="modal_more">...</div>
             </div>
 
-            <div>
+            <div class="modal_content">
+                <div class="modal_img_description">
+                    <a href='#' class="modal_user_name">유저 아이디</a>
+                    아름다운 바닷길을 따라 활짝 피어날
+                    #부안 #변산마실길2코스 샤스타데이지🌼
+                    변산반도를 둘러싸고 있는 총 8구간의 코스 중
+                    변산마실길 2코스는 입구에서 조금만 들어가면
+                    하얀 데이지꽃밭이 넓게 펼쳐져요🌼
+                    신난다 신나
+                    내용을 얼마나 길게 해야하는가요
+                    어디까지 내려갈 수 있습니까
+                    태그를 마구마구 때려넣어볼까
+                    #부안 #여행 # 데이트코스 #드라이브코스 #꽃구경
+                    #전국일주 #운전은언제쯤늘까 #넘무서워 #자전거최고
 
-                <div style="margin-left: 20px">
-                    내용들...
+                    <li class="modal_comment_list">
+
+                    </li>
                 </div>
+                <ul id="comment-wrapper" class="comment-wrapper"></ul>
+            </div>
 
-                <div class="post_comment_input_box">
-                    <div class="post_comment_imoge_box">
-                        <img width="24px" height="24px" src="/static/images/icon_imoge.png">
-                    </div>
-                    <input name="2" aria-label="입력 검색" class="post_comment_input" autocapitalize="none"
-                           placeholder="댓글 달기..." type="text" value="">
-                    <button class="post_comment_input_btn" name="2" style="opacity: 0.5;">
-                        게시
+            <div class="modal_icon_bar">
+                    <button class="modal_like_icon" id="like_button3" onclick="clickLike(id)"><i
+                            class="fa-regular fa-heart"></i>
                     </button>
-                </div>
+                    <button class="modal_comment_icon"><i class="fa-regular fa-message"></i>
+                    </button>
+                    <button class="modal_share_icon"><i class="fa-solid fa-share-nodes"></i>
+                    </button>
+                    <button class="modal_bookmark_icon">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="like_count">
+                        <button type="button" class="like_people" data-toggle="popover"
+                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
+                        </button>
+                        이 좋아요를 눌렀습니다.
+                    </div>
             </div>
+
+            <div class="modal_date">
+                <p class="sub"></p>
+            </div>
+
+            <div class="modal_comment_write">
+                <form id="comment">
+                    <input type="text" placeholder="댓글 달기..." id="commentInput">
+                    <button id="submit">게시</button>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>
-
-
-
-<script>
-
-
-    const modal1 = document.getElementById("open_modal1");
-    const clickmodal1 = document.getElementById("post_text_btn");
-        clickmodal1.addEventListener("click", e => {
-        modal1.style.top = window.scrollY + 'px';
-        modal1.style.display = "flex";
-        document.body.style.overflowY = "hidden";
-    });
-
-    const CloseModal1 = document.getElementById("close_modal1");
-        CloseModal1.addEventListener("click", e => {
-        modal1.style.display = "none";
-        document.body.style.overflowY = "visible";
-    });
-</script>
-
-
 
 
 

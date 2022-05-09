@@ -7,6 +7,7 @@ db = client.db59stargram
 
 app = Flask(__name__)
 
+
 # HTML 화면 보여주기
 @app.route('/')
 def home():
