@@ -28,6 +28,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 
@@ -46,33 +47,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 
     <!--css 파일 불러오기!-->
-    <link href="/css/common.css" rel="stylesheet" type="text/css"/>
-    <link href="/css/main.css" rel="stylesheet" type="text/css"/>
-    <link href="/css/detail.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/detail.css" rel="stylesheet" type="text/css"/>
 
     <!--js 파일 불러오기-->
-    <script defer src="/js/common.js"></script>
-    <script defer src="js/detail.js"></script>
+    <script defer src="/static/js/common.js"></script>
+    <script defer src="/static/js/detail.js"></script>
 
     <!--파비콘 적용-->
-    <link rel="shortcut icon" href="/images/favicon_instagram.ico">
+    <link rel="shortcut icon" href="/static/images/favicon_instagram.ico">
 
     <title>59 Stagram</title>
-
-    <style>
-
-    </style>
-
-
-
 
 </head>
 
 <body>
-<!-- to use bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
 
 <!--헤더 부분-->
 <div class="main_header" id="main_header">
@@ -84,7 +74,7 @@
             <button class="search_active_button" id="search_active_button"
                     onclick="active_search_input_box()" style="cursor: text;"></button>
             <img class="search_icon" id="search_icon"
-                 src="/images/icon_search.png">
+                 src="/static/images/icon_search.png">
             <input id="search_input_box" aria-label="입력 검색" class="search_input_box" autocapitalize="none"
                    placeholder="검색" type="text" value="">
         </div>
@@ -114,83 +104,83 @@
                         onclick="move_story_slide(0)">
                     <img width="12px" height="12px"
                          style="margin: -5px 0px 0px -2px"
-                         src="/images/button_story_slide_left.png">
+                         src="/static/images/button_story_slide_left.png">
                 </button>
                 <button type="button" class="bg_slide_button" id="bg_slide_button_right"
                         onclick="move_story_slide(1)">
                     <img width="12px" height="12px"
                          style="margin: -5px 0px 0px -2px"
-                         src="/images/button_story_slide_right.png">
+                         src="/static/images/button_story_slide_right.png">
                 </button>
                 <div class="card-body" id="stories">
                     <div style="width: 10px;"></div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">0 kimphysicsman</p>
                     </div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">1 kimphysicsman</p>
                     </div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">2 kimphysicsman</p>
                     </div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">3 kimphysicsman</p>
                     </div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">4 kimphysicsman</p>
                     </div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">5 kimphysicsman</p>
                     </div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">6 kimphysicsman</p>
                     </div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">7 kimphysicsman</p>
                     </div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">8 kimphysicsman</p>
                     </div>
                     <div class="story">
                         <div class="story_img_box">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/images/img_profile.jpg">
+                                 src="/static/images/img_profile.jpg">
                         </div>
                         <p class="story_id">9 kimphysicsman</p>
                     </div>
@@ -207,7 +197,7 @@
                     <div class="feed_header_container">
                         <div class="user_photo">
                             <a href="">
-                                <img class="profile_img" src="/images/img_songhee_profile.png"
+                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
                                      alt="Profile Image">
                             </a>
                         </div>
@@ -244,7 +234,7 @@
                     </div>
                 </header>
                 <div class="photos">
-                    <div class="photo"><img class="photo" id="photo1" src="/images/img_samgyeopsal.png" alt="게시물"
+                    <div class="photo"><img class="photo" id="photo1" src="/static/images/img_samgyeopsal.png" alt="게시물"
                                             ondblclick="fadeOut(id)"></div>
                     <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
                 </div>
@@ -295,7 +285,7 @@
                     <div class="feed_header_container">
                         <div class="user_photo">
                             <a href="">
-                                <img class="profile_img" src="/images/img_songhee_profile.png"
+                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
                                      alt="Profile Image">
                             </a>
                         </div>
@@ -339,19 +329,19 @@
                         <div class="carousel-inner" id="photo2" ondblclick="fadeOut(id)"
                              style="width: 100%; height: 100%;">
                             <div class="carousel-item active" style="width: 100%; height: 100%;">
-                                <img src="/images/img_plz_finish1.png" class="d-block w-100" alt="..."
+                                <img src="/static/images/img_plz_finish1.png" class="d-block w-100" alt="..."
                                      style="max-width: 100%; max-height: 100%;">
                             </div>
                             <div class="carousel-item" style="width: 100%; height: 100%;">
-                                <img src="/images/img_plz_finish2.png" class="d-block w-100" alt="..."
+                                <img src="/static/images/img_plz_finish2.png" class="d-block w-100" alt="..."
                                      style="max-width: 100%; max-height: 100%;">
                             </div>
                             <div class="carousel-item" style="width: 100%; height: 100%;">
-                                <img src="/images/img_plz_finish3.png" class="d-block w-100" alt="..."
+                                <img src="/static/images/img_plz_finish3.png" class="d-block w-100" alt="..."
                                      style="max-width: 100%; max-height: 100%;">
                             </div>
                             <div class="carousel-item" style="width: 100%; height: 100%;">
-                                <img src="/images/img_plz_finish4.png" class="d-block w-100" alt="..."
+                                <img src="/static/images/img_plz_finish4.png" class="d-block w-100" alt="..."
                                      style="max-width: 100%; max-height: 100%;">
                             </div>
                         </div>
@@ -416,7 +406,7 @@
                     <div class="feed_header_container">
                         <div class="user_photo">
                             <a href="">
-                                <img class="profile_img" src="/images/img_songhee_profile.png"
+                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
                                      alt="Profile Image">
                             </a>
                         </div>
@@ -453,7 +443,7 @@
                     </div>
                 </header>
                 <div class="photos">
-                    <div class="photo"><img class="photo" id="photo3" src="/images/video_boomerang.gif" alt="게시물"
+                    <div class="photo"><img class="photo" id="photo3" src="/static/images/video_boomerang.gif" alt="게시물"
                                             ondblclick="fadeOut(id)"></div>
                     <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
                 </div>
@@ -504,7 +494,7 @@
         <div class="my_account">
             <div>
                 <a href="">
-                    <img class="my_profile_img" href="" src="/images/img_songhee_profile.png"
+                    <img class="my_profile_img" href="" src="/static/images/img_songhee_profile.png"
                          alt="Profile Image">
                 </a>
             </div>
@@ -521,7 +511,7 @@
                 <li class="list-group-item">
                     <div class="recommend_user_photo">
                         <a href="">
-                            <img class="recommend_profile_img" src="/images/img_profile.jpg"
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
                                  alt="Profile Image">
                         </a>
                     </div>
@@ -534,7 +524,7 @@
                 <li class="list-group-item">
                     <div class="recommend_user_photo">
                         <a href="">
-                            <img class="recommend_profile_img" src="/images/img_profile.jpg"
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
                                  alt="Profile Image">
                         </a>
                     </div>
@@ -547,7 +537,7 @@
                 <li class="list-group-item">
                     <div class="recommend_user_photo">
                         <a href="">
-                            <img class="recommend_profile_img" src="/images/img_profile.jpg"
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
                                  alt="Profile Image">
                         </a>
                     </div>
@@ -560,7 +550,7 @@
                 <li class="list-group-item">
                     <div class="recommend_user_photo">
                         <a href="">
-                            <img class="recommend_profile_img" src="/images/img_profile.jpg"
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
                                  alt="Profile Image">
                         </a>
                     </div>
@@ -573,7 +563,7 @@
                 <li class="list-group-item">
                     <div class="recommend_user_photo">
                         <a href="">
-                            <img class="recommend_profile_img" src="/images/img_profile.jpg"
+                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
                                  alt="Profile Image">
                         </a>
                     </div>
@@ -616,117 +606,44 @@
     </div>
     <div class="modal">
         <div class="modal_left">
-            <img src=""> 캐러셀 이미지 들어가랏
+            <img src="/static/images/img_songhee_profile.png" class="modal_img">
         </div>
 
         <div class="modal_right">
 
             <div class="modal_header">
                 <div class="modal_profile_img">
-                    <img class="modal_profile_img_round" src="/images/img_profile.jpg" alt="Profile Image">
+                    <img class="modal_profile_img_round" src="/static/images/img_profile.jpg" alt="Profile Image">
                 </div>
                 <div class="modal_user">
-                    <div class="modal_user_name">유저 아이디 넣기</div>
-                    <div class="modal_place">장소 입력</div>
+                    <div class="modal_user_name">유저 아이디</div>
+                    <div class="modal_place">부안 변산마실길</div>
                 </div>
-                <div class="following">팔로잉</div>
-                <div class="...">...</div>
+                    <button class="following">팔로잉</button>
+
+                <div class="modal_more">...</div>
             </div>
 
             <div class="modal_content">
                 <div class="modal_img_description">
+                    <a href='#' class="modal_user_name">유저 아이디</a>
                     아름다운 바닷길을 따라 활짝 피어날
                     #부안 #변산마실길2코스 샤스타데이지🌼
                     변산반도를 둘러싸고 있는 총 8구간의 코스 중
                     변산마실길 2코스는 입구에서 조금만 들어가면
-                    하얀 데이지꽃밭이 넓게 펼쳐져요🌼🤍
-                    예쁜 꽃, 노을지는 바다 풍경과 인생샷도 찍고,
-                    시원한 바닷바람을 맞으며 산책하기 좋아요!
-                    6월 초~중순 볼 수 있다고 하니 참고하세요 :)
-                    📍 주소
-                    전라북도 부안군 변산면 운산리 441-13
-                    📷 @kwanoo_j 님의 사진❣
-                    -
-                    여행 기록은 #여기서행복할것 태그♥
-                    여행 제보는 DM 또는 이메일로♥ ⠀
-                                        아름다운 바닷길을 따라 활짝 피어날
-                    #부안 #변산마실길2코스 샤스타데이지🌼
-                    변산반도를 둘러싸고 있는 총 8구간의 코스 중
-                    변산마실길 2코스는 입구에서 조금만 들어가면
-                    하얀 데이지꽃밭이 넓게 펼쳐져요🌼🤍
-                    예쁜 꽃, 노을지는 바다 풍경과 인생샷도 찍고,
-                    시원한 바닷바람을 맞으며 산책하기 좋아요!
-                    6월 초~중순 볼 수 있다고 하니 참고하세요 :)
-                    📍 주소
-                    전라북도 부안군 변산면 운산리 441-13
-                    📷 @kwanoo_j 님의 사진❣
-                    -
-                    여행 기록은 #여기서행복할것 태그♥
-                    여행 제보는 DM 또는 이메일로♥
-                </div>
-                <div class="modal_date">
-                    2일 전
-                </div>
+                    하얀 데이지꽃밭이 넓게 펼쳐져요🌼
+                    신난다 신나
+                    내용을 얼마나 길게 해야하는가요
+                    어디까지 내려갈 수 있습니까
+                    태그를 마구마구 때려넣어볼까
+                    #부안 #여행 # 데이트코스 #드라이브코스 #꽃구경
+                    #전국일주 #운전은언제쯤늘까 #넘무서워 #자전거최고
 
-                <div class="modal_comment_box">
-                    <div class="modal_comment">
-                        <div class="modal_profile_img">
-                            <img class="modal_profile_img_round" src="/images/img_profile.jpg"
-                                 alt="Profile Image">
-                        </div>
-                        <div class="modal_user_comment">
-                            <div class="modal_user_name">유저 아이디 </div>
-                            <div class="modal_comment_description">너무 멋진 곳이네요!</div>
-                        </div>
-                        <div class="modal_comment_like">♥</div>
-                    </div>
-                    <div class="modal_comment">
-                        <div class="modal_profile_img">
-                            <img class="modal_profile_img_round" src="/images/img_profile.jpg"
-                                 alt="Profile Image">
-                        </div>
-                        <div class="modal_user_comment">
-                            <div class="modal_user_name">유저 아이디 </div>
-                            <div class="modal_comment_description">너무 멋진 곳이네요!</div>
-                        </div>
-                        <div class="modal_comment_like">♥</div>
-                    </div>
-                    <div class="modal_comment">
-                        <div class="modal_profile_img">
-                            <img class="modal_profile_img_round" src="/images/img_profile.jpg"
-                                 alt="Profile Image">
-                        </div>
-                        <div class="modal_user_comment">
-                            <div class="modal_user_name">유저 아이디</div>
-                            <div class="modal_comment_description">너무 멋진 곳이네요!</div>
-                        </div>
+                    <li class="modal_comment_list">
 
-                        <div class="modal_comment_like">♥</div>
-                    </div>
-                    <div class="modal_comment">
-                        <div class="modal_profile_img">
-                            <img class="modal_profile_img_round" src="/images/img_profile.jpg"
-                                 alt="Profile Image">
-                        </div>
-                        <div class="modal_user_comment">
-                            <div class="modal_user_name">유저 아이디 </div>
-                            <div class="modal_comment_description">너무 멋진 곳이네요!</div>
-                        </div>
-                        <div class="modal_comment_like">♥</div>
-                    </div>
-                    <div class="modal_comment">
-                        <div class="modal_profile_img">
-                            <img class="modal_profile_img_round" src="/images/img_profile.jpg"
-                                 alt="Profile Image">
-                        </div>
-                        <div class="modal_user_comment">
-                            <div class="modal_user_name">유저 아이디 </div>
-                            <div class="modal_comment_description">너무 멋진 곳이네요!</div>
-                        </div>
-                        <div class="modal_comment_like">♥</div>
-                    </div>
+                    </li>
                 </div>
-
+                <ul id="comment-wrapper" class="comment-wrapper"></ul>
             </div>
 
             <div class="modal_icon_bar">
@@ -746,42 +663,29 @@
                         </button>
                         이 좋아요를 눌렀습니다.
                     </div>
-                </div>
-
-
-            <div class="modal_like">
-                좋아요 1000개
             </div>
+
             <div class="modal_date">
-                2일 전
+                <p class="sub"></p>
             </div>
-            <div class="modal_write">
-                <div class="modal_imogi_icon">이모티콘 아이콘</div>
-                <div class="modal_comment_input">댓글 작성 창</div>
-                <div class="modal_notice_btn">게시 버튼</div>
+
+            <div class="modal_comment_write">
+                <form id="comment">
+                    <input type="text" placeholder="댓글 달기..." id="commentInput">
+                    <button id="submit">게시</button>
+                </form>
             </div>
+
         </div>
+
     </div>
 </div>
 
 
 
-<script>
-// 모달창 열고 닫기
-const modal1 = document.getElementById("modal_overlay");
-const clickmodal1 = document.getElementById("about_post");
-clickmodal1.addEventListener("click", e => {
-    modal1.style.top = window.scrollY + 'px';
-    modal1.style.display = "flex";
-    document.body.style.overflowY = "hidden";
-});
 
-const CloseModal1 = document.getElementById("close_btn");
-CloseModal1.addEventListener("click", e => {
-    modal1.style.display = "none";
-    document.body.style.overflowY = "visible";
-});
-</script>
+
+
 
 
 </body>
