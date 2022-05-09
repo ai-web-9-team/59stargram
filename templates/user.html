@@ -127,66 +127,74 @@
                     저장됨</div>
             </div>
             <div class="user_post_main_box">
+                {% for i in range(posts|length) %}
+                    {% if i % 3 == 0 %}
                 <div class="user_post_row">
+                    {% endif %}
                     <div class="user_post_img_box">
-                        <img width="100%" src="/static/images/img_dongwoo_post_3.jpg"/>
+                       <img width="100%" src="data:image/jpg;Base64, {{ images[i] }}"/>
+<!--                        <img width="100%" src="/static/images/img_dongwoo_post_3.jpg"/>-->
                         <div class="user_post_info_box">
                             <div class="user_post_like_box">
                                 <i class="fa-solid fa-heart"></i>
-                                25
+                                {{ posts[i]['LikeCnt'] }}
                             </div>
                             <div class="user_post_comment_box">
                                 <i class="fa-solid fa-comment"></i>
-                                2
+                                {{ posts[i]['CommentCnt'] }}
                             </div>
                         </div>
                     </div>
-                    <div class="user_post_img_box">
-                        <img width="100%" src="/static/images/img_dongwoo_post_1.jpg"/>
-                        <div class="user_post_info_box">
-                            <div class="user_post_like_box">
-                                <i class="fa-solid fa-heart"></i>
-                                25
-                            </div>
-                            <div class="user_post_comment_box">
-                                <i class="fa-solid fa-comment"></i>
-                                2
-                            </div>
+                    {% if i % 3 == 2 %}
                         </div>
-                    </div>
-                    <div class="user_post_img_box">
-                        <img width="100%" src="/static/images/img_dongwoo_post_2.jpg"/>
-                        <div class="user_post_info_box">
-                            <div class="user_post_like_box">
-                                <i class="fa-solid fa-heart"></i>
-                                25
-                            </div>
-                            <div class="user_post_comment_box">
-                                <i class="fa-solid fa-comment"></i>
-                                2
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="user_post_row">
-                    <div class="user_post_img_box">
-                        <img width="100%" src="/static/images/img_post.jpg"/>
-                        <div class="user_post_info_box">
-                            <div class="user_post_like_box">
-                                <i class="fa-solid fa-heart"></i>
-                                25
-                            </div>
-                            <div class="user_post_comment_box">
-                                <i class="fa-solid fa-comment"></i>
-                                2
-                            </div>
-        </div>
-                    </div>
-                    <div class="user_post_img_box">
-                    </div>
-                    <div class="user_post_img_box">
-                    </div>
-                </div>
+                    {% endif %}
+                {% endfor %}
+<!--                    <div class="user_post_img_box">-->
+<!--                        <img width="100%" src="/static/images/img_dongwoo_post_1.jpg"/>-->
+<!--                        <div class="user_post_info_box">-->
+<!--                            <div class="user_post_like_box">-->
+<!--                                <i class="fa-solid fa-heart"></i>-->
+<!--                                25-->
+<!--                            </div>-->
+<!--                            <div class="user_post_comment_box">-->
+<!--                                <i class="fa-solid fa-comment"></i>-->
+<!--                                2-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="user_post_img_box">-->
+<!--                        <img width="100%" src="/static/images/img_dongwoo_post_2.jpg"/>-->
+<!--                        <div class="user_post_info_box">-->
+<!--                            <div class="user_post_like_box">-->
+<!--                                <i class="fa-solid fa-heart"></i>-->
+<!--                                25-->
+<!--                            </div>-->
+<!--                            <div class="user_post_comment_box">-->
+<!--                                <i class="fa-solid fa-comment"></i>-->
+<!--                                2-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="user_post_row">-->
+<!--                    <div class="user_post_img_box">-->
+<!--                        <img width="100%" src="/static/images/img_post.jpg"/>-->
+<!--                        <div class="user_post_info_box">-->
+<!--                            <div class="user_post_like_box">-->
+<!--                                <i class="fa-solid fa-heart"></i>-->
+<!--                                25-->
+<!--                            </div>-->
+<!--                            <div class="user_post_comment_box">-->
+<!--                                <i class="fa-solid fa-comment"></i>-->
+<!--                                2-->
+<!--                            </div>-->
+<!--        </div>-->
+<!--                    </div>-->
+<!--                    <div class="user_post_img_box">-->
+<!--                    </div>-->
+<!--                    <div class="user_post_img_box">-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
 

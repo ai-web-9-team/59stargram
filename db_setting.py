@@ -5,6 +5,8 @@
 
 from pymongo import MongoClient
 import gridfs
+from datetime import date, timedelta, datetime
+
 client = MongoClient('localhost', 27017)
 db = client.db59stargram
 
@@ -74,6 +76,46 @@ follows = [
     }
 ]
 
+posts = [
+    {
+        'PostId': '0',
+        'UserName': 'kimphysicsman',
+        'Description': '하위1',
+        'Date': datetime.now(),
+        'LikeCnt': 11,
+        'CommentCnt': 1
+    },     {
+        'PostId': '1',
+        'UserName': 'kimphysicsman',
+        'Description': '하위2',
+        'Date': datetime.now(),
+        'LikeCnt': 22,
+        'CommentCnt': 2
+    },    {
+        'PostId': '2',
+        'UserName': 'kimphysicsman',
+        'Description': '하위3',
+        'Date': datetime.now(),
+        'LikeCnt': 33,
+        'CommentCnt': 3
+    }, {
+     'PostId': '3',
+     'UserName': 'kimphysicsman',
+     'Description': '하위4',
+     'Date': datetime.now(),
+     'LikeCnt': 44,
+     'CommentCnt': 4
+     }
+]
+
+post_images = [
+    'static/images/img_dongwoo_post_1.jpg',
+    'static/images/img_dongwoo_post_2.jpg',
+    'static/images/img_dongwoo_post_3.jpg',
+    'static/images/img_dongwoo_post_1.jpg',
+    'static/images/img_post.jpg'
+]
+
 def make_follow():
     global follows
     for follow in follows:
@@ -85,31 +127,37 @@ def make_user():
     for user in users:
         db.Users.insert_one(user)
 
-def insert_image():
-    global images, users
+def make_post():
+    global posts
+    for post in posts:
+        db.Posts.insert_one(post)
+
+
+def insert_image(images, namespace):
+    global posts
     for i in range(len(images)):
         ## GridFs를 통해 파일을 분할하여 DB에 저장하게 된다
         image = images[i]
         image_file = open(image, "rb")
 
+        post = posts[i]
+
         print(image_file)
 
-        user = users[i]
-
-        fs = gridfs.GridFS(db, 'Profile')
-        fs.put(image_file, filename=user['UserName'])
+        fs = gridfs.GridFS(db, namespace)
+        fs.put(image_file, filename=post['PostId'])
 
 def road_image():
     global users
     for user in users:
         name = user['UserName']
         print(name)
-        fs = gridfs.GridFS(db)
-        data = db.fs.files.find_one({'filename': name})
+        fs = gridfs.GridFS(db, 'Profile')
+        data = db.Profile.files.find_one({'filename': name})
 
+        print(fs)
         my_id = data['_id']
         outputdata = fs.get(my_id).read()
-        output = open('./static/images/' + name + '.jpg', 'wb')
+        output = open('./static/images/' + name + '01.jpg', 'wb')
         output.write(outputdata)
 
-make_follow()

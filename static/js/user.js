@@ -114,3 +114,5 @@ modal_setting_outside.addEventListener('click', (event) => {
         user_modal_quit(2)
     }
 });
+
+// 유저
