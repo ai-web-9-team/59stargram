@@ -744,17 +744,13 @@
                 <img id="preview4" style="width: 150px; height: 200px; margin: 20px 5px 0px 5px;"/>
             </div>
             <div style="background-color: rgba(0, 0, 0, 0.1); font-size: 15px;">
-                내용
-                <input type="textarea" style="width: 600px; height: 200px; margin: 20px 0px 20px 0px;">
+                <textarea style="width: 600px; height: 200px; margin: 20px 0px 20px 0px; padding: 10px;"></textarea>
             </div>
             <div class="card" style="background-color: rgba(0, 0, 0, 0.1); display: block;">
                 <button class="modal_btn" style="width: 10%;">업로드</button>
                 <button class="modal_btn" style="width: 10%;" onclick="add_feed_quit()">취소</button>
             </div>
             <script>
-      const onChange = (e) => {
-    onUpload(e.target.files[0]);
-    e.target.value = '';
   };
 
 
@@ -769,6 +765,8 @@
     };
     reader.readAsDataURL(data.files[0]);
   };
+
+
 
 
 
