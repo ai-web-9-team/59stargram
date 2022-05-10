@@ -107,24 +107,44 @@ def user_follow():
     # 정보 불러오기
     follows = []
     users = []
+    fs = gridfs.GridFS(db, 'Profile')
     if follow_type == '0':
         follows = list(db.Follows.find({"FollowingName": user_name}, {'_id': False}))
         msg = '팔로워 로딩'
         for follow in follows:
             follower = db.Users.find_one({"UserName": follow['UserName']}, {'_id': False})
+
+            data = db.Profile.files.find_one({'filename': follower['UserName']})
+            my_id = data['_id']
+            data = fs.get(my_id).read()
+
+            data = base64.b64encode(data)
+            data = data.decode()
+
             follower_info = {
                 'UserName': follower['UserName'],
                 'Name': follower['Name'],
+                'ProfileImage': data
             }
+
             users.append(follower_info)
     elif follow_type == '1':
         follows = list(db.Follows.find({"UserName": user_name}, {'_id': False}))
         msg = '팔로잉 로딩'
         for follow in follows:
             following = db.Users.find_one({"UserName": follow['FollowingName']}, {'_id': False})
+
+            data = db.Profile.files.find_one({'filename': following['UserName']})
+            my_id = data['_id']
+            data = fs.get(my_id).read()
+
+            data = base64.b64encode(data)
+            data = data.decode()
+
             following_info = {
                 'UserName': following['UserName'],
                 'Name': following['Name'],
+                'ProfileImage': data
             }
             users.append(following_info)
     else:
@@ -157,6 +177,7 @@ def user_follow_delete():
         msg = '삭제 실패'
 
     return jsonify({'msg': msg})
+
 
 # 유저 페이지 - 팔로우 생성
 @app.route('/user/follow/create', methods=['POST'])
@@ -194,9 +215,11 @@ def user_follow_create():
 def login():
     return render_template('login.html')
 
+
 @app.route('/register')
 def register():
     return render_template('register.html')
+
 
 @app.route('/detail')
 def detail():
