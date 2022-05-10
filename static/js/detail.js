@@ -28,7 +28,7 @@ clickmodal1.addEventListener("click", e => {
             $('#modal_date').text(date)
 
             let likecnt = response['new_post']['LikeCnt']
-            $('#modal_img_description').text(description)
+            $('#like_people').text(likecnt)
         }
     })
 });
@@ -72,8 +72,7 @@ function addComment(value) {
                                 <span class="modal_profile_img_round">사진</span>
                                 <span class="modal_user_name">유저 아이디</span>
                                 <span> ${value}</span>
-                                <button class="delete"> 삭제 </button>
-                                <span>🤍</span>
+                                <button class="delete"> 삭제 </button>                            
                             </li>`
 
     newCommentList.innerHTML = defaultComment; // li 태그에 댓글default값을 설정 해 준다.
