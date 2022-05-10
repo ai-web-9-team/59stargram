@@ -57,7 +57,19 @@ function user_follow_modal_on(type) {
 
     $('.user_follower_title_text').text(title_text);
 
+    user_modal_list(type)
+
+    modal_follow_outside.classList.toggle('show');
+    if (modal_follow_outside.classList.contains('show')) {
+        body.style.overflow = 'hidden';
+    }
+}
+
+// 팔로우 모달창 리스트 업
+function user_modal_list(type){
+    // 현재 로그인한 사용자이름 가져오기
     let user_name = 'kimphysicsman'
+
     let url = '/user/follow?user_name=' + user_name + '&type=' + type
     $.ajax({
         type: "GET",
@@ -65,11 +77,13 @@ function user_follow_modal_on(type) {
         data: {},
         success: function (response) {
             let follows = response['users'];
+            let user = user_name
 
             for (let i = 0; i < follows.length; i++){
                  let temp_html = `<div class="user_follower">
                                     <div class="user_follower_img">
-                                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                                        <img class="img_circle" width="30px" height="30px" 
+                                             src="data:image/jpg;base64, ${follows[i]['ProfileImage']}"/>
                                     </div>
                                     <div class="user_follower_name_box">
                                         <div class="user_follower_username" name="${follows[i]['UserName']}">
@@ -80,13 +94,19 @@ function user_follow_modal_on(type) {
                                         </div>
                                     </div>
                                     <div class="user_follower_delete_box">
-                                        <div class="user_follower_delete_btn">
-                                            삭제
-                                        </div>
                                     </div>
                                 </div>`
 
-                $('.user_follower_list').append(temp_html);
+                 $('.user_follower_list').append(temp_html);
+
+                 if(type == 1) {
+                     $('.user_follower_delete_box').empty();
+                     let temp_html_2 = `<div class="user_follower_delete_btn" onclick="user_follow_delete('${user}', '${follows[i]['UserName']}')">
+                                            삭제
+                                        </div>`
+                     $('.user_follower_delete_box').append(temp_html_2)
+                 }
+
             }
 
 
@@ -94,11 +114,25 @@ function user_follow_modal_on(type) {
     })
 
 
-    modal_follow_outside.classList.toggle('show');
-    if (modal_follow_outside.classList.contains('show')) {
-        body.style.overflow = 'hidden';
-    }
 }
+
+// 팔로우 삭제
+function user_follow_delete(user_name, following_name) {
+    console.log(user_name, following_name)
+    $.ajax({
+        type: "POST",
+        url: '/user/follow/delete',
+        data: {
+            user_name: user_name,
+            following_name: following_name
+        },
+        success: function (response) {
+            user_modal_list(1)
+        }
+    })
+
+}
+
 
 // 유저 요약 모달 API 전달하기
 function user_summary_modal_on(name, top, left) {

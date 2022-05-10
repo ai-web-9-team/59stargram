@@ -98,12 +98,12 @@ posts = [
         'LikeCnt': 33,
         'CommentCnt': 3
     }, {
-     'PostId': '3',
-     'UserName': 'kimphysicsman',
-     'Description': '하위4',
-     'Date': datetime.now(),
-     'LikeCnt': 44,
-     'CommentCnt': 4
+         'PostId': '3',
+         'UserName': 'kimphysicsman',
+         'Description': '하위4',
+         'Date': datetime.now(),
+         'LikeCnt': 44,
+         'CommentCnt': 4
      }
 ]
 
@@ -112,7 +112,6 @@ post_images = [
     'static/images/img_dongwoo_post_2.jpg',
     'static/images/img_dongwoo_post_3.jpg',
     'static/images/img_dongwoo_post_1.jpg',
-    'static/images/img_post.jpg'
 ]
 
 bookmarks = [
@@ -175,24 +174,26 @@ def make_comment():
     for comment in comments:
        db.Comments.insert_one(comment)
 
-def insert_image(images, namespace):
-    global posts
+def insert_image(type, namespace):
+    global posts, users, images, post_images
     for i in range(len(images)):
         ## GridFs를 통해 파일을 분할하여 DB에 저장하게 된다
         image = images[i]
         image_file = open(image, "rb")
+        if type == 1:
+            post = posts[i]
+            fs = gridfs.GridFS(db, namespace)
+            fs.put(image_file, filename=post['PostId'])
+        elif type == 0:
+            user = users[i]
+            fs = gridfs.GridFS(db, namespace)
+            fs.put(image_file, filename=user['UserName'])
 
-        post = posts[i]
-
-        print(image_file)
-
-        fs = gridfs.GridFS(db, namespace)
-        fs.put(image_file, filename=post['PostId'])
 
 make_user()
 make_post()
 make_bookmark()
 make_follow()
 make_comment()
-insert_image(images, 'Profile')
-insert_image(post_images, 'Post')
+insert_image(0, 'Profile')
+insert_image(1, 'Post')
