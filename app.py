@@ -102,8 +102,6 @@ def user_follow():
     else:
         msg = '로딩 실패!'
 
-    print(follows)
-    print(users)
     return jsonify({'msg': msg, 'users': users})
 
 
