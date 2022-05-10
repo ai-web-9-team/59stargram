@@ -7,8 +7,13 @@ from pymongo import MongoClient
 import gridfs
 from datetime import date, timedelta, datetime
 
-client = MongoClient('localhost', 27017)
-db = client.db59stargram
+import certifi
+
+client = MongoClient('mongodb+srv://test:sparta@cluster0.1idhr.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=certifi.where())
+db = client.ogustagram
+
+# client = MongoClient('localhost', 27017)
+# db = client.db59stargram
 
 users = [
     {
@@ -130,21 +135,21 @@ comments = [
         'Desription': '멋잇다',
         'PostId': '0',
         'UserName': 'hee123',
-        'Date': datetime.now(),
+        'Data': datetime.now(),
         'LikeCnt': 0
     },     {
         'CommentId': '1',
         'Desription': '멋잇다123',
         'PostId': '0',
         'UserName': 'hee123',
-        'Date': datetime.now(),
+        'Data': datetime.now(),
         'LikeCnt': 0
     },     {
         'CommentId': '2',
         'Desription': '멋잇다33333',
         'PostId': '0',
         'UserName': 'hee123',
-        'Date': datetime.now(),
+        'Data': datetime.now(),
         'LikeCnt': 0
     }
 ]
@@ -194,4 +199,3 @@ def insert_image(type, namespace):
             fs = gridfs.GridFS(db, namespace)
             fs.put(image_file, filename=user['UserName'])
 
-db.Follows.insert_one(follows[3])
