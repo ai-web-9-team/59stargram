@@ -25,6 +25,16 @@ def user():
         # 유저 정보 불러오기
         user_info = db.Users.find_one({"UserName": user_name})
 
+        # 유저 프로필 사진 불러오기
+        fs = gridfs.GridFS(db, 'Profile')
+        profile_img = db.Profile.files.find_one({'filename': user_name})
+
+        my_id = profile_img['_id']
+        profile_img = fs.get(my_id).read()
+
+        profile_img = base64.b64encode(profile_img)  # convert to base64 as bytes
+        profile_img = profile_img.decode()  # convert bytes to string
+
         # 게시글 정보 불러오기
         posts = list(db.Posts.find({"UserName": user_name}))
 
@@ -63,10 +73,19 @@ def user():
             bookmark_posts.append(bookmark_post)
             bookmark_images.append(data)
 
+        # 현재 로그인한 유저인지 판단
+        ## 현재 접속한 유저의 사용자 이름
+        current_user = 'kimphysicsman'
+        if user_name == current_user:
+            my_page = 1
+        else:
+            my_page = 0
+
         return render_template("user.html",
-                               user_info=user_info,
+                               user_info=user_info, profile_img=profile_img,
                                posts=posts, post_images=post_images,
-                               bookmark_posts=bookmark_posts, bookmark_images=bookmark_images)
+                               bookmark_posts=bookmark_posts, bookmark_images=bookmark_images,
+                               my_page=my_page)
 
 
 # 유저 페이지 - 팔로우정보 보여주기
@@ -135,13 +154,53 @@ def user_follow_delete():
     try:
         db.Follows.delete_one({'UserName': user_name, 'FollowingName': following_name})
         msg = '삭제 완료'
-        
 
-        db.Users.update_one({'UserName': user_name}, {'$set': {'FollowingCnt': 19}})
+        # 로그인한 유저의 팔로잉 숫자 업데이트
+        # 현재 유저 정보에서 팔로잉 숫자 가져오기
+        following_cnt = 10
+        db.Users.update_one({'UserName': user_name}, {'$set': {'FollowingCnt': following_cnt - 1}})
+
+        # 팔로잉 유저의 팔로워 숫자 업데이트
+        following_user = db.Users.find_one({'UserName': following_name})
+        following_user_follower_cnt = following_user['FollowerCnt']
+        db.Users.update_one({'UserName': following_name}, {'$set': {'FollowerCnt': following_user_follower_cnt - 1}})
+
     except:
         msg = '삭제 실패'
 
     return jsonify({'msg': msg})
+
+
+# 유저 페이지 - 팔로우 생성
+@app.route('/user/follow/create', methods=['POST'])
+def user_follow_create():
+    user_name = request.form['user_name']
+    following_name = request.form['following_name']
+
+    follow_info = db.Follows.find_one({'UserName': user_name, 'FollowingName': following_name})
+
+    if follow_info is None:
+        try:
+            db.Follows.insert_one({'UserName': user_name, 'FollowingName': following_name})
+            msg = '팔로우 완료'
+
+            # 로그인한 유저의 팔로잉 숫자 업데이트
+            # 현재 유저 정보에서 팔로잉 숫자 가져오기
+            following_cnt = 10
+            db.Users.update_one({'UserName': user_name}, {'$set': {'FollowingCnt': following_cnt + 1}})
+
+            # 팔로잉 유저의 팔로워 숫자 업데이트
+            following_user = db.Users.find_one({'UserName': following_name})
+            following_user_follower_cnt = following_user['FollowerCnt']
+            db.Users.update_one({'UserName': following_name}, {'$set': {'FollowerCnt': following_user_follower_cnt + 1}})
+
+        except:
+            msg = '팔로우 실패'
+
+        return jsonify({'msg': msg})
+    else:
+        msg = '이미 팔로우 한 상태입니다.'
+        return jsonify({'msg': msg})
 
 
 @app.route('/login')

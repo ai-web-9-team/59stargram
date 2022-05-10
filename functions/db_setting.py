@@ -194,5 +194,4 @@ def insert_image(type, namespace):
             fs = gridfs.GridFS(db, namespace)
             fs.put(image_file, filename=user['UserName'])
 
-
-make_comment()
+db.Follows.insert_one(follows[3])

@@ -67,8 +67,11 @@ function user_follow_modal_on(type) {
 
 // 팔로우 모달창 리스트 업
 function user_modal_list(type){
-    // 현재 로그인한 사용자이름 가져오기
-    let user_name = 'kimphysicsman'
+    // 현재 로그인한 유저의 사용자이름 가져오기
+    let current_name = 'kimphysicsman'
+
+    // 유저페이지의 사용자 이름
+    let user_name = $('#user_name_title').text()
 
     let url = '/user/follow?user_name=' + user_name + '&type=' + type
     $.ajax({
@@ -99,7 +102,7 @@ function user_modal_list(type){
 
                  $('.user_follower_list').append(temp_html);
 
-                 if(type == 1) {
+                 if(type == 1 && current_name == user_name) {
                      $('.user_follower_delete_box').empty();
                      let temp_html_2 = `<div class="user_follower_delete_btn" onclick="user_follow_delete('${user}', '${follows[i]['UserName']}')">
                                             삭제
@@ -118,7 +121,6 @@ function user_modal_list(type){
 
 // 팔로우 삭제
 function user_follow_delete(user_name, following_name) {
-    console.log(user_name, following_name)
     $.ajax({
         type: "POST",
         url: '/user/follow/delete',
@@ -128,17 +130,38 @@ function user_follow_delete(user_name, following_name) {
         },
         success: function (response) {
             user_modal_list(1)
+            alert(response['msg'])
+            window.location.reload()
         }
     })
 
 }
 
+// 팔로우 생성
+function user_follow_create() {
+    // 현재 로그인한 사용자 이름 가져오기
+    let user_name = 'kimphysicsman'
+
+    let following_name = $('#user_name_title').text()
+
+    $.ajax({
+        type: "POST",
+        url: '/user/follow/create',
+        data: {
+            user_name: user_name,
+            following_name: following_name
+        },
+        success: function (response) {
+            alert(response['msg'])
+            window.location.reload()
+        }
+    })
+}
 
 // 유저 요약 모달 API 전달하기
 function user_summary_modal_on(name, top, left) {
-    let offset_top = $('.user_follower_body').offset().top + top
-        + 50
-    let offset_left = $('.user_follower_body').offset().left + left + 50
+    let offset_top = $('.user_follower_body').offset().top + top + 50;
+    let offset_left = $('.user_follower_body').offset().left + left + 50;
 
     offset_top = parseInt(offset_top).toString()+'px'
     offset_left = parseInt(offset_left).toString()+'px'
@@ -156,7 +179,6 @@ function user_setting_modal_on() {
         body.style.overflow = 'hidden';
     }
 }
-
 
 // 모달창 사라지기
 // type - 0:팔로우 모달창, 1:유저요약 모달창, 2:유저설정 모달창
@@ -191,5 +213,3 @@ modal_setting_outside.addEventListener('click', (event) => {
         user_modal_quit(2)
     }
 });
-
-// 유저

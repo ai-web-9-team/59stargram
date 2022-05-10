@@ -71,19 +71,15 @@
             <ul>
                 <button class="home" onClick="window.location.reload()"><i class="fas fa-house"></i>
                 </button>
-                <button class="dm" id="dm_button"><i class="fa-regular fa-paper-plane"></i>
-                </button>
                 <button class="add_feed" id="add_feed_button"><i class="fa-regular fa-square-plus"></i>
                 </button>
                 <button class="explore" id="explore_button"><i class="fa-regular fa-compass"></i>
                 </button>
                 <button class="notice" id="notice_button"><i class="fa-regular fa-heart"></i>
                 </button>
-                <div>
-                    <a href="{{url_for('user', user_name='kimphysicsman')}}">
+                <a style="margin-left: 5px;" href="{{url_for('user', user_name='kimphysicsman')}}">
                     <img class="img_circle" width="24px" src="/static/images/img_profile.jpg" />
-                    </a>
-                </div>
+                </a>
             </ul>
         </div>
     </div>
@@ -95,13 +91,19 @@
         <div class="user_profile_box">
             <div class="user_img_box">
                 <img class="img_circle user_img" name="프로필 사진 바꾸기"
-                     src="/static/images/img_profile.jpg"/>
+                    src="data:image/jpg;base64, {{ profile_img }}"/>
             </div>
             <div class="user_info_box">
                 <div class="user_name">
-                    <p>{{user_info['UserName']}}</p>
-                    <div class="user_setting_box" onclick="user_setting_modal_on()">
-                        <img width="100%" src="/static/images/icon_setting.png" />
+                    <p id="user_name_title">{{user_info['UserName']}}</p>
+                    <div class="user_setting_box">
+                        {% if my_page == 1 %}
+                        <div onclick="user_setting_modal_on()">
+                        <img width="24px" align="left" src="/static/images/icon_setting.png" />
+                        </div>
+                        {% else %}
+                        <div class="user_follow_btn" onclick="user_follow_create()">팔로우</div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="item_cnt">
