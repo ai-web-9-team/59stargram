@@ -30,13 +30,12 @@ users = [
         'FollowerCnt': 1,
         'FollowingCnt': 1
     }, {
-        'UserName': 'Joen123',
+        'UserName': 'joen123',
         'Password': '1234567890',
         'Email': 'Joen123@gmail.com',
         'Name': 'Jinyoung Joen',
-        'RecentEvents': [],
         'PostCnt': 0,
-        'FollowerCnt': 1,
+        'FollowerCnt': 0,
         'FollowingCnt': 0
     }, {
         'UserName': 'song123',
@@ -126,6 +125,31 @@ bookmarks = [
     }
 ]
 
+comments = [
+    {
+        'CommentId': '0',
+        'Desription': '멋잇다',
+        'PostId': '0',
+        'UserName': 'hee123',
+        'Data': datetime.now(),
+        'LikeCnt': 0
+    },     {
+        'CommentId': '1',
+        'Desription': '멋잇다123',
+        'PostId': '0',
+        'UserName': 'hee123',
+        'Data': datetime.now(),
+        'LikeCnt': 0
+    },     {
+        'CommentId': '2',
+        'Desription': '멋잇다33333',
+        'PostId': '0',
+        'UserName': 'hee123',
+        'Data': datetime.now(),
+        'LikeCnt': 0
+    }
+]
+
 def make_follow():
     global follows
     for follow in follows:
@@ -146,6 +170,11 @@ def make_bookmark():
     for bookmark in bookmarks:
         db.Bookmarks.insert_one(bookmark)
 
+def make_comment():
+    global comments
+    for comment in comments:
+       db.Comments.insert_one(comment)
+
 def insert_image(images, namespace):
     global posts
     for i in range(len(images)):
@@ -160,21 +189,10 @@ def insert_image(images, namespace):
         fs = gridfs.GridFS(db, namespace)
         fs.put(image_file, filename=post['PostId'])
 
-def road_image():
-    global users
-    for user in users:
-        name = user['UserName']
-        print(name)
-        fs = gridfs.GridFS(db, 'Profile')
-        data = db.Profile.files.find_one({'filename': name})
-
-        print(fs)
-        my_id = data['_id']
-        outputdata = fs.get(my_id).read()
-        output = open('./static/images/' + name + '01.jpg', 'wb')
-        output.write(outputdata)
-
-a= 5
-for i in range(a):
-    if i % 3 == 2 or i == a-1:
-        print(i)
+make_user()
+make_post()
+make_bookmark()
+make_follow()
+make_comment()
+insert_image(images, 'Profile')
+insert_image(post_images, 'Post')
