@@ -61,28 +61,6 @@ div {
     margin-left: 40px;
 }
 
-/*.or {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*    height: 15px;*/
-/*    margin: 0 0 20px;*/
-/*    background-color: rgb(230, 230, 230);*/
-/*}*/
-
-/*.or .line {*/
-/*    width: 105px;*/
-/*    height: 2px;*/
-/*    margin: auto;*/
-/*    background: #999;*/
-/*}*/
-
-/*.or p {*/
-/*    margin: auto;*/
-/*    color: #999;*/
-/*    font-size: 12px;*/
-/*}*/
-
 .form-floating {
     width: 266px;
     font-size: 11px;
@@ -108,10 +86,11 @@ div {
     line-height: 16px;
     text-align: center;
 }
-.error{
+
+.error {
     font-size: 1px;
     height: 20px;
-    color:red;
+    color: red;
     font-weight: 700;
     background-color: rgb(230, 230, 230);
 }
