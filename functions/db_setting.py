@@ -130,21 +130,21 @@ comments = [
         'Desription': '멋잇다',
         'PostId': '0',
         'UserName': 'hee123',
-        'Data': datetime.now(),
+        'Date': datetime.now(),
         'LikeCnt': 0
     },     {
         'CommentId': '1',
         'Desription': '멋잇다123',
         'PostId': '0',
         'UserName': 'hee123',
-        'Data': datetime.now(),
+        'Date': datetime.now(),
         'LikeCnt': 0
     },     {
         'CommentId': '2',
         'Desription': '멋잇다33333',
         'PostId': '0',
         'UserName': 'hee123',
-        'Data': datetime.now(),
+        'Date': datetime.now(),
         'LikeCnt': 0
     }
 ]
@@ -195,10 +195,4 @@ def insert_image(type, namespace):
             fs.put(image_file, filename=user['UserName'])
 
 
-make_user()
-make_post()
-make_bookmark()
-make_follow()
 make_comment()
-insert_image(0, 'Profile')
-insert_image(1, 'Post')
