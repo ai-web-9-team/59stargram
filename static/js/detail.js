@@ -6,6 +6,31 @@ clickmodal1.addEventListener("click", e => {
     modal1.style.top = window.scrollY + 'px';
     modal1.style.display = "flex";
     document.body.style.overflowY = "hidden";
+
+    // 1. post_id 가져와서
+    let post_id = $('#about_post').attr('name')
+
+    // 2. post_id 보내주기
+    // 4. post 정보 받기
+    // 5. 원하는 곳에 넣기
+    $.ajax({
+        type: "GET",
+        url: '/details?post_id=' + post_id,
+        data: {},
+        success: function (response) {
+            let user_name = response['new_post']['UserName']
+            $('#modal_user_name').text(user_name)
+
+            let description = response['new_post']['Description']
+            $('#modal_img_description').text(description)
+
+            let date = response['new_post']['Date']
+            $('#modal_date').text(date)
+
+            let likecnt = response['new_post']['LikeCnt']
+            $('#modal_img_description').text(description)
+        }
+    })
 });
 
 
@@ -14,6 +39,8 @@ CloseModal1.addEventListener("click", e => {
     modal1.style.display = "none";
     document.body.style.overflowY = "visible";
 });
+
+
 
 
 // 댓글입력시 게시글밑에 달리기
@@ -72,52 +99,5 @@ init();
 
 
 
-
-// 현재 시간과 비교해서 글쓴 시간 계산
-timeBefore();
-
-function timeBefore() {
-    //현재시간
-    var now = new Date();
-    console.log(now);
-    //글쓴 시간
-    var writeDay = new Date('Wen April 20 2022 15:01:17 GMT+0900');
-    var minus;
-    if (now.getFullYear() > writeDay.getFullYear()) {
-        minus = now.getFullYear() - writeDay.getFullYear();
-        document.getElementsByClassName("sub")[0].innerHTML = minus + "년 전";
-        console.log(minus + "년 전");
-    } else if (now.getMonth() > writeDay.getMonth()) {
-        minus = now.getMonth() - writeDay.getMonth();
-        document.getElementsByClassName("sub")[0].innerHTML = minus + "달 전";
-        console.log(minus + "달 전");
-    } else if (now.getDate() > writeDay.getDate()) {
-        minus = now.getDate() - writeDay.getDate();
-        document.getElementsByClassName("sub")[0].innerHTML = minus + "일 전";
-        console.log(minus + "일 전");
-    } else if (now.getDate() == writeDay.getDate()) {
-        var nowTime = now.getTime();
-        var writeTime = writeDay.getTime();
-        if (nowTime > writeTime) {
-            sec = parseInt(nowTime - writeTime) / 1000;
-            day = parseInt(sec / 60 / 60 / 24);
-            sec = (sec - (day * 60 * 60 * 24));
-            hour = parseInt(sec / 60 / 60);
-            sec = (sec - (hour * 60 * 60));
-            min = parseInt(sec / 60);
-            sec = parseInt(sec - (min * 60));
-            if (hour > 0) {
-                document.getElementsByClassName("sub")[0].innerHTML = hour + "시간 전";
-                console.log(hour + "시간 전");
-            } else if (min > 0) {
-                document.getElementsByClassName("sub")[0].innerHTML = min + "분 전";
-                console.log(min + "분 전");
-            } else if (sec > 0) {
-                document.getElementsByClassName("sub")[0].innerHTML = sec + "초 전";
-                console.log(sec + "초 전");
-            }
-        }
-    }
-}
 
 
