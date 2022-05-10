@@ -91,10 +91,60 @@ def user():
             my_page = 0
 
         return render_template("user.html",
+                               current_user=current_user,
                                user_info=user_info, profile_img=profile_img,
                                posts=posts, post_images=post_images,
                                bookmark_posts=bookmark_posts, bookmark_images=bookmark_images,
                                my_page=my_page)
+
+
+# 유저 페이지 - 유저 정보 보여주기
+@app.route('/user/summary', methods=['GET'])
+def user_summary():
+    user_name = request.args.get('user_name')
+
+    # 유저 정보 불러오기
+    user_info = db.Users.find_one({"UserName": user_name})
+
+    new_user_info = {
+        'UserName': user_info['UserName'],
+        'Name': user_info['Name'],
+        'PostCnt': user_info['PostCnt'],
+        'FollowerCnt': user_info['FollowerCnt'],
+        'FollowingCnt': user_info['FollowingCnt']
+    }
+
+    # 유저 프로필 사진 불러오기
+    fs = gridfs.GridFS(db, 'Profile')
+    profile_img = db.Profile.files.find_one({'filename': user_name})
+
+    my_id = profile_img['_id']
+    profile_img = fs.get(my_id).read()
+
+    profile_img = base64.b64encode(profile_img)  # convert to base64 as bytes
+    profile_img = profile_img.decode()  # convert bytes to string
+
+    # 게시글 정보 불러오기
+    posts = list(db.Posts.find({"UserName": user_name}).limit(3))
+
+    # 포스트 이미지 불러오기
+    post_images = []
+    fs = gridfs.GridFS(db, 'Post')
+    for post in posts:
+        data = db.Post.files.find_one({'filename': post['PostId']})
+        my_id = data['_id']
+        data = fs.get(my_id).read()
+
+        data = base64.b64encode(data)
+        data = data.decode()
+
+        post_images.append(data)
+
+    return jsonify({'user_info': new_user_info,
+                    'profile_img': profile_img,
+                    'post_images': post_images})
+
+
 
 # 유저 페이지 - 팔로우정보 보여주기
 @app.route('/user/follow', methods=['GET'])
