@@ -5,7 +5,7 @@ app = Flask(__name__)
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
-db = client.dbinsta
+db = client.db59stargram
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
@@ -30,8 +30,10 @@ def home():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.user.find_one({"Email": payload['id']})
-        return render_template('index.html')
+        print(payload)
+        user_info = db.Users.find_one({"Email": payload['id']})
+        print(user_info)
+        return render_template('index.html', info=user_info)
     except jwt.ExpiredSignatureError:
         return redirect(url_for('login'))
     except jwt.exceptions.DecodeError:
@@ -87,7 +89,8 @@ def api_register():
 
     else:
         db.Users.insert_one(
-            {'Email': id_receive, 'Password': pw_hash, 'UserName': nickname_receive, 'Name': name_receive})
+            {'Email': id_receive, 'Password': pw_hash, 'UserName': nickname_receive, 'Name': name_receive, 'PostCnt': 0,
+             'FollowerCnt': 0, 'FollowingCnt': 0})
         return jsonify({'result': 'success', 'msg': '회원가입 되었습니다!'})
 
 
@@ -125,9 +128,6 @@ def api_login():
             'result': 'success', 'msg': '로그인 성공!',
             # 검증된 경우, access 토큰 반환
             'token': token})
-
-    else:
-        return jsonify({'result': 'fail', 'msg': '?'})
 
 
 if __name__ == '__main__':
