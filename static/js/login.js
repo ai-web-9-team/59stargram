@@ -12,8 +12,8 @@ function login() {
         success: function (response) {
             if (response['result'] === 'success') {
                 alert(response['msg']),
-                    $.cookie('token', response['token'])
-                window.location.href = '/index';
+                    $.cookie('mytoken', response['token'])
+                window.location.href = '/';
             } else {
                 alert(response['msg'])
             }
