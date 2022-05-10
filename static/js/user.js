@@ -1,6 +1,8 @@
 // 사용자 페이지 로딩시 posts 탭을 보여줌
 $(document).ready(function () {
-    user_menu_on('posts')
+    $(`.user_post_menu[name='posts']`).css('border-top', '2px solid black');
+    $(`.user_post_menu[name='posts']`).css('font-weight', 'bold');
+    $(`.user_post_menu[name='posts']`).css('opacity', '1');
 
     // 유저 요약 모달창 이벤트
     $(`.user_follower_username`).hover(function () {
@@ -29,6 +31,9 @@ function user_menu_on(name){
     $(`.user_post_menu[name=${name}]`).css('border-top', '2px solid black');
     $(`.user_post_menu[name=${name}]`).css('font-weight', 'bold');
     $(`.user_post_menu[name=${name}]`).css('opacity', '1');
+
+    $('.user_post_users').toggle('show')
+    $('.user_post_bookmarks').toggle('show')
 }
 
 const body = document.querySelector('body');
@@ -39,6 +44,8 @@ const modal_setting_outside = document.querySelector('.user_setting_modal_box');
 // 팔로우 모달 API 전달하기
 // type - 0:팔로워, 1:팔로잉
 function user_follow_modal_on(type) {
+    $('.user_follower_list').empty();
+
     let title_text;
     if (type == 0) {
         title_text = '팔로워';
@@ -49,6 +56,43 @@ function user_follow_modal_on(type) {
     }
 
     $('.user_follower_title_text').text(title_text);
+
+    let user_name = 'kimphysicsman'
+    let url = '/user/follow?user_name=' + user_name + '&type=' + type
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: {},
+        success: function (response) {
+            let follows = response['users'];
+
+            for (let i = 0; i < follows.length; i++){
+                 let temp_html = `<div class="user_follower">
+                                    <div class="user_follower_img">
+                                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                                    </div>
+                                    <div class="user_follower_name_box">
+                                        <div class="user_follower_username" name="${follows[i]['UserName']}">
+                                            ${follows[i]['UserName']}
+                                        </div>
+                                        <div class="user_follower_name">
+                                            ${follows[i]['Name']}
+                                        </div>
+                                    </div>
+                                    <div class="user_follower_delete_box">
+                                        <div class="user_follower_delete_btn">
+                                            삭제
+                                        </div>
+                                    </div>
+                                </div>`
+
+                $('.user_follower_list').append(temp_html);
+            }
+
+
+        }
+    })
+
 
     modal_follow_outside.classList.toggle('show');
     if (modal_follow_outside.classList.contains('show')) {
@@ -97,7 +141,6 @@ function user_modal_quit(type) {
         if (!modal_setting_outside.classList.contains('show')) {
             body.style.overflow = 'auto';
         }
-
     } else {
         return;
     }

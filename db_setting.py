@@ -116,11 +116,20 @@ post_images = [
     'static/images/img_post.jpg'
 ]
 
+bookmarks = [
+    {
+        'UserName': 'kimphysicsman',
+        'PostId': '1'
+    }, {
+        'UserName': 'kimphysicsman',
+        'PostId': '3'
+    }
+]
+
 def make_follow():
     global follows
     for follow in follows:
         db.Follows.insert_one(follow)
-
 
 def make_user():
     global users
@@ -132,6 +141,10 @@ def make_post():
     for post in posts:
         db.Posts.insert_one(post)
 
+def make_bookmark():
+    global bookmarks
+    for bookmark in bookmarks:
+        db.Bookmarks.insert_one(bookmark)
 
 def insert_image(images, namespace):
     global posts
@@ -161,3 +174,7 @@ def road_image():
         output = open('./static/images/' + name + '01.jpg', 'wb')
         output.write(outputdata)
 
+a= 5
+for i in range(a):
+    if i % 3 == 2 or i == a-1:
+        print(i)

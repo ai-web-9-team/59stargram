@@ -507,8 +507,17 @@
     float: left;
 }
 
+.user_post_users.show {
+    display: none;
+}
 
+.user_post_bookmarks {
+    display: none;
+}
 
+.user_post_bookmarks.show {
+    display: block;
+}
 
 
 
