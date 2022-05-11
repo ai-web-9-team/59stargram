@@ -5,6 +5,7 @@ $(document).ready(function () {
     $(`.user_post_menu[name='posts']`).css('opacity', '1');
 
     let user_info = get_user_name()
+    console.log(user_info)
 })
 
 // 팔로우 모달창에서 사용자이름 호버 이벤트 
@@ -245,6 +246,29 @@ function user_modal_quit(type) {
         return;
     }
 }
+
+// // 유저의 이름 변경
+// function user_name_change() {
+//     let pw = $('#user_setting_pw_4')
+//     let name = $('#user_setting_name')
+//
+//     let user_info = get_user_name()
+//     let user_name = user_info['UserName']
+//
+//     $.ajax({
+//         type: "POST",
+//         url: '/user/change/name',
+//         data: {
+//             user_name: user_name,
+//             pw: pw,
+//             name: name
+//         },
+//         success: function (response) {
+//             alert(response['msg'])
+//         }
+//     })
+// }
+
 
 // 모달 밖을 클릭하면 모달창 닫기
 modal_follow_outside.addEventListener('click', (event) => {

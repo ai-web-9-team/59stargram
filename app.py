@@ -20,9 +20,15 @@ def home():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        print(payload)
         user_info = db.Users.find_one({"Email": payload['id']})
-        print(user_info)
+
+        # feed_ids = main_page_func.get_feeds(user_info["UserName"])  # 출력할 피드들의 ID 배열
+        # feeds_info = []  # 피드의 사용자이름, 이름, 피드 사진, 프로필 사진, 사진 설명, 좋아요 수 저장 배열
+        # for feed_id in feed_ids:
+        #     feeds_info.append(main_page_func.get_feed_info(feed_id))
+        # recommend_info = main_page_func.recommend_friends(user_info["UserName"])  # 추천할 계정의 사용자이름, 이름, 프로필 사진 저장 배열
+        #
+        # return render_template('index.html', info=user_info, feeds_info=feeds_info, recommend_info=recommend_info)
         return render_template('index.html', info=user_info)
     except jwt.ExpiredSignatureError:
         return redirect(url_for('login'))
@@ -287,13 +293,10 @@ def user_follow_delete():
 
         # 로그인한 유저의 팔로잉 숫자 업데이트
         # 현재 유저 정보에서 팔로잉 숫자 가져오기
-        following_cnt = 10
-        db.Users.update_one({'UserName': user_name}, {'$set': {'FollowingCnt': following_cnt - 1}})
+        db.Users.update_one({'UserName': user_name}, {'$inc': {'FollowingCnt': -1}})
 
         # 팔로잉 유저의 팔로워 숫자 업데이트
-        following_user = db.Users.find_one({'UserName': following_name})
-        following_user_follower_cnt = following_user['FollowerCnt']
-        db.Users.update_one({'UserName': following_name}, {'$set': {'FollowerCnt': following_user_follower_cnt - 1}})
+        db.Users.update_one({'UserName': following_name}, {'$inc': {'FollowerCnt': -1}})
 
     except:
         msg = '삭제 실패'
@@ -316,13 +319,10 @@ def user_follow_create():
 
             # 로그인한 유저의 팔로잉 숫자 업데이트
             # 현재 유저 정보에서 팔로잉 숫자 가져오기
-            following_cnt = 10
-            db.Users.update_one({'UserName': user_name}, {'$set': {'FollowingCnt': following_cnt + 1}})
+            db.Users.update_one({'UserName': user_name}, {'$inc': {'FollowingCnt': 1}})
 
             # 팔로잉 유저의 팔로워 숫자 업데이트
-            following_user = db.Users.find_one({'UserName': following_name})
-            following_user_follower_cnt = following_user['FollowerCnt']
-            db.Users.update_one({'UserName': following_name}, {'$set': {'FollowerCnt': following_user_follower_cnt + 1}})
+            db.Users.update_one({'UserName': following_name}, {'$inc': {'FollowerCnt': 1}})
 
         except:
             msg = '팔로우 실패'
@@ -344,7 +344,17 @@ def get_user_name():
     except jwt.exceptions.DecodeError:
         msg = '실패'
 
-    return jsonify({'msg': msg})
+    return jsonify({'msg': msg, 'user_info': user_info})
+
+
+# @app.route('/user/change/name', methods=['POST'])
+# def change_user_name():
+#     user_name = request.form['user_name']
+#     pw = request.form['pw']
+#     name = request.form['name']
+#     msg = '연결완료'
+#
+#     return jsonify({'msg': msg})
 
 
 @app.route('/login')

@@ -209,7 +209,7 @@
                     </div>
                 </div>
                 <div class="post">
-                    <div id="about_post" class="about_post">
+                    <div name="{{info[0]}}" id="about_post" class="about_post">
                         {{info[4]}}
                     </div>
                 </div>
@@ -218,108 +218,6 @@
         </article>
         {% endfor %}
 
-        <!--
-        <article class="feed_border" id="feed2">
-            <div class="feed">
-                <header class="feed_header">
-                    <div class="feed_header_container">
-                        <div class="user_photo">
-                            <a href="">
-                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
-                                     alt="Profile Image">
-                            </a>
-                        </div>
-                        <div class="user_profile">
-                            <div class="user_id">songheew (팔로우 된 사람)</div>
-                            <div class="user_location">Seoul, South Korea</div>
-                        </div>
-                        <div class="ellipsis_nav">
-                            <button type="button" class="ellipsis" onclick="more_button_on(1)">
-                                <i class="fa-solid fa-ellipsis"></i></button>
-                            </button>
-                            <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
-                                 data-bs-keyboard="false"
-                                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            </div>
-                        </div>
-                    </div>
-                </header>
-                <div class="carousels" style="width: 95%; height: 60%; margin: auto;">
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false"
-                         data-bs-wrap="false"
-                         style="width: 100%; height: 100%; overflow: hidden; margin: auto; margin-top: 20px; align-items: center;">
-                        <div class="carousel-inner" id="photo2" ondblclick="fadeOut(id)"
-                             style="width: 100%; height: 100%;">
-                            <div class="carousel-item active" style="width: 100%; height: 100%;">
-                                <img src="/static/images/img_plz_finish1.png" class="d-block w-100" alt="..."
-                                     style="max-width: 100%; max-height: 100%;">
-                            </div>
-                            <div class="carousel-item" style="width: 100%; height: 100%;">
-                                <img src="/static/images/img_plz_finish2.png" class="d-block w-100" alt="..."
-                                     style="max-width: 100%; max-height: 100%;">
-                            </div>
-                            <div class="carousel-item" style="width: 100%; height: 100%;">
-                                <img src="/static/images/img_plz_finish3.png" class="d-block w-100" alt="..."
-                                     style="max-width: 100%; max-height: 100%;">
-                            </div>
-                            <div class="carousel-item" style="width: 100%; height: 100%;">
-                                <img src="/static/images/img_plz_finish4.png" class="d-block w-100" alt="..."
-                                     style="max-width: 100%; max-height: 100%;">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                                data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                                data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                        <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
-                    </div>
-                </div>
-
-                <div class="reaction">
-                    <button class="like_button" id="like_button2" onclick="clickLike(id)"><i
-                            class="fa-regular fa-heart"></i>
-                    </button>
-                    <button class="comment_button"><i class="fa-regular fa-message"></i>
-                    </button>
-                    <button class="share_button"><i class="fa-solid fa-share-nodes"></i>
-                    </button>
-                    <div class="like_count">
-                        <button type="button" class="like_people" data-toggle="popover"
-                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
-                        </button>
-                        이 좋아요를 눌렀습니다.
-                    </div>
-                </div>
-                <div class="post">
-                    <div class="about_post">
-                        교수님 끝내주세용;;;;;
-                    </div>
-                </div>
-                <div class="comments">
-                    <div class="one_comment">
-                        <button class="comment_user_id">아무개씨</button>
-                        <div class="comment_content">튜터님 끝내주세요!!!</div>
-                    </div>
-                    <div class="one_comment">
-                        <button class="comment_user_id">땡땡땡씨</button>
-                        <div class="comment_content">허허 그 정도는 아닌데 고마워요!!</div>
-                    </div>
-                </div>
-                <div class="my_comment" style="width: 100%;">
-                    <input type="text" class="leave_comment" placeholder="댓글 남기기">
-                    <div class="comment_post">
-                        <button>남기기</button>
-                    </div>
-                </div>
-            </div>
-        </article>
-        -->
 
     </div>
     <div class="profile_box" id="profile_box">
@@ -500,5 +398,74 @@
     </div>
 </div>
 </div>
+
+<!-- 상세페이지 모달-->
+<div id="modal_overlay" class="modal_overlay">
+    <div id="close_btn" class="close_btn">
+        X
+    </div>
+    <div class="modal">
+        <div class="modal_left">
+            <img src="/static/images/img_songhee_profile.png" class="modal_img">
+        </div>
+
+        <div class="modal_right">
+
+            <div class="modal_header">
+                <div class="modal_profile_img">
+                    <img class="modal_profile_img_round" src="/static/images/img_profile.jpg" alt="Profile Image">
+                </div>
+                <div class="modal_user">
+                    <div id="modal_user_name" class="modal_user_name">유저 아이디</div>
+
+                </div>
+                    <button class="following">팔로잉</button>
+
+                <div class="modal_more">...</div>
+            </div>
+
+            <div class="modal_content">
+                <div id="modal_img_description"   class="modal_img_description">
+                    사진 설명 들어가기
+                    <li class="modal_comment_list">
+
+                    </li>
+                </div>
+                <ul id="comment-wrapper" class="comment-wrapper"></ul>
+            </div>
+
+            <div class="modal_icon_bar">
+                    <button class="modal_like_icon" id="like_button3" onclick="clickLike(id)"><i
+                            class="fa-regular fa-heart"></i>
+                    </button>
+                    <button class="modal_comment_icon"><i class="fa-regular fa-message"></i>
+                    </button>
+                    <button class="modal_share_icon"><i class="fa-solid fa-share-nodes"></i>
+                    </button>
+                    <button class="modal_bookmark_icon">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+                    <div class="like_count">
+                        <button id="like_people" type="button" class="like_people" data-toggle="popover"
+                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
+                        </button>
+                        이 좋아요를 눌렀습니다.
+                    </div>
+            </div>
+            <div id="modal_date" class="modal_date">
+                시간날짜 들어가랏
+            </div>
+            <div class="modal_comment_write">
+                <form id="comment">
+                    <input type="text" placeholder="댓글 달기..." id="commentInput">
+                    <button id="submit">게시</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
