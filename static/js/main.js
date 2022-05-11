@@ -1,20 +1,56 @@
 function fadeOut(id) {
-                    var like_button_id="like_button"+id.substring(5, );
-                    document.getElementById(like_button_id).style.color='red';
+                    //post_like_create();
+                    var my_like_id="my_like"+id.substring(5, );
+                    document.getElementById(my_like_id).style.display='block';
                     document.getElementById(id).style.opacity=0.3;
-                    setTimeout(function() { document.getElementById(id).style.opacity=1;
-                    document.getElementById("carouselExampleControls").style.opacity=1;}, 400);
+                    setTimeout(function() { document.getElementById(id).style.opacity=1;}, 400);
                 }
 
-//하트 이모티콘을 누르면 호출되는 함수
-function clickLike(id) {
-                            if (document.getElementById(id).style.color != 'red') { // 빨간색이 아니면 (눌린 상태가 아니면)
-                                document.getElementById(id).style.color='red'; // 좋아요 표시
-                            }
-                            else { // 빨간색이면
-                                document.getElementById(id).style.color='black'; //좋아요 취소
-                            }
-                        }
+// 좋아요 생성 함수
+function post_like_create() {
+    // 현재 로그인한 사용자 이름 가져오기
+    let user_name = 'hee123';
+
+    let post_id = $("#post_id");
+
+    $.ajax({
+        type: "POST",
+        url: '/post-like-create',
+        data: {
+            user_id: user_name,
+            post_id: post_id
+        },
+        success: function (response) {
+            alert(response['msg'])
+            window.location.reload()
+        }
+    })
+}
+
+
+function feed_upload() {
+    let picture = ""
+    if($('#file1').val()!=''){
+        picture = $('#file1').val()
+    }
+
+    let description = $('#description').val()
+    $.ajax({
+        type: "POST",
+        url: "/upload",
+        traditional: true,
+        data: {picture: picture, description: description},
+        success: function (response) {
+            if (response['result'] == 'success') {
+                alert('업로드 완료!')
+                window.location.href = '/'
+            }
+        }
+    })
+
+
+}
+
 
 // 책갈피 이모티콘을 누르면 호출되는 함수
 function clickBookmark(id) {
@@ -40,14 +76,14 @@ const recommendBox = document.querySelector("#search_recommend");
 const texts = document.querySelectorAll(".text");
 
 inputBox.addEventListener("keyup", (e) => {
-	if (e.target.value.length > 0) {
-		recommendBox.classList.remove('invisible');
-		texts.forEach((textEl) => {
-			textEl.textContent = e.target.value;
-		})
-	} else {
-		recommendBox.classList.add('invisible');
-	}
+   if (e.target.value.length > 0) {
+      recommendBox.classList.remove('invisible');
+      texts.forEach((textEl) => {
+         textEl.textContent = e.target.value;
+      })
+   } else {
+      recommendBox.classList.add('invisible');
+   }
 });
 
 
