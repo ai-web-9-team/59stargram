@@ -102,15 +102,17 @@ def recommend_friends(user_id):
             continue
         fs = gridfs.GridFS(db, 'Profile')
         data = db.Profile.files.find_one({'filename': user["UserName"]})
+        if data is None:
+            continue
         my_id = data['_id']
         data = fs.get(my_id).read()
         data = base64.b64encode(data)
         data = data.decode()
         ret.append([user["UserName"], user["Name"], data])
         cnt += 1
-    return ret
+    return ret[:5]
 
-
+print(recommend_friends("kimphysicsman3"))
 # 검색 결과창을 결정하기 위한 함수
 # 매개변수로 들어온 user_id가 Users에 있는지 확인
 def is_exist_user(user_id):

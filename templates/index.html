@@ -84,13 +84,32 @@
             <input id="search_input_box" aria-label="입력 검색" class="search_input_box" autocapitalize="none"
                    placeholder="검색" type="text" value="">
             <div id="search_recommend" class="invisible">
-                {% for info in feeds_info %}
+
                 <div class="item"><a href="">
                     <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
                          alt="Profile Image">
                 </a>비슷한 사용자 이름 1
                 </div>
-                {% endfor %}
+                <div class="item"><a href="">
+                    <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
+                         alt="Profile Image">
+                </a>비슷한 사용자 이름 2
+                </div>
+                <div class="item"><a href="">
+                    <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
+                         alt="Profile Image">
+                </a>비슷한 사용자 이름 3
+                </div>
+                <div class="item"><a href="">
+                    <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
+                         alt="Profile Image">
+                </a>비슷한 사용자 이름 4
+                </div>
+                <div class="item"><a href="">
+                    <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
+                         alt="Profile Image">
+                </a>비슷한 사용자 이름 5
+                </div>
             </div>
         </div>
         <div class="header_icon_box">
@@ -325,7 +344,7 @@
         <div class="my_account">
             <div>
                 <a href="/user-page">
-                    <img class="my_profile_img" src="/static/images/img_songhee_profile.png"
+                    <img class="my_profile_img"  src="data:image/jpg;base64, {{ profile_img }}"
                          alt="Profile Image">
                 </a>
             </div>

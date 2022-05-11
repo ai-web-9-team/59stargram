@@ -18,14 +18,43 @@ SECRET_KEY = 'SPARTA'
 # HTML 화면 보여주기
 @app.route('/')
 def home():
-    info = db.Users.find_one({"UserName": "hee123"})
-    feed_ids=main_page_func.get_feeds("hee123") # 출력할 피드들의 ID 배열
-    feeds_info=[] # 피드의 사용자이름, 이름, 피드 사진, 프로필 사진, 사진 설명, 좋아요 수 저장 배열
-    for feed_id in feed_ids:
-        feeds_info.append(main_page_func.get_feed_info(feed_id))
-    recommend_info=main_page_func.recommend_friends("hee123") # 추천할 계정의 사용자이름, 이름, 프로필 사진 저장 배열
-    search_info=[]
-    return render_template('index.html', info=info, feeds_info=feeds_info, recommend_info=recommend_info)
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.Users.find_one({"Email": payload['id']})
+        user_id=user_info["UserName"]
+        print(user_id)
+        info = db.Users.find_one({"UserName": user_id})
+        feed_ids=main_page_func.get_feeds(user_id) # 출력할 피드들의 ID 배열
+        feeds_info=[] # 피드의 사용자이름, 이름, 피드 사진, 프로필 사진, 사진 설명, 좋아요 수 저장 배열
+        for feed_id in feed_ids:
+            feeds_info.append(main_page_func.get_feed_info(feed_id))
+
+        recommend_info=main_page_func.recommend_friends(user_id) # 추천할 계정의 사용자이름, 이름, 프로필 사진 저장 배열
+        # search_info=[]
+        # return render_template('index.html', info=info, feeds_info=feeds_info, recommend_info=recommend_info)
+        # feed_ids = main_page_func.get_feeds(user_info["UserName"])  # 출력할 피드들의 ID 배열
+        # feeds_info = []  # 피드의 사용자이름, 이름, 피드 사진, 프로필 사진, 사진 설명, 좋아요 수 저장 배열
+        # for feed_id in feed_ids:
+        #     feeds_info.append(main_page_func.get_feed_info(feed_id))
+        # recommend_info = main_page_func.recommend_friends(user_info["UserName"])  # 추천할 계정의 사용자이름, 이름, 프로필 사진 저장 배열
+        #
+        return render_template('index.html', info=user_info, feeds_info=feeds_info, recommend_info=recommend_info)
+        #return render_template('index.html', info=user_info)
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for('login'))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login"))
+
+    # info = db.Users.find_one({"UserName": "hee123"})
+    # feed_ids=main_page_func.get_feeds("hee123") # 출력할 피드들의 ID 배열
+    # feeds_info=[] # 피드의 사용자이름, 이름, 피드 사진, 프로필 사진, 사진 설명, 좋아요 수 저장 배열
+    # for feed_id in feed_ids:
+    #     feeds_info.append(main_page_func.get_feed_info(feed_id))
+    # recommend_info=main_page_func.recommend_friends("hee123") # 추천할 계정의 사용자이름, 이름, 프로필 사진 저장 배열
+    # search_info=[]
+    # return render_template('index.html', info=info, feeds_info=feeds_info, recommend_info=recommend_info)
+
 
 
 @app.route('/upload', methods=['POST'])
