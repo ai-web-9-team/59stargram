@@ -256,7 +256,7 @@
                     </div>
                 </div>
                 <div class="post">
-                    <div id="about_post" class="about_post">
+                    <div name="0" id="about_post" class="about_post">
                         냠냠굿~😋
                     </div>
                 </div>
@@ -615,8 +615,8 @@
                     <img class="modal_profile_img_round" src="/static/images/img_profile.jpg" alt="Profile Image">
                 </div>
                 <div class="modal_user">
-                    <div class="modal_user_name">유저 아이디</div>
-                    <div class="modal_place">부안 변산마실길</div>
+                    <div id="modal_user_name" class="modal_user_name">유저 아이디</div>
+
                 </div>
                     <button class="following">팔로잉</button>
 
@@ -624,20 +624,8 @@
             </div>
 
             <div class="modal_content">
-                <div class="modal_img_description">
-                    <a href='#' class="modal_user_name">유저 아이디</a>
-                    아름다운 바닷길을 따라 활짝 피어날
-                    #부안 #변산마실길2코스 샤스타데이지🌼
-                    변산반도를 둘러싸고 있는 총 8구간의 코스 중
-                    변산마실길 2코스는 입구에서 조금만 들어가면
-                    하얀 데이지꽃밭이 넓게 펼쳐져요🌼
-                    신난다 신나
-                    내용을 얼마나 길게 해야하는가요
-                    어디까지 내려갈 수 있습니까
-                    태그를 마구마구 때려넣어볼까
-                    #부안 #여행 # 데이트코스 #드라이브코스 #꽃구경
-                    #전국일주 #운전은언제쯤늘까 #넘무서워 #자전거최고
-
+                <div id="modal_img_description"   class="modal_img_description">
+                    사진 설명 들어가기
                     <li class="modal_comment_list">
 
                     </li>
@@ -657,17 +645,15 @@
                         <i class="fa-regular fa-bookmark"></i>
                     </button>
                     <div class="like_count">
-                        <button type="button" class="like_people" data-toggle="popover"
+                        <button id="like_people" type="button" class="like_people" data-toggle="popover"
                                 data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
                         </button>
                         이 좋아요를 눌렀습니다.
                     </div>
             </div>
-
-            <div class="modal_date">
-                <p class="sub"></p>
+            <div id="modal_date" class="modal_date">
+                시간날짜 들어가랏
             </div>
-
             <div class="modal_comment_write">
                 <form id="comment">
                     <input type="text" placeholder="댓글 달기..." id="commentInput">

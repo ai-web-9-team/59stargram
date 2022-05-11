@@ -332,10 +332,38 @@ def login():
 def register():
     return render_template('register.html')
 
+@app.route('/details', methods=['GET'])
+def details():
+    # 3. post_id받아서 post정보
+
+    # 포스트 아이디를 받음
+    post_id = request.args.get('post_id')
+
+    # DB에서 post_id로 post데이터를 가져옴
+    post = db.Posts.find_one({'PostId': post_id})
+
+    # 필요한 정보만 골라내기
+    date = post['Date'].strftime("%c")
+
+    new_post = {
+        'UserName': post['UserName'],
+        'post_id': post['PostId'],
+        'Description': post['Description'],
+        'Date': date,
+        'LikeCnt': post['LikeCnt'],
+    }
+
+    msg = '게시물 정보 보내주기'
+    # 보내주면 끝!
+    return jsonify({'msg': msg, 'new_post': new_post})
+
+
+
 
 @app.route('/detail')
 def detail():
     return render_template('detail.html')
+
 
 
 if __name__ == '__main__':
