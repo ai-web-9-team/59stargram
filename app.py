@@ -2,6 +2,8 @@ from flask import Flask, redirect, url_for, render_template, jsonify, request
 from pymongo import MongoClient
 import gridfs
 import base64
+import jwt
+from datetime import date, timedelta, datetime
 from functions import main_page_func
 db = main_page_func.db
 
@@ -20,8 +22,52 @@ def home():
     for feed_id in feed_ids:
         feeds_info.append(main_page_func.get_feed_info(feed_id))
     recommend_info=main_page_func.recommend_friends("hee123") # 추천할 계정의 사용자이름, 이름, 프로필 사진 저장 배열
-
+    search_info=[]
     return render_template('index.html', info=info, feeds_info=feeds_info, recommend_info=recommend_info)
+
+
+@app.route('/upload', methods=['POST'])
+def FeedUpReceive():
+    token_receive = request.cookies.get('token')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    user_info = db.Users.find_one({"Email": payload['id']})
+    picture = request.form['picture']
+    description = request.form['description']
+    user_id_receive = user_info['_id']
+    posts = list(db.Posts.find({}))
+    post_id=0
+    for post in posts:
+        post_id+=1
+    doc = {
+        'PostId': str(post_id),
+        'UserName': user_info["UserName"],
+        'Description': description,
+        'Date': datetime.now(),
+        'LikeCnt': 0,
+        'CommentCnt': 0
+    }
+    db.Posts.insert_one(doc)
+    return jsonify({'result': 'success', 'msg': '게시물이 업로드 되었습니다.'})
+
+@app.route('/post-like-create', methods=['POST'])
+def post_like_create():
+    user_id = request.form['user_id']
+    post_id = request.form['post_id']
+
+    like_info = db.PostLikes.find_one({'UserName': user_id, 'PostId': post_id})
+    if like_info is None:
+        try:
+            db.PostLikes.insert_one({"UserName": user_id, "PostId": post_id})
+            db.Posts.update_one({"PostId": post_id}, {'$inc': {'LikeCnt': 1}})
+            target_id = db.Posts.find_one({"PostId": post_id})["UserName"]
+            db.RecentEvents.insert_one({"UserName1": user_id, "EventType": "post_like", "UserName2": target_id})
+        except:
+            msg = '좋아요 실패'
+        return jsonify({'msg': msg})
+    else:
+        msg = '이미 좋아요를 누른 상태입니다.'
+        return jsonify({'msg': msg})
+
 
 
 # 유저 페이지 - 유저 정보 보여주기

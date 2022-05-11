@@ -4,6 +4,7 @@ from pymongo import MongoClient
 import gridfs
 import base64
 import random
+from flask import Flask, redirect, url_for, render_template, jsonify, request
 
 client = MongoClient('mongodb+srv://test:sparta@cluster0.1idhr.mongodb.net/Cluster0?retryWrites=true&w=majority',
                      tlsCAFile=certifi.where())
@@ -23,6 +24,14 @@ def get_feeds(user_id):
     #날짜 순으로 정렬해서 10개만 출력하자!
     #ret.sort(key=lambda x:x["Date"])
     return ret[:10]
+
+
+# 내가 좋아요를 눌렀던 피드인지 확인
+def did_i_like(user_id, post_id):
+    result = db.PostLikes.find_one({"UserName": user_id, "PostId": post_id})
+    if result is None:
+        return False
+    return True
 
 
 # 피드 내 정보를 리턴하는 함수
@@ -59,7 +68,12 @@ def get_feed_info(post_id):
     # 댓글 수
     comment_cnt = current_post["CommentCnt"]
 
-    return [user_name, name, data, data2, description, like_cnt]
+    # 내가 좋아요를 눌렀는지 확인 (피드에 '나 외에' 문구 출력 여부를 위함)
+    my_like = did_i_like(user_name, post_id)
+
+    return [user_name, name, data, data2, description, like_cnt, comment_cnt, my_like, post_id]
+
+
 
 
 
@@ -114,16 +128,10 @@ def during_searching(search_input):
     ret = []  # return할 배열
     users = collection.find({})
     for user in users:  # 전체 다 돌아본다
-        if search_input in user["UserName"]:  # 검색어가 포함된 사용자 이름이면
-            ret.append(user["UserName"])  # ret 배열에 추가
-    ret.sort()  # 알파벳 순으로 정렬
-    if len(ret) < 5:  # 크기가 5보다 작으면
-        # 흠... 근데 이 부분을 프론트에서 처리해주는 게 나을 것 같기도..?
-        for i in range(5 - len(ret)):  # 나머지 칸은 ""로 채워서 return하는 배열의 크기는 5로 유지
-            ret.append("")
-        return ret  # return
-    else:  # 크기가 5보다 크거나 같으면
-        return ret[:5]  # 알파벳 순으로 정렬했을 때 앞의 5개만 return
+        if user["UserName"].startswith(search_input):  # 검색어가 포함된 사용자 이름이면
+            ret.append([user["UserName"], user["Name"]])  # ret 배열에 추가
+    ret.sort()
+    return ret[:5]  # 알파벳 순으로 정렬했을 때 앞의 5개(혹은 이하)만 return
 
 
 # 새로운 알림이 있는지 확인하기 위한 함수
@@ -169,13 +177,6 @@ def unfollow(user_id, target_id):
     # collection.delete_one({"UserName1": user_id, "EventType": "follow", "UserName2": target_id})
 
 
-# 게시글 좋아요를 누르는 함수
-def click_post_like(user_id, post_id):
-    collection = db.PostLikes
-    collection.insert_one({"UserName": user_id, "PostID": post_id})
-    # recent event 수정하기
-    # collection = db.RecentEvents
-    # collection.insert_one({"UserName1": user_id, "EventType": "post_like", "UserName2": target_id})
 
 
 # 게시글 좋아요를 취소하는 함수
