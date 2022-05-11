@@ -82,7 +82,8 @@ function user_modal_list(type){
     $('.user_follower_list').empty()
 
     // 현재 로그인한 유저의 사용자이름 가져오기
-    let current_name = 'kimphysicsman'
+    let user_info = get_user_name()
+    let current_name = user_info['UserName']
 
     // 유저페이지의 사용자 이름
     let user_name = $('#user_name_title').text()
@@ -149,7 +150,8 @@ function user_follow_delete(user_name, following_name) {
 // 팔로우 생성
 function user_follow_create() {
     // 현재 로그인한 사용자 이름 가져오기
-    let user_name = 'kimphysicsman'
+    let user_info = get_user_name()
+    let user_name = user_info['UserName']
 
     let following_name = $('#user_name_title').text()
 

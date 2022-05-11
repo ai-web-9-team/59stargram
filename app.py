@@ -143,14 +143,28 @@ def user():
 
         # 현재 로그인한 유저인지 판단
         ## 현재 접속한 유저의 사용자 이름
-        current_user = 'kimphysicsman'
+        token_receive = request.cookies.get('mytoken')
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info_temp = db.Users.find_one({"Email": payload['id']}, {'_id': False})
+        current_user = user_info_temp['UserName']
+
+        # 현재 로그인한 유저 프로필 사진
+        fs = gridfs.GridFS(db, 'Profile')
+        current_profile = db.Profile.files.find_one({'filename': current_user})
+
+        my_id = current_profile['_id']
+        current_profile = fs.get(my_id).read()
+
+        current_profile = base64.b64encode(current_profile)  # convert to base64 as bytes
+        current_profile = current_profile.decode()  # convert bytes to string
+
         if user_name == current_user:
             my_page = 1
         else:
             my_page = 0
 
         return render_template("user.html",
-                               current_user=current_user,
+                               current_user=current_user, current_profile=current_profile,
                                user_info=user_info, profile_img=profile_img,
                                posts=posts, post_images=post_images,
                                bookmark_posts=bookmark_posts, bookmark_images=bookmark_images,

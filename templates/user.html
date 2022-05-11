@@ -81,7 +81,7 @@
                 <button class="notice" id="notice_button"><i class="fa-regular fa-heart"></i>
                 </button>
                 <a style="margin-left: 5px;" href="{{url_for('user', user_name=current_user)}}">
-                    <img class="img_circle" width="24px" src="/static/images/img_profile.jpg" />
+                    <img class="img_circle" width="24px" src="data:image/jpg;base64, {{ current_profile }}" />
                 </a>
             </ul>
         </div>
