@@ -84,31 +84,13 @@
             <input id="search_input_box" aria-label="입력 검색" class="search_input_box" autocapitalize="none"
                    placeholder="검색" type="text" value="">
             <div id="search_recommend" class="invisible">
+                {% for info in feeds_info %}
                 <div class="item"><a href="">
                     <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
                          alt="Profile Image">
                 </a>비슷한 사용자 이름 1
                 </div>
-                <div class="item"><a href="">
-                    <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
-                         alt="Profile Image">
-                </a>비슷한 사용자 이름 2
-                </div>
-                <div class="item"><a href="">
-                    <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
-                         alt="Profile Image">
-                </a>비슷한 사용자 이름 3
-                </div>
-                <div class="item"><a href="">
-                    <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
-                         alt="Profile Image">
-                </a>비슷한 사용자 이름 4
-                </div>
-                <div class="item"><a href="">
-                    <img class="search_recommend_user_img" src="/static/images/img_profile.jpg"
-                         alt="Profile Image">
-                </a>비슷한 사용자 이름 5
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="header_icon_box">
@@ -150,149 +132,92 @@
                 </button>
                 <div class="card-body" id="stories">
                     <div style="width: 10px;"></div>
+                    {% for info in feeds_info %}
                     <div class="story">
-                        <div class="story_img_box" id="story1" onclick="clickStory(id)" style="cursor: pointer;">
+                        <div class="story_img_box" id="story{{loop.index}}" onclick="clickStory(id)" style="cursor: pointer;">
                             <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/img_samgyeopsal.png">
+                                 src="data:image/jpg;base64, {{ info[2] }}">
                         </div>
-                        <p class="story_id">songheew(나)</p>
+                        <p class="story_id">{{info[0]}}</p>
                     </div>
-                    <div class="story">
-                        <div class="story_img_box" id="story2" onclick="clickStory(id)" style="cursor: pointer;">
-                            <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/img_plz_finish1.png">
-                        </div>
-                        <p class="story_id">songheew(팔로우)</p>
-                    </div>
-                    <div class="story">
-                        <div class="story_img_box" id="story3" onclick="clickStory(id)" style="cursor: pointer;">
-                            <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/video_boomerang.gif">
-                        </div>
-                        <p class="story_id">songheew(팔로우x)</p>
-                    </div>
-                    <div class="story">
-                        <div class="story_img_box">
-                            <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/img_profile.jpg">
-                        </div>
-                        <p class="story_id">3 kimphysicsman</p>
-                    </div>
-                    <div class="story">
-                        <div class="story_img_box">
-                            <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/img_profile.jpg">
-                        </div>
-                        <p class="story_id">4 kimphysicsman</p>
-                    </div>
-                    <div class="story">
-                        <div class="story_img_box">
-                            <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/img_profile.jpg">
-                        </div>
-                        <p class="story_id">5 kimphysicsman</p>
-                    </div>
-                    <div class="story">
-                        <div class="story_img_box">
-                            <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/img_profile.jpg">
-                        </div>
-                        <p class="story_id">6 kimphysicsman</p>
-                    </div>
-                    <div class="story">
-                        <div class="story_img_box">
-                            <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/img_profile.jpg">
-                        </div>
-                        <p class="story_id">7 kimphysicsman</p>
-                    </div>
-                    <div class="story">
-                        <div class="story_img_box">
-                            <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/img_profile.jpg">
-                        </div>
-                        <p class="story_id">8 kimphysicsman</p>
-                    </div>
-                    <div class="story">
-                        <div class="story_img_box">
-                            <img class="img_circle story_img_outline" width="56px" height="56px"
-                                 src="/static/images/img_profile.jpg">
-                        </div>
-                        <p class="story_id">9 kimphysicsman</p>
-                    </div>
-
+                    {% endfor %}
                 </div>
 
             </div>
         </div>
 
 
-        <article class="feed_border" id="feed1">
+        {% for info in feeds_info %}
+        <article class="feed_border" id="feed{{loop.index}}">
             <div class="feed">
                 <header class="feed_header">
                     <div class="feed_header_container">
                         <div class="user_photo">
                             <a href="">
-                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
+                                <img class="profile_img" src="data:image/jpg;base64, {{ info[3] }}"
                                      alt="Profile Image">
                             </a>
                         </div>
                         <div class="user_profile">
-                            <div class="user_id">songheew (나)</div>
-                            <div class="user_location">Seoul, South Korea</div>
+                            <div class="user_id">{{info[0]}}</div>
+                            <div class="user_location">{{info[1]}}</div>
+                            <div id="post_id" style="display: None">{{info[-1]}}</div>
                         </div>
                         <div class="ellipsis_nav">
+                            <!--피드의 더보기 모달은 피드 주인이 누구냐에 따라 다르게 띄움-->
+                            {% if info[0] == 'hee123' %}
                             <button type="button" class="ellipsis" onclick="more_button_on(0)">
                                 <i class="fa-solid fa-ellipsis"></i></button>
+                            {% elif info[0] == 'kimphysicsman' %}
+                            <button type="button" class="ellipsis" onclick="more_button_on(1)">
+                                <i class="fa-solid fa-ellipsis"></i></button>
+                            {% else %}
+                            <button type="button" class="ellipsis" onclick="more_button_on(2)">
+                                <i class="fa-solid fa-ellipsis"></i></button>
+                            {% endif %}
                         </div>
                     </div>
                 </header>
                 <div class="photos">
-                    <div class="photo"><img class="photo" id="photo1" src="/static/images/img_samgyeopsal.png" alt="게시물"
-                                            ondblclick="fadeOut(id)"></div>
+                    <div class="photo"><img class="photo" id="photo{{loop.index}}" ondblclick="fadeOut(id)" alt="게시물"
+                                            src="data:image/jpg;base64, {{ info[2] }}"
+                    /></div>
                     <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
                 </div>
                 <div class="reaction">
-                    <button class="like_button" id="like_button1" onclick="clickLike(id)"><i
-                            class="fa-regular fa-heart"></i>
-                    </button>
-                    <button class="comment_button"><i class="fa-regular fa-message"></i>
-                    </button>
-                    <button class="share_button"><i class="fa-solid fa-share-nodes"></i>
-                    </button>
-                    <button class="bookmark_button" id="bookmark_button1" onclick="clickBookmark(id)">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="like_count">
-                        <button type="button" class="like_people" data-toggle="popover"
-                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
-                        </button>
-                        이 좋아요를 눌렀습니다.
+                    <div class="heart">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    {% if info[7] == False %}
+                    <div class="i_like" id="my_like{{loop.index}}" style="display: none;">
+                        나 외에도
+                    </div>
+                    {% else %}
+                    <div class="i_like" style="display: block;">
+                        나 외에도
+                    </div>
+                    {% endif %}
+                    <div class="like_count" id="like_count">
+                        {{info[5]}}명 이 좋아요를 눌렀습니다.
+
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="comment"><i class="fa-regular fa-message"></i></div>
+                    <div class="one_comment">총 {{info[6]}} 개의 댓글이 달렸습니다.
                     </div>
                 </div>
                 <div class="post">
                     <div id="about_post" class="about_post">
-                        냠냠굿~😋
+                        {{info[4]}}
                     </div>
                 </div>
-                <div class="comments">
-                    <div class="one_comment">
-                        <button class="comment_user_id">아무개씨</button>
-                        <div class="comment_content">맛있겠당</div>
-                    </div>
-                    <div class="one_comment">
-                        <button class="comment_user_id">땡땡땡씨</button>
-                        <div class="comment_content">여기 어디에용?</div>
-                    </div>
-                </div>
-                <div class="my_comment" style="width: 100%;">
-                    <input type="text" class="leave_comment" placeholder="댓글 남기기">
-                    <div class="comment_post">
-                        <button>남기기</button>
-                    </div>
-                </div>
+
             </div>
         </article>
+        {% endfor %}
+
+        <!--
         <article class="feed_border" id="feed2">
             <div class="feed">
                 <header class="feed_header">
@@ -319,8 +244,6 @@
                     </div>
                 </header>
                 <div class="carousels" style="width: 95%; height: 60%; margin: auto;">
-                    <!-- data-bs-interval="false" : 자동으로 슬라이드 넘어가는 것 방지 -->
-                    <!-- data-bs-wrap="false" : 처음/마지막 슬라이드에서 이전/다음 슬라이드로 넘어가는 것 방지 -->
                     <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false"
                          data-bs-wrap="false"
                          style="width: 100%; height: 100%; overflow: hidden; margin: auto; margin-top: 20px; align-items: center;">
@@ -365,9 +288,6 @@
                     </button>
                     <button class="share_button"><i class="fa-solid fa-share-nodes"></i>
                     </button>
-                    <button class="bookmark_button" id="bookmark_button2" onclick="clickBookmark(id)">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
                     <div class="like_count">
                         <button type="button" class="like_people" data-toggle="popover"
                                 data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
@@ -398,142 +318,7 @@
                 </div>
             </div>
         </article>
-        <article class="feed_border" id="feed3">
-            <div class="feed">
-                <header class="feed_header">
-                    <div class="feed_header_container">
-                        <div class="user_photo">
-                            <a href="">
-                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
-                                     alt="Profile Image">
-                            </a>
-                        </div>
-                        <div class="user_profile">
-                            <div class="user_id">songheew (팔로우 안 된 사람)</div>
-                            <div class="user_location">Seoul, South Korea</div>
-                        </div>
-                        <div class="ellipsis_nav">
-                            <button type="button" class="ellipsis" onclick="more_button_on(2)">
-                                <i class="fa-solid fa-ellipsis"></i></button>
-                            </button>
-
-                        </div>
-                    </div>
-                </header>
-                <div class="photos">
-                    <div class="photo"><img class="photo" id="photo4" src="/static/images/video_boomerang.gif" alt="게시물"
-                                            ondblclick="fadeOut(id)"></div>
-                    <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
-                </div>
-                <div class="reaction">
-                    <button class="like_button" id="like_button4" onclick="clickLike(id)"><i
-                            class="fa-regular fa-heart"></i>
-                    </button>
-                    <button class="comment_button"><i class="fa-regular fa-message"></i>
-                    </button>
-                    <button class="share_button"><i class="fa-solid fa-share-nodes"></i>
-                    </button>
-                    <button class="bookmark_button" id="bookmark_button4" onclick="clickBookmark(id)">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="like_count">
-                        <button type="button" class="like_people" data-toggle="popover"
-                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
-                        </button>
-                        이 좋아요를 눌렀습니다.
-                    </div>
-                </div>
-                <div class="post">
-                    <div class="about_post">
-                        부부부부메랑
-                    </div>
-                </div>
-                <div class="comments">
-                    <div class="one_comment">
-                        <button class="comment_user_id">아무개씨</button>
-                        <div class="comment_content">짠짠짠~</div>
-                    </div>
-                    <div class="one_comment">
-                        <button class="comment_user_id">땡땡땡씨</button>
-                        <div class="comment_content">술냄새나여;;;</div>
-                    </div>
-                </div>
-                <div class="my_comment" style="width: 100%;">
-                    <input type="text" class="leave_comment" placeholder="댓글 남기기">
-                    <div class="comment_post">
-                        <button>남기기</button>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="feed_border" id="feed4">
-            <div class="feed">
-                <header class="feed_header">
-                    <div class="feed_header_container">
-                        <div class="user_photo">
-                            <a href="">
-                                <img class="profile_img" src="/static/images/img_songhee_profile.png"
-                                     alt="Profile Image">
-                            </a>
-                        </div>
-                        <div class="user_profile">
-                            <div class="user_id">songheew (팔로우 안 된 사람)</div>
-                            <div class="user_location">Seoul, South Korea</div>
-                        </div>
-                        <div class="ellipsis_nav">
-                            <button type="button" class="ellipsis" onclick="more_button_on(2)">
-                                <i class="fa-solid fa-ellipsis"></i></button>
-                            </button>
-
-                        </div>
-                    </div>
-                </header>
-                <div class="photos">
-                    <div class="photo"><img class="photo" id="photo3" src="/static/images/video_boomerang.gif" alt="게시물"
-                                            ondblclick="fadeOut(id)"></div>
-                    <div class="behind_photo"><i class="fa-solid fa-heart"></i></div>
-                </div>
-                <div class="reaction">
-                    <button class="like_button" id="like_button3" onclick="clickLike(id)"><i
-                            class="fa-regular fa-heart"></i>
-                    </button>
-                    <button class="comment_button"><i class="fa-regular fa-message"></i>
-                    </button>
-                    <button class="share_button"><i class="fa-solid fa-share-nodes"></i>
-                    </button>
-                    <button class="bookmark_button" id="bookmark_button3" onclick="clickBookmark(id)">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <div class="like_count">
-                        <button type="button" class="like_people" data-toggle="popover"
-                                data-bs-content="Me, You, Someone1, Someone2, Someone3" placement="auto">5명
-                        </button>
-                        이 좋아요를 눌렀습니다.
-                    </div>
-                </div>
-                <div class="post">
-                    <div class="about_post">
-                        부부부부메랑
-                    </div>
-                </div>
-                <div class="comments">
-                    <div class="one_comment">
-                        <button class="comment_user_id">아무개씨</button>
-                        <div class="comment_content">짠짠짠~</div>
-                    </div>
-                    <div class="one_comment">
-                        <button class="comment_user_id">땡땡땡씨</button>
-                        <div class="comment_content">술냄새나여;;;</div>
-                    </div>
-                </div>
-                <div class="my_comment" style="width: 100%;">
-                    <input type="text" class="leave_comment" placeholder="댓글 남기기">
-                    <div class="comment_post">
-                        <button>남기기</button>
-                    </div>
-                </div>
-            </div>
-        </article>
+        -->
 
     </div>
     <div class="profile_box" id="profile_box">
@@ -554,74 +339,23 @@
         </div>
         <div class="recommend_and_footer">
             <ul class="list-group">
+                {% for info in recommend_info %}
                 <li class="list-group-item">
                     <div class="recommend_user_photo">
                         <a href="">
-                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
+                            <img class="recommend_profile_img" src="data:image/jpg;base64, {{ info[2] }}"
                                  alt="Profile Image">
                         </a>
                     </div>
                     <div class="user_info">
-                        <div class="user_id">someone1</div>
-                        <div class="user_name">누구지</div>
+                        <div class="user_id">{{info[0]}}</div>
+                        <div class="user_name">{{info[1]}}</div>
                     </div>
-                    <button class="recommend_follow">팔로우</button>
                 </li>
-                <li class="list-group-item">
-                    <div class="recommend_user_photo">
-                        <a href="">
-                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
-                                 alt="Profile Image">
-                        </a>
-                    </div>
-                    <div class="user_info">
-                        <div class="user_id">someone2</div>
-                        <div class="user_name">누구게</div>
-                    </div>
-                    <button class="recommend_follow">팔로우</button>
-                </li>
-                <li class="list-group-item">
-                    <div class="recommend_user_photo">
-                        <a href="">
-                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
-                                 alt="Profile Image">
-                        </a>
-                    </div>
-                    <div class="user_info">
-                        <div class="user_id">someone3</div>
-                        <div class="user_name">누구게용</div>
-                    </div>
-                    <button class="recommend_follow">팔로우</button>
-                </li>
-                <li class="list-group-item">
-                    <div class="recommend_user_photo">
-                        <a href="">
-                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
-                                 alt="Profile Image">
-                        </a>
-                    </div>
-                    <div class="user_info">
-                        <div class="user_id">someone4</div>
-                        <div class="user_name">누구일까</div>
-                    </div>
-                    <button class="recommend_follow">팔로우</button>
-                </li>
-                <li class="list-group-item">
-                    <div class="recommend_user_photo">
-                        <a href="">
-                            <img class="recommend_profile_img" src="/static/images/img_profile.jpg"
-                                 alt="Profile Image">
-                        </a>
-                    </div>
-                    <div class="user_info">
-                        <div class="user_id">someone5</div>
-                        <div class="user_name">누구냐진짜</div>
-                    </div>
-                    <button class="recommend_follow">팔로우</button>
-                </li>
+                {% endfor %}
             </ul>
-
-            <div class="footer" id="footer">
+        </div>
+        <div class="footer" id="footer">
                 <a href="http://kimphysicsman.shop/" target="_blank">소개</a> ·
                 <a href="">도움말</a> ·
                 <a href="">홍보 센터</a> ·
@@ -632,16 +366,16 @@
                 <a href="">약관</a> ·
                 <a href="">위치</a> ·
                 <a href="">인기 계정</a> ·
-                <a href="">해시태그</a>
                 <br>
+                <a href="">해시태그</a> ·
                 <a href="">언어</a>
                 <br>
                 <br>
                 <p>© 2022 59 STAGRAM FROM OGUOGU TEAM</p>
             </div>
-        </div>
     </div>
 </div>
+
 <!--더보기 모달창-->
 <div class="more_button_box">
     <div class="more_button_body">
@@ -735,30 +469,19 @@
             border: black 1px solid;">
                 <input type="file" id="file1" name="file" accept="image/*"
                        onchange="Reader(event, 1)" style="padding-left: 10%; margin: 10px 0px 10px 0px;">
-                <input type="file" id="file2" name="file" accept="image/*"
-                       onchange="Reader(event, 2)" style="padding-left: 10%; margin: 10px 0px 10px 0px;">
-                <input type="file" id="file3" name="file" accept="image/*"
-                       onchange="Reader(event, 3)" style="padding-left: 10%; margin: 10px 0px 10px 0px;">
-                <input type="file" id="file4" name="file" accept="image/*"
-                       onchange="Reader(event, 4)" style="padding-left: 10%; margin: 10px 0px 10px 0px;">
 
             </div>
             <div style="background-color: rgba(0, 0, 0, 0.1);">
                 <img id="preview1" style="width: 150px; height: 200px; margin: 20px 5px 0px 5px;"/>
-                <img id="preview2" style="width: 150px; height: 200px; margin: 20px 5px 0px 5px;"/>
-                <img id="preview3" style="width: 150px; height: 200px; margin: 20px 5px 0px 5px;"/>
-                <img id="preview4" style="width: 150px; height: 200px; margin: 20px 5px 0px 5px;"/>
             </div>
             <div style="background-color: rgba(0, 0, 0, 0.1); font-size: 15px;">
-                <textarea style="width: 600px; height: 200px; margin: 20px 0px 20px 0px; padding: 10px;"></textarea>
+                <textarea id="description" style="width: 600px; height: 200px; margin: 20px 0px 20px 0px; padding: 10px;"></textarea>
             </div>
             <div class="card" style="background-color: rgba(0, 0, 0, 0.1); display: block;">
-                <button class="modal_btn" style="width: 10%;">업로드</button>
+                <button class="modal_btn" style="width: 10%;" onclick="feed_upload()">업로드</button>
                 <button class="modal_btn" style="width: 10%;" onclick="add_feed_quit()">취소</button>
             </div>
             <script>
-
-
                 var Reader = function (event, num) {
                     var data = event.target;
                     var reader = new FileReader();
@@ -770,8 +493,6 @@
                     };
                     reader.readAsDataURL(data.files[0]);
                 };
-
-
             </script>
 
         </div>

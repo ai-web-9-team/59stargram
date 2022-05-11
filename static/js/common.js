@@ -100,3 +100,16 @@ $(function () {
         }
     })
 });
+
+// 현재 로그인한 유저의 정보 가져오기
+function get_user_name(){
+    $.ajax({
+        type: "GET",
+        url: '/get/username',
+        data: {},
+        success: function (response) {
+            console.log(response)
+        }
+    });
+
+}

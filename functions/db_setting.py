@@ -7,8 +7,13 @@ from pymongo import MongoClient
 import gridfs
 from datetime import date, timedelta, datetime
 
-client = MongoClient('localhost', 27017)
-db = client.db59stargram
+import certifi
+
+client = MongoClient('mongodb+srv://test:sparta@cluster0.1idhr.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=certifi.where())
+db = client.ogustagram
+
+# client = MongoClient('localhost', 27017)
+# db = client.db59stargram
 
 users = [
     {
@@ -50,10 +55,10 @@ users = [
 ]
 
 images = [
-    'static/images/img_profile.jpg',
-    'static/images/img_dongwoo_post_1.jpg',
-    'static/images/img_dongwoo_post_2.jpg',
-    'static/images/img_songhee_profile.png'
+    '../static/images/img_profile.jpg',
+    '../static/images/img_dongwoo_post_1.jpg',
+    '../static/images/img_dongwoo_post_2.jpg',
+    '../static/images/img_songhee_profile.png'
 ]
 
 follows = [
@@ -98,21 +103,20 @@ posts = [
         'LikeCnt': 33,
         'CommentCnt': 3
     }, {
-     'PostId': '3',
-     'UserName': 'kimphysicsman',
-     'Description': '하위4',
-     'Date': datetime.now(),
-     'LikeCnt': 44,
-     'CommentCnt': 4
+         'PostId': '3',
+         'UserName': 'kimphysicsman',
+         'Description': '하위4',
+         'Date': datetime.now(),
+         'LikeCnt': 44,
+         'CommentCnt': 4
      }
 ]
 
 post_images = [
-    'static/images/img_dongwoo_post_1.jpg',
-    'static/images/img_dongwoo_post_2.jpg',
-    'static/images/img_dongwoo_post_3.jpg',
-    'static/images/img_dongwoo_post_1.jpg',
-    'static/images/img_post.jpg'
+    '../static/images/img_dongwoo_post_1.jpg',
+    '../static/images/img_dongwoo_post_2.jpg',
+    '../static/images/img_dongwoo_post_3.jpg',
+    '../static/images/img_dongwoo_post_1.jpg',
 ]
 
 bookmarks = [
@@ -175,24 +179,23 @@ def make_comment():
     for comment in comments:
        db.Comments.insert_one(comment)
 
-def insert_image(images, namespace):
-    global posts
-    for i in range(len(images)):
+def insert_image(type, namespace):
+    global posts, users, images, post_images
+
         ## GridFs를 통해 파일을 분할하여 DB에 저장하게 된다
-        image = images[i]
-        image_file = open(image, "rb")
 
-        post = posts[i]
+    if type == 1:
+        for i in range(len(post_images)):
+            image = post_images[i]
+            image_file = open(image, "rb")
+            post = posts[i]
+            fs = gridfs.GridFS(db, namespace)
+            fs.put(image_file, filename=post['PostId'])
+    elif type == 0:
+        for i in range(len(images)):
+            image = images[i]
+            image_file = open(image, "rb")
+            user = users[i]
+            fs = gridfs.GridFS(db, namespace)
+            fs.put(image_file, filename=user['UserName'])
 
-        print(image_file)
-
-        fs = gridfs.GridFS(db, namespace)
-        fs.put(image_file, filename=post['PostId'])
-
-make_user()
-make_post()
-make_bookmark()
-make_follow()
-make_comment()
-insert_image(images, 'Profile')
-insert_image(post_images, 'Post')

@@ -51,6 +51,9 @@
     <link rel="shortcut icon" href="/static/images/favicon_instagram.ico">
 
     <title>59 Stagram</title>
+    <script>
+
+    </script>
 </head>
 <body style="background-color: white">
     <!--헤더 부분-->
@@ -71,19 +74,15 @@
             <ul>
                 <button class="home" onClick="window.location.reload()"><i class="fas fa-house"></i>
                 </button>
-                <button class="dm" id="dm_button"><i class="fa-regular fa-paper-plane"></i>
-                </button>
                 <button class="add_feed" id="add_feed_button"><i class="fa-regular fa-square-plus"></i>
                 </button>
                 <button class="explore" id="explore_button"><i class="fa-regular fa-compass"></i>
                 </button>
                 <button class="notice" id="notice_button"><i class="fa-regular fa-heart"></i>
                 </button>
-                <div>
-                    <a href="{{url_for('user', user_name='kimphysicsman')}}">
+                <a style="margin-left: 5px;" href="{{url_for('user', user_name=current_user)}}">
                     <img class="img_circle" width="24px" src="/static/images/img_profile.jpg" />
-                    </a>
-                </div>
+                </a>
             </ul>
         </div>
     </div>
@@ -95,13 +94,19 @@
         <div class="user_profile_box">
             <div class="user_img_box">
                 <img class="img_circle user_img" name="프로필 사진 바꾸기"
-                     src="/static/images/img_profile.jpg"/>
+                    src="data:image/jpg;base64, {{ profile_img }}"/>
             </div>
             <div class="user_info_box">
                 <div class="user_name">
-                    <p>{{user_info['UserName']}}</p>
-                    <div class="user_setting_box" onclick="user_setting_modal_on()">
-                        <img width="100%" src="/static/images/icon_setting.png" />
+                    <p id="user_name_title">{{user_info['UserName']}}</p>
+                    <div class="user_setting_box">
+                        {% if my_page == 1 %}
+                        <div onclick="user_setting_modal_on()">
+                        <img width="24px" align="left" src="/static/images/icon_setting.png" />
+                        </div>
+                        {% else %}
+                        <div class="user_follow_btn" onclick="user_follow_create()">팔로우</div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="item_cnt">
@@ -177,6 +182,7 @@
 
 
         </div>
+    </div>
 
     <!--팔로우 모달창 -->
     <div class="user_follower_box">
@@ -193,23 +199,19 @@
             <div class="user_follower_list">
                 <div class="user_follower">
                     <div class="user_follower_img">
-                        <img class="img_circle" width="30px" height="30px" src="/static/images/img_profile.jpg"/>
+                        <img class="img_circle" width="30px" height="30px"
+                             src=""/>
                     </div>
                     <div class="user_follower_name_box">
-                        <div class="user_follower_username" name="kimphysicsman">
-                            kimphysicsman
+                        <div class="user_follower_username" name="">
+                            asdfsadfsadf
                         </div>
                         <div class="user_follower_name">
-                            Dongwoo Kim
                         </div>
                     </div>
                     <div class="user_follower_delete_box">
-                        <div class="user_follower_delete_btn">
-                            삭제
-                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -217,14 +219,11 @@
         <div class="user_summary_body">
             <div class="user_summary_title">
                 <div class="user_summary_img">
-                    <img class="img_circle" width="100%" src="/static/images/img_profile.jpg"/>
                 </div>
                 <div class="user_summary_name_box">
-                    <div class="user_summary_username" onclick="">
-                        kimphysicsman
+                    <div class="user_summary_username">
                     </div>
                     <div class="user_summary_name">
-                        Dongwoo Kim
                     </div>
                 </div>
 
@@ -232,21 +231,21 @@
             <div class="user_summary_info">
                 <div class="user_summary_info_item">
                     <p style="color: #8e8e8e">게시글</p>
-                    <p style="font-weight: 500">65</p>
+                    <p id="user_summary_post_cnt" style="font-weight: 500"></p>
                 </div>
                 <div class="user_summary_info_item">
                     <p style="color: #8e8e8e">팔로워</p>
-                    <p style="font-weight: 500">136</p>
+                    <p id="user_summary_follower_cnt" style="font-weight: 500"></p>
                 </div>
                 <div class="user_summary_info_item">
                     <p style="color: #8e8e8e">팔로우</p>
-                    <p style="font-weight: 500">145</p>
+                    <p id="user_summary_following_cnt" style="font-weight: 500"></p>
                 </div>
             </div>
             <div class="user_summary_posts">
-                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_2.jpg">
-                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_3.jpg">
-                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_1.jpg">
+<!--                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_2.jpg">-->
+<!--                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_3.jpg">-->
+<!--                <img class="user_summary_post_img" src="/static/images/img_dongwoo_post_1.jpg">-->
             </div>
             <div class="user_summary_btns">
                 <div class="user_summary_like" onclick="">
@@ -334,4 +333,5 @@
 
 
 </body>
+
 </html>

@@ -104,12 +104,13 @@
 .header_icon_box{
     width: 60%;
     height: 100%;
+
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-top: 8px;
     padding-left: 20px;
-    justify-content: space-between;
+    justify-content: left;
 }
 
 .header_icon_box .home, .header_icon_box .dm, .header_icon_box .add_feed, .header_icon_box .explore, .header_icon_box .notice{
@@ -164,4 +165,8 @@ body {
     cursor: pointer;
 }
 
-
+.img_cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
