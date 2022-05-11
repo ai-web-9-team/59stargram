@@ -1,2 +1,5 @@
 flask
 pymongo
+certifi
+PyJWT
+dnspython

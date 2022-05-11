@@ -4,11 +4,13 @@ import gridfs
 import base64
 from functions import main_page_func
 db = main_page_func.db
+import jwt
 
 # client = MongoClient('localhost', 27017)
 # db = client.db59stargram
 
 app = Flask(__name__)
+SECRET_KEY = 'SPARTA'
 
 
 # HTML 화면 보여주기
@@ -259,6 +261,20 @@ def user_follow_create():
     else:
         msg = '이미 팔로우 한 상태입니다.'
         return jsonify({'msg': msg})
+
+@app.route('/get/user', methods=['GET'])
+def get_user_name():
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.user.find_one({"Email": payload['id']})
+        msg = '성공'
+    except jwt.ExpiredSignatureError:
+        msg = '실패'
+    except jwt.exceptions.DecodeError:
+        msg = '실패'
+
+    return jsonify({'msg': msg})
 
 
 @app.route('/login')
