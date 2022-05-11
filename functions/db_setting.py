@@ -82,29 +82,29 @@ follows = [
 
 posts = [
     {
-        'PostId': '0',
-        'UserName': 'kimphysicsman',
+        'PostId': '10',
+        'UserName': 'kimphysicsman5',
         'Description': '하위1',
         'Date': datetime.now(),
         'LikeCnt': 11,
         'CommentCnt': 1
     },     {
-        'PostId': '1',
-        'UserName': 'kimphysicsman',
+        'PostId': '11',
+        'UserName': 'kimphysicsman5',
         'Description': '하위2',
         'Date': datetime.now(),
         'LikeCnt': 22,
         'CommentCnt': 2
     },    {
-        'PostId': '2',
-        'UserName': 'kimphysicsman',
+        'PostId': '12',
+        'UserName': 'kimphysicsman5',
         'Description': '하위3',
         'Date': datetime.now(),
         'LikeCnt': 33,
         'CommentCnt': 3
     }, {
-         'PostId': '3',
-         'UserName': 'kimphysicsman',
+         'PostId': '13',
+         'UserName': 'kimphysicsman5',
          'Description': '하위4',
          'Date': datetime.now(),
          'LikeCnt': 44,
@@ -116,7 +116,7 @@ post_images = [
     '../static/images/img_dongwoo_post_1.jpg',
     '../static/images/img_dongwoo_post_2.jpg',
     '../static/images/img_dongwoo_post_3.jpg',
-    '../static/images/img_dongwoo_post_1.jpg',
+    '../static/images/img_dongwoo_post_1.jpg'
 ]
 
 bookmarks = [
@@ -199,3 +199,6 @@ def insert_image(type, namespace):
             fs = gridfs.GridFS(db, namespace)
             fs.put(image_file, filename=user['UserName'])
 
+
+
+db.Users.update_one({'UserName': 'kimyphsicsman'}, {'$set': {'PostCnt': 3}})
