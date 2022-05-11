@@ -18,16 +18,16 @@ SECRET_KEY = 'SPARTA'
 @app.route('/')
 def home():
     token_receive = request.cookies.get('mytoken')
-    # try:
-    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-    print(payload)
-    user_info = db.Users.find_one({"Email": payload['id']})
-    print(user_info)
-    return render_template('index.html', info=user_info)
-    # except jwt.ExpiredSignatureError:
-    #     return redirect(url_for('login'))
-    # except jwt.exceptions.DecodeError:
-    #     return redirect(url_for("login"))
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        print(payload)
+        user_info = db.Users.find_one({"Email": payload['id']})
+        print(user_info)
+        return render_template('index.html', info=user_info)
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for('login'))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login"))
 
     # info = db.Users.find_one({"UserName": "hee123"})
     # feed_ids=main_page_func.get_feeds("hee123") # 출력할 피드들의 ID 배열
@@ -415,7 +415,7 @@ def api_login():
     result = db.Users.find_one({'Email': id_receive, 'Password': pw_hash})
     # 찾으면 JWT 토큰을 만들어 발급합니다.
     if result is not None:
-        payload = {'id': id_receive, 'exp': datetime.utcnow() + timedelta(seconds=600)}
+        payload = {'id': id_receive, 'exp': datetime.utcnow() + timedelta(seconds=60000)}
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
         return jsonify({
@@ -458,19 +458,11 @@ def detail():
 @app.route('/get/userinfo', methods=['GET'])
 def get_user_info():
     token_receive = request.cookies.get('mytoken')
-    print(token_receive)
-    user_info = {}
-    try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        print(payload)
-        user_info = db.Users.find_one({"Email": payload['id']})
-        print(user_info)
-        msg = '성공'
-    except jwt.ExpiredSignatureError:
-        msg = '실패'
-    except jwt.exceptions.DecodeError:
-        msg = '실패'
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    user_info = db.Users.find_one({"Email": payload['id']}, {'_id': False})
+    msg = '성공'
 
+    print(user_info)
     return jsonify({'msg': msg, 'user_info': user_info})
 
 
