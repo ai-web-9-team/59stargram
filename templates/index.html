@@ -97,8 +97,6 @@
             <ul>
                 <button class="home" onClick="window.location.reload()"><i class="fas fa-house"></i>
                 </button>
-                <button class="dm" id="dm_button"><i class="fa-regular fa-paper-plane"></i>
-                </button>
                 <button class="add_feed" id="add_feed_button" onclick="add_feed_on()"><i
                         class="fa-regular fa-square-plus"></i>
                 </button>
@@ -107,6 +105,9 @@
                 <button class="notice" id="notice_button" onclick="alert_button_on()"><i
                         class="fa-regular fa-heart"></i>
                 </button>
+                <a style="margin-left: 5px;" href="{{url_for('user', user_name=info['UserName'])}}">
+                    <img class="img_circle" width="24px" src="/static/images/img_profile.jpg" />
+                </a>
             </ul>
         </div>
     </div>

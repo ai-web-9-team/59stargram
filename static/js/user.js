@@ -3,6 +3,8 @@ $(document).ready(function () {
     $(`.user_post_menu[name='posts']`).css('border-top', '2px solid black');
     $(`.user_post_menu[name='posts']`).css('font-weight', 'bold');
     $(`.user_post_menu[name='posts']`).css('opacity', '1');
+
+    get_user_name()
 })
 
 // 팔로우 모달창에서 사용자이름 호버 이벤트 

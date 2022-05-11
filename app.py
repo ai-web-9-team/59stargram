@@ -1,16 +1,15 @@
 from flask import Flask, redirect, url_for, render_template, jsonify, request
-from pymongo import MongoClient
 import gridfs
 import base64
-import jwt
 from datetime import date, timedelta, datetime
 from functions import main_page_func
-db = main_page_func.db
 import jwt
+import hashlib
 
 # client = MongoClient('localhost', 27017)
 # db = client.db59stargram
 
+db = main_page_func.db
 app = Flask(__name__)
 SECRET_KEY = 'SPARTA'
 
@@ -18,14 +17,26 @@ SECRET_KEY = 'SPARTA'
 # HTML 화면 보여주기
 @app.route('/')
 def home():
-    info = db.Users.find_one({"UserName": "hee123"})
-    feed_ids=main_page_func.get_feeds("hee123") # 출력할 피드들의 ID 배열
-    feeds_info=[] # 피드의 사용자이름, 이름, 피드 사진, 프로필 사진, 사진 설명, 좋아요 수 저장 배열
-    for feed_id in feed_ids:
-        feeds_info.append(main_page_func.get_feed_info(feed_id))
-    recommend_info=main_page_func.recommend_friends("hee123") # 추천할 계정의 사용자이름, 이름, 프로필 사진 저장 배열
-    search_info=[]
-    return render_template('index.html', info=info, feeds_info=feeds_info, recommend_info=recommend_info)
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        print(payload)
+        user_info = db.Users.find_one({"Email": payload['id']})
+        print(user_info)
+        return render_template('index.html', info=user_info)
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for('login'))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login"))
+
+    # info = db.Users.find_one({"UserName": "hee123"})
+    # feed_ids=main_page_func.get_feeds("hee123") # 출력할 피드들의 ID 배열
+    # feeds_info=[] # 피드의 사용자이름, 이름, 피드 사진, 프로필 사진, 사진 설명, 좋아요 수 저장 배열
+    # for feed_id in feed_ids:
+    #     feeds_info.append(main_page_func.get_feed_info(feed_id))
+    # recommend_info=main_page_func.recommend_friends("hee123") # 추천할 계정의 사용자이름, 이름, 프로필 사진 저장 배열
+    # search_info=[]
+    # return render_template('index.html', info=info, feeds_info=feeds_info, recommend_info=recommend_info)
 
 
 @app.route('/upload', methods=['POST'])
@@ -51,6 +62,7 @@ def FeedUpReceive():
     db.Posts.insert_one(doc)
     return jsonify({'result': 'success', 'msg': '게시물이 업로드 되었습니다.'})
 
+
 @app.route('/post-like-create', methods=['POST'])
 def post_like_create():
     user_id = request.form['user_id']
@@ -69,7 +81,6 @@ def post_like_create():
     else:
         msg = '이미 좋아요를 누른 상태입니다.'
         return jsonify({'msg': msg})
-
 
 
 # 유저 페이지 - 유저 정보 보여주기
@@ -191,7 +202,6 @@ def user_summary():
     return jsonify({'user_info': new_user_info,
                     'profile_img': profile_img,
                     'post_images': post_images})
-
 
 
 # 유저 페이지 - 팔로우정보 보여주기
@@ -332,6 +342,89 @@ def login():
 def register():
     return render_template('register.html')
 
+
+# [회원가입 API]
+# id, pw, nickname을 받아서, mongoDB에 저장합니다.
+# 저장하기 전에, pw를 sha256 방법(=단방향 암호화. 풀어볼 수 없음)으로 암호화해서 저장합니다.
+@app.route('/api/register', methods=['POST'])
+def api_register():
+    id_receive = request.form['id_give']
+    pw_receive = request.form['pw_give']
+    nickname_receive = request.form['nickname_give']
+    name_receive = request.form['name_give']
+
+    pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
+
+    email = db.Users.find_one({"Email": id_receive})
+    if email == None:
+        pass
+    else:
+        return jsonify({'result': 'fail', 'msg': '중복된 이메일입니다!'})
+
+    nick = db.Users.find_one({"UserName": nickname_receive})
+    if nick == None:
+        pass
+    else:
+        return jsonify({'result': 'fail', 'msg': '중복된 사용자 이름입니다'})
+
+    if not (id_receive and pw_receive and nickname_receive and name_receive):
+        return jsonify({'result': 'fail', 'msg': '모두 입력해주세요!'})
+
+    pwd2 = request.form['pwd2']
+
+    if pw_receive != pwd2:
+        return jsonify({'msg': '비밀번호가 일치하지 않습니다. 재확인해주세요.'})
+
+
+    else:
+        image = 'static/images/img_profile_default.png'
+        image_file = open(image, "rb")
+        fs = gridfs.GridFS(db, 'Profile')
+        fs.put(image_file, filename=nickname_receive)
+
+        db.Users.insert_one(
+            {'Email': id_receive, 'Password': pw_hash, 'UserName': nickname_receive, 'Name': name_receive, 'PostCnt': 0,
+             'FollowerCnt': 0, 'FollowingCnt': 0})
+        return jsonify({'result': 'success', 'msg': '회원가입 되었습니다!'})
+
+
+# [로그인 API]
+# id, pw를 받아서 맞춰보고, 토큰을 만들어 발급합니다.
+@app.route('/api/login', methods=['POST'])
+def api_login():
+    id_receive = request.form['id_give']
+    pw_receive = request.form['pw_give']
+
+    # 회원가입 때와 같은 방법으로 pw를 암호화합니다.
+    pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
+
+    if id_receive == "":
+        return jsonify({'id_receive': 'success', 'msg': '정보를 입력하세요.'})
+
+    email = db.Users.find_one({"Email": id_receive})
+
+    if email == None:
+        return jsonify({'email': 'fail', 'msg': '존재하지 않는 이메일입니다.'})
+
+    pw = db.Users.find_one({"Password": pw_hash})
+
+    if pw == None:
+        return jsonify({'email': 'fail', 'msg': '비밀번호가 일치하지 않습니다.'})
+
+    # id, 암호화된pw을 가지고 해당 유저를 찾습니다.
+    result = db.Users.find_one({'Email': id_receive, 'Password': pw_hash})
+    # 찾으면 JWT 토큰을 만들어 발급합니다.
+    if result is not None:
+        payload = {'id': id_receive, 'exp': datetime.utcnow() + timedelta(seconds=600)}
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+
+        return jsonify({
+            'result': 'success', 'msg': '로그인 성공!',
+            # 검증된 경우, access 토큰 반환
+            'token': token})
+
+
+
 @app.route('/details', methods=['GET'])
 def details():
     # 3. post_id받아서 post정보
@@ -358,11 +451,24 @@ def details():
     return jsonify({'msg': msg, 'new_post': new_post})
 
 
-
-
 @app.route('/detail')
 def detail():
     return render_template('detail.html')
+
+@app.route('/get/userinfo', methods=['GET'])
+def get_user_info():
+    token_receive = request.cookies.get('mytoken')
+    user_info = {}
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.Users.find_one({"Email": payload['id']})
+        msg = '성공'
+    except jwt.ExpiredSignatureError:
+        msg = '실패'
+    except jwt.exceptions.DecodeError:
+        msg = '실패'
+
+    return jsonify({'msg': msg})
 
 
 
