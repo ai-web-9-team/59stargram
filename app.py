@@ -18,16 +18,16 @@ SECRET_KEY = 'SPARTA'
 @app.route('/')
 def home():
     token_receive = request.cookies.get('mytoken')
-    try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        print(payload)
-        user_info = db.Users.find_one({"Email": payload['id']})
-        print(user_info)
-        return render_template('index.html', info=user_info)
-    except jwt.ExpiredSignatureError:
-        return redirect(url_for('login'))
-    except jwt.exceptions.DecodeError:
-        return redirect(url_for("login"))
+    # try:
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    print(payload)
+    user_info = db.Users.find_one({"Email": payload['id']})
+    print(user_info)
+    return render_template('index.html', info=user_info)
+    # except jwt.ExpiredSignatureError:
+    #     return redirect(url_for('login'))
+    # except jwt.exceptions.DecodeError:
+    #     return redirect(url_for("login"))
 
     # info = db.Users.find_one({"UserName": "hee123"})
     # feed_ids=main_page_func.get_feeds("hee123") # 출력할 피드들의 ID 배열
@@ -458,17 +458,20 @@ def detail():
 @app.route('/get/userinfo', methods=['GET'])
 def get_user_info():
     token_receive = request.cookies.get('mytoken')
+    print(token_receive)
     user_info = {}
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        print(payload)
         user_info = db.Users.find_one({"Email": payload['id']})
+        print(user_info)
         msg = '성공'
     except jwt.ExpiredSignatureError:
         msg = '실패'
     except jwt.exceptions.DecodeError:
         msg = '실패'
 
-    return jsonify({'msg': msg})
+    return jsonify({'msg': msg, 'user_info': user_info})
 
 
 

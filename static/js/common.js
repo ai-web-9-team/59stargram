@@ -105,7 +105,7 @@ $(function () {
 function get_user_name(){
     $.ajax({
         type: "GET",
-        url: '/get/username',
+        url: '/get/userinfo',
         data: {},
         success: function (response) {
             console.log(response)
