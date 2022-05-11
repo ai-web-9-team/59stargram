@@ -1,10 +1,10 @@
 function fadeOut(id) {
-                    //post_like_create();
-                    var my_like_id="my_like"+id.substring(5, );
-                    document.getElementById(my_like_id).style.display='block';
-                    document.getElementById(id).style.opacity=0.3;
-                    setTimeout(function() { document.getElementById(id).style.opacity=1;}, 400);
-                }
+    //post_like_create();
+    var my_like_id="my_like"+id.substring(5, );
+    document.getElementById(my_like_id).style.display='block';
+    document.getElementById(id).style.opacity=0.3;
+    setTimeout(function() { document.getElementById(id).style.opacity=1;}, 400);
+}
 
 // 좋아요 생성 함수
 function post_like_create() {
@@ -51,23 +51,21 @@ function feed_upload() {
 
 }
 
-
 // 책갈피 이모티콘을 누르면 호출되는 함수
 function clickBookmark(id) {
-                            if (document.getElementById(id).style.color != 'red') {
-                                document.getElementById(id).style.color='red';
-                            }
-                            else {
-                                document.getElementById(id).style.color='black';
-                            }
-                        }
+    if (document.getElementById(id).style.color != 'red') {
+        document.getElementById(id).style.color = 'red';
+    } else {
+        document.getElementById(id).style.color = 'black';
+    }
+}
 
 // 스토리 클릭 시 해당 게시글 offset으로 스크롤 이동하는 함수
 function clickStory(id) {
-    var story_id = "#"+id;
-    var feed_id = "#feed"+id.substring(5, );
+    var story_id = "#" + id;
+    var feed_id = "#feed" + id.substring(5,);
     var offset = $(feed_id).offset();
-    $('html').animate({scrollTop : offset.top-90}, 800);
+    $('html').animate({scrollTop: offset.top - 90}, 800);
 }
 
 // 검색창에 추천 검색어 띄우는 모달창
@@ -87,7 +85,6 @@ inputBox.addEventListener("keyup", (e) => {
 });
 
 
-
 const body = document.querySelector('body');
 const more_outside = document.querySelector('.more_button_box');
 const alert_outside = document.querySelector('.alert_button_box');
@@ -95,19 +92,17 @@ const add_feed_outside = document.querySelector('.add_feed_box');
 
 // type 0: 내 게시물 더보기 창, 1: 팔로우 중인 사람의 게시물 더보기 창, 2: 팔로우 중이 아닌 사람의 게시물 더보기 창
 function more_button_on(type) {
-    if (type==0) {
+    if (type == 0) {
         $('.card-header1').text("게시물 수정");
         $('.card-header2').text("게시물 삭제");
         $('.card-header3').text("게시물 공유");
         $('.card-header4').text("게시물 저장");
-    }
-   else if (type==1) {
+    } else if (type == 1) {
         $('.card-header1').text("해당 유저 페이지로 이동");
         $('.card-header2').text("해당 유저 팔로우 취소");
         $('.card-header3').text("게시물 공유");
         $('.card-header4').text("게시물 저장");
-    }
-    else if (type==2) {
+    } else if (type == 2) {
         $('.card-header1').text("해당 유저 페이지로 이동");
         $('.card-header2').text("해당 유저 팔로우");
         $('.card-header3').text("게시물 공유");
@@ -183,3 +178,9 @@ add_feed_outside.addEventListener('click', (event) => {
         add_feed_quit();
     }
 });
+
+function logout() {
+    $.removeCookie('mytoken');
+    alert('로그아웃!')
+    window.location.href = '/login'
+}
