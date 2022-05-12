@@ -6,9 +6,9 @@ import base64
 import random
 from flask import Flask, redirect, url_for, render_template, jsonify, request
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.1idhr.mongodb.net/Cluster0?retryWrites=true&w=majority',
-                     tlsCAFile=certifi.where())
-db = client.ogustagram
+
+client = MongoClient('localhost', 27017)
+db = client.db59stargram
 
 # 현재 user_id 계정으로 접속중인 상태에서 띄울 수 있는 피드의 Post ID를 리턴하는 함수
 def get_feeds(user_id):

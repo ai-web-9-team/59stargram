@@ -1,19 +1,11 @@
-
-
-# 건들지 마세요 - 동우
-
-
 from pymongo import MongoClient
 import gridfs
 from datetime import date, timedelta, datetime
 
 import certifi
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.1idhr.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=certifi.where())
-db = client.ogustagram
-
-# client = MongoClient('localhost', 27017)
-# db = client.db59stargram
+client = MongoClient('localhost', 27017)
+db = client.db59stargram
 
 users = [
     {
